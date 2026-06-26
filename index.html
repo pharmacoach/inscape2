@@ -387,10 +387,9 @@ onScroll();window.addEventListener('scroll',onScroll,{passive:true});
 
 /* mobile menu */
 document.getElementById('burger').addEventListener('click',()=>{
-  const links=document.querySelector('.nav__links');
-  const open=links.style.display==='flex';
-  links.style.cssText=open?'':'display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:18px;padding:22px var(--pad);background:rgba(6,24,28,.97);border-bottom:1px solid var(--line)';
+  document.body.classList.toggle('menu-open');
 });
+document.querySelectorAll('.nav__links a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('menu-open')));
 
 /* booking block + form handler */
 
