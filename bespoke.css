@@ -133,12 +133,16 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:700;letter-spacing:-.025em;li
 #testimonials{scroll-margin-top:90px;}
 
 @media (max-width:940px){.nav__links{display:none;}.nav__cta .btn{display:none;}.nav__burger{display:flex;}
+  /* opened mobile panel becomes its own scroll container so touch-drag scrolls the menu, not the page behind it */
+  .nav__links[style]{max-height:calc(100dvh - 64px);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
   .nav__has-menu{flex-direction:column;align-items:flex-start;gap:14px;width:100%;}
   .nav__menu-trigger{color:var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;}
   .nav__menu-trigger::after{display:none;} .nav__caret{display:none;}
-  .nav__menu{position:static;opacity:1;visibility:visible;transform:none;margin:0;min-width:0;padding:0 0 0 16px;
+  .nav__menu{position:static;opacity:1;visibility:visible;transform:none;margin:0;min-width:0;width:100%;padding:0 0 0 16px;
+    grid-template-columns:1fr;
     background:none;backdrop-filter:none;border:0;border-left:1px solid var(--line);border-radius:0;box-shadow:none;gap:14px;}
-  .nav__menu::before{display:none;} .nav__menu a{padding:0;} .nav__menu a:hover{background:none;} .nm__d{display:none;}}
+  .nav__menu::before{display:none;} .nav__menu a{padding:0;} .nav__menu a:hover{background:none;} .nm__d{display:none;}
+  .nav__menu .mega__img{aspect-ratio:16/7;margin-bottom:10px;}}
 
 /* =========================================================
    HERO — restrained
