@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inscape · Pharma leadership consultancy</title>
+<meta name="description" content="Evidence-led leadership consultancy for pharma's most complex teams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="bespoke.css">
+<script src="image-slot.js"></script>
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><circle cx='24' cy='24' r='21' fill='none' stroke='%231fc489' stroke-width='3'/><circle cx='24' cy='24' r='12.5' fill='none' stroke='%231fc489' stroke-width='3' opacity='.5'/><circle cx='24' cy='24' r='5.5' fill='%2384c7a6'/></svg>">
+<template id="__bundler_thumbnail" data-bg-color="#06181c">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="600" cy="400" r="280" fill="none" stroke="#1fc489" stroke-width="20" opacity="0.3"/>
+    <circle cx="600" cy="400" r="160" fill="none" stroke="#1fc489" stroke-width="20" opacity="0.5"/>
+    <circle cx="600" cy="400" r="60" fill="#1fc489"/>
+    <text x="600" y="600" text-anchor="middle" font-family="Schibsted Grotesk, sans-serif" font-size="48" font-weight="600" fill="#1fc489" opacity="0.8">Inscape</text>
+  </svg>
+</template>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav boot b1" id="nav">
+  <a class="brand" href="#top" aria-label="Inscape"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="2.5" opacity="0.5"/><circle cx="24" cy="24" r="5" fill="currentColor"/></svg></span><span class="brand__word">Inscape</span></a>
+    <nav class="nav__links">
+    <div class="nav__has-menu">
+      <a class="nav__menu-trigger" href="how-we-work.html" aria-haspopup="true">Methodology</a>
+      <div class="nav__menu" role="menu">
+        <a href="how-we-work.html" role="menuitem">
+          <div class="mega__img"><img src="assets/scene-flipchart.jpg" alt="How we work"></div>
+          <span class="nm__t">How we work</span>
+          <span class="nm__d">The method, end to end</span>
+        </a>
+        <a href="intelligence.html" role="menuitem">
+          <div class="mega__img"><img src="assets/intel-review.jpg" alt="Intelligence"></div>
+          <span class="nm__t">Intelligence</span>
+          <span class="nm__d">See what's really happening</span>
+        </a>
+        <a href="team-performance.html" role="menuitem">
+          <div class="mega__img"><img src="assets/scene-room.jpg" alt="Team Performance"></div>
+          <span class="nm__t">Team Performance</span>
+          <span class="nm__d">Turn complexity into capability</span>
+        </a>
+        <a href="resilience.html" role="menuitem">
+          <div class="mega__img"><img src="assets/resil-group.jpg" alt="Resilience"></div>
+          <span class="nm__t">Resilience</span>
+          <span class="nm__d">Make performance sustainable</span>
+        </a>
+      </div>
+    </div>
+    <div class="nav__has-menu">
+      <a class="nav__menu-trigger" href="results.html" aria-haspopup="true">Results</a>
+      <div class="nav__menu nav__menu--results" role="menu">
+        <a href="results.html#testimonials" role="menuitem">
+          <div class="mega__img rm-black rm-tm">
+            <div class="rm-logos" aria-hidden="true"><img src="assets/logos/mono/novartis.png" alt=""><img src="assets/logos/mono/astrazeneca.png" alt=""><img src="assets/logos/mono/ucb.png" alt=""><img src="assets/logos/mono/argenx.png" alt=""><img src="assets/logos/mono/chiesi.png" alt=""><img src="assets/logos/mono/menarini.png" alt=""></div>
+            <span>“Our partner of choice.”</span>
+          </div>
+          <span class="nm__d">What pharma leaders say</span>
+        </a>
+        <a href="results.html#case-studies" role="menuitem">
+          <div class="mega__img rm-black"><span>Case studies</span></div>
+          <span class="nm__d">Client results, in depth</span>
+        </a>
+      </div>
+    </div>
+    <a href="insights.html">Insights</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div class="nav__cta">
+    <a class="btn btn-primary" href="#contact">Book a consultation <span class="arr">→</span></a>
+    <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ HERO (restrained) ============ -->
+<section class="hero" id="top" data-screen-label="Hero">
+  <div class="hero__art" aria-hidden="true">
+    <div class="glow"></div>
+    <canvas id="heroCanvas"></canvas>
+    <div class="scrim"></div>
+    <div class="grain"></div>
+  </div>
+  <div class="hero__inner">
+    <h1 class="hero__title">
+      <span class="big boot">Evidence-led<br>leadership</span>
+      <span class="sub boot b1">for pharma's most complex teams.</span>
+    </h1>
+    <p class="hero__support boot b3"><b>For the SVP and VP leaders carrying pharma's most complex teams.</b> We turn what's really happening inside them into a clear plan, and the plan into performance.</p>
+    <div class="hero__actions boot b4">
+      <a class="btn btn-primary btn-lg" href="#contact">Book a consultation <span class="arr">→</span></a>
+      <a class="tlink" href="results.html#pack">Request in-depth case studies →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOGOS ============ -->
+<section class="band dense logos ch-ink2">
+  <div class="wrap logos__grid">
+    <blockquote class="logos__proof reveal">“Working with Inscape is driving a competitive advantage for my team.”
+      <cite><b>Sarah Powell</b> Head of European Assets &amp; Brand Strategy</cite>
+    </blockquote>
+    <div class="logos__right">
+      <div class="logos-head reveal d1">
+        <span class="label">Trusted by leaders at</span>
+        <span class="label dim">Global · EU · Country level</span>
+      </div>
+      <div class="logowall reveal d1">
+        <span class="logocard"><img src="assets/logos/mono/chiesi.png" alt="Chiesi"></span>
+        <span class="logocard"><img src="assets/logos/mono/argenx.png" alt="argenx"></span>
+        <span class="logocard"><img src="assets/logos/mono/beone.png" alt="BeOne"></span>
+        <span class="logocard"><img src="assets/logos/mono/alexion.png" alt="Alexion"></span>
+        <span class="logocard"><img src="assets/logos/mono/novartis.png" alt="Novartis"></span>
+        <span class="logocard"><img src="assets/logos/mono/astrazeneca.png" alt="AstraZeneca"></span>
+        <span class="logocard"><img src="assets/logos/mono/ucb.png" alt="UCB"></span>
+        <span class="logocard"><img src="assets/logos/mono/creation.png" alt="Creation"></span>
+        <span class="logocard"><img src="assets/logos/mono/menarini.png" alt="Menarini"></span>
+        <span class="logocard"><img src="assets/logos/mono/stemline.png" alt="Stemline"></span>
+        <span class="logocard lg"><img src="assets/logos/mono/torbay.png" alt="Torbay Pharma"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BIG STATEMENT (ivory peak) ============ -->
+<section class="band statement ch-light" id="reframe" data-screen-label="Statement">
+  <div class="statement__grain" aria-hidden="true"></div>
+  <div class="wrap">
+    <h2 class="reveal d1">The higher you lead, the <span class="it">less</span> you're told.</h2>
+    <p class="statement__lead reveal d2">Seniority filters the truth. By the time a decision reaches you, it's the version everyone agreed was safe to show you. You're making your hardest calls on your most filtered information.
+
+We rebuild how your team makes decisions and owns them.
+25,000 hours inside pharma, doing exactly that.</p>
+  </div>
+</section>
+
+<!-- ============ SIGNS + TURN ============ -->
+<section class="band ch-ink" data-screen-label="The problem">
+  <div class="wrap" style="font-weight: 900">
+    <h2 class="signs__head reveal">Make better decisions.</h2>
+    <div class="signs__grid">
+      <div>
+        <p class="signs__intro reveal d1">Everyone at the table wants to agree. So you meet, and meet again, and the launch waits. Consensus is slowing you down.
+
+</p>
+        <div class="signs">
+          <div class="sign reveal">
+            <span class="n">01</span>
+            <div><h4>Smooth meetings are the warning sign.</h4><p>The meeting that goes well and settles nothing is the one to worry about. The real objection stays in the room next door.</p></div>
+          </div>
+          <div class="sign reveal d1">
+            <span class="n">02</span>
+            <div><h4>Consensus is how teams avoid deciding.</h4><p><b>Global</b> wants one story, <b>the regions</b> want theirs, <b>every function</b> reads the data its own way. So you book the follow-up, fill the calendar, and call the delay “alignment.”</p></div>
+          </div>
+          <div class="sign reveal d1">
+            <span class="n">03</span>
+            <div><h4>By the time you agree, the market has moved.</h4><p>Your competitor claimed the thought leaders and secured the formulary positions. You ran a careful process. They ran a launch.</p></div>
+          </div>
+        </div>
+        <p class="signs__turn reveal d1">You can't lead what you can't see. 
+
+
+So the work starts with stakeholder intelligence.  Then we build the plan that gets your team aligned for real. We coach your leaders through it and support implementation, from the first decision to  impact that holds.</p>
+        
+        <p class="signs__close reveal d2">You leave with it fixed.</p>
+        <div class="signs__cta reveal d2"><a class="btn btn-primary btn-lg" href="#contact">Book a confidential call <span class="arr">→</span></a></div>
+      </div>
+      <aside class="signs__aside reveal d1">
+        <div class="reframe-viz reframe-viz--open" aria-hidden="true">
+          <div class="rf__lab rf__lab--top">
+            <span class="l">What every function really thinks</span>
+            <span class="c">100%</span>
+          </div>
+          <canvas id="reframeCanvas"></canvas>
+          <div class="rf__lab rf__lab--bot">
+            <span class="l">What reaches you</span>
+            <span class="c"><span id="rfPct">~0%</span><small>A fraction</small></span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUCCESS ============ -->
+<section class="band ch-light" id="testimonials" data-screen-label="Success" style="padding-top:clamp(48px,5vw,80px);">
+  <div class="wrap">
+    <h2 class="reveal" style="font-size:clamp(48px,7vw,96px);font-weight:800;letter-spacing:-.03em;margin-bottom:0;">Success.</h2>
+    <div class="tms__lead three">
+      <div class="tms__feature reveal">
+        <div class="mark">“</div>
+        <blockquote>Working with Inscape is <b>driving a competitive advantage for my team</b>, and has helped us lead and serve patients even better.</blockquote>
+        <div class="who"><image-slot class="avatar" id="tm-sarah" shape="circle" src="assets/cl-sarah.jpg" placeholder="SP" style="width:88px;height:88px"></image-slot><div class="who__txt"><b>Sarah Powell</b><span>Head of European Assets &amp; Brand Strategy</span></div></div>
+      </div>
+      <div class="tms__feature reveal d1">
+        <div class="mark">“</div>
+        <blockquote>Ben and his team really helped my European leadership team take a big leap forward, enabling us to become a more focused and united team.</blockquote>
+        <div class="who"><image-slot class="avatar" id="tm-manuela" shape="circle" src="assets/cl-manuela.jpg" placeholder="MM" style="width:88px;height:88px"></image-slot><div class="who__txt"><b>Manuela Maronati</b><span>VP, Head of Europe, Rare Disease</span></div></div>
+      </div>
+      <div class="tms__feature reveal d2">
+        <div class="mark">“</div>
+        <blockquote><b>Our partner of choice.</b> They've worked with enough pharma VPs to know what good looks like, and <b>we trust their judgement.</b></blockquote>
+        <div class="who"><image-slot class="avatar" id="tm-carina" shape="circle" src="assets/cl-carina.jpg" placeholder="CM" style="width:88px;height:88px"></image-slot><div class="who__txt"><b>Carina Manda</b><span>VP, Head of Immunology Operations Europe</span></div></div>
+      </div>
+    </div>
+    <div class="tms__wide reveal">
+      <div class="mark">“</div>
+      <blockquote>What I valued most: <b>no corporate fluff, just practical frameworks that stuck.</b> The Inscape team worked with our extended leadership team through structured offsites, surfacing the real issues and giving us the tools to address them. Their coaching with senior leaders helped us build the executive presence, and the impact for patients, our roles demanded.</blockquote>
+      <div class="who"><image-slot class="avatar" id="tm-andreas" shape="circle" src="assets/cl-andreas.jpg" placeholder="AS" style="width:76px;height:76px"></image-slot><div class="who__txt"><b>Andreas Schlein-Andersen</b><span>Head Medical &amp; Marketing Operations Intercontinental</span></div></div>
+    </div>
+    <div class="tm-grid">
+      <div class="tm reveal"><p>“Created a great environment for open discussion and reflection, using leadership frameworks to good effect without overcomplicating. I left with renewed enthusiasm and a committed action plan.”</p><div class="who"><image-slot class="avatar" id="tm-jon" shape="circle" src="assets/jon-headshot.jpg" placeholder="JB" style="width:72px;height:72px"></image-slot><div class="who__txt"><b>Dr Jon Beauchamp</b><span>VP Medical Affairs</span></div></div></div>
+      <div class="tm reveal d1"><p>“Worked with me and my whole team through some very challenging situations. I highly recommend him as a consultant and high-performance coach.”</p><div class="who"><image-slot class="avatar" id="tm-johannes" shape="circle" src="assets/cl-johannes.jpg" placeholder="JN" style="width:72px;height:72px"></image-slot><div class="who__txt"><b>Johannes Neukam</b><span>Head P&amp;O</span></div></div></div>
+      <div class="tm reveal d2"><p>“An amazing coach. He helped me enhance my leadership and turn weaknesses into strengths, and equipped me with the strategies and tools to excel in leadership and team working.”</p><div class="who"><image-slot class="avatar" id="tm-luisa" shape="circle" src="assets/cl-luisa.jpg" placeholder="LS" style="width:72px;height:72px"></image-slot><div class="who__txt"><b>Luisa Strani</b><span>Director, Patient Advocacy Lead</span></div></div></div>
+    </div>
+    <div class="soft-cta reveal">
+      <p>See what we'd surface inside your team.</p>
+      <a class="btn btn-primary btn-lg" href="#contact">Arrange an introduction <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED NEWSLETTER (high-status invite) ============ -->
+<section class="featured" id="newsletter" data-screen-label="Newsletter">
+
+  <div class="featured__scrim" aria-hidden="true"></div>
+  <div class="featured__inner wrap">
+    <div class="featured__proof reveal d1">
+      <div class="avatars" aria-hidden="true"><span>MM</span><span>JB</span><span>SP</span><span>AS</span><span>19k</span></div>
+      <p>Join <b>19,000+ pharma leaders</b> who read it every week</p>
+    </div>
+    <h2 class="reveal d1">An unfair advantage,<br>every <span class="it">week</span>.</h2>
+    <p class="featured__lead reveal d2">The weekly briefing VPs and SVPs read for the one insight that sharpens how they lead. Unique, practical, and never generic, the competitive edge to become the best leader you can be.</p>
+    <form class="featured__form reveal d2" onsubmit="window.open('https://pharmaleaders.substack.com','_blank');return false;">
+      <input type="email" placeholder="you@company.com" aria-label="Email" required>
+      <button class="btn btn-primary" type="submit">Subscribe <span class="arr">→</span></button>
+    </form>
+    <p class="featured__micro reveal d3">Free · Delivered via Substack · Unsubscribe anytime</p>
+    <div class="featured__trust reveal d3">Read by leaders at <b>UCB</b> · <b>Novartis</b> · <b>argenx</b> · <b>AstraZeneca</b> &amp; more</div>
+  </div>
+</section>
+
+<!-- ============ PILLARS ============ -->
+<section class="band ch-light" id="approach-pillars" data-screen-label="Pillars">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="ch-body">
+        <h2>From <span class="it">intelligence</span> to action.</h2>
+        <p class="lead">We turn what's really happening into a clear plan, and the plan into performance. Three connected disciplines: we gather the intelligence, translate it into leadership change, and build the resilience to make it last.</p>
+        <div class="flow"><b>Intelligence</b><span class="ar">→</span><b>Leadership</b><span class="ar">→</span><b>Resilience</b></div>
+      </div>
+    </div>
+    <div class="pillars__grid">
+      <a class="pillar reveal" href="intelligence.html">
+        <span class="pnum">01</span>
+        <h3>Stakeholder Intelligence</h3>
+        <p>We listen before we lead: a confidential, structured diagnostic across your stakeholder ecosystem that maps the real dynamics most leaders never get to see.</p>
+        <ul><li>AI-driven stakeholder diagnostic</li><li>1:1 INTELLIGENCE INTERVIEWS
+
+
+
+</li><li>Findings report &amp; perception map</li></ul>
+        <span class="go">Explore →</span>
+      </a>
+      <a class="pillar reveal d1" href="team-performance.html">
+        <span class="pnum">02</span>
+        <h3>Team Performance</h3>
+        <p>Turn what's really happening inside them into a clear plan, and the plan into performance. A structured journey of coaching, facilitation and capability-building that ladders up to lasting team impact.</p>
+        <ul><li>6-month team impact journeys</li><li>Coaching &amp; workshop facilitation</li><li>Influence, decisions &amp; presence</li><li>Media &amp; videography</li><li>AI upskilling</li></ul>
+        <span class="go">Explore →</span>
+      </a>
+      <a class="pillar reveal d2" href="resilience.html">
+        <span class="pnum">03</span>
+        <h3>Resilience &amp; Wellbeing</h3>
+        <p>Making performance sustainable, from individual resilience to organisational wellbeing. Building cultures where people stay well and lead well through every life stage, with menopause training and guidance woven in as part of that picture.</p>
+        <ul><li>Organisational wellbeing</li><li>Menopause training &amp; guidance</li><li>Resilience programmes</li></ul>
+        <span class="go">Explore →</span>
+      </a>
+    </div>
+    <p class="story__close reveal d3" style="margin-top:clamp(40px,5vw,72px);font-size:clamp(18px,1.8vw,24px);max-width:52ch;color:var(--ink);">Within a quarter, you stop managing resistance and start compounding momentum. <b>That is the shift we are hired for.</b></p>
+  </div>
+</section>
+
+<!-- ============ CASE STUDY ============ -->
+<section class="band case case--feature" data-screen-label="Case study">
+  <div class="case__bg" aria-hidden="true"><img src="assets/case-workshop.jpg" alt="Inscape workshop in session with a room of pharma leaders"></div>
+  <div class="case__scrim" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="case__feat reveal">
+      <blockquote><span class="qmark" aria-hidden="true">“</span>They supported us when it was most valuable. We're a rapidly growing organisation at every level, and they've unlocked our capacity to go from strength to strength.</blockquote>
+      <cite><b>Daniel Ghinn</b> · CEO, Creation</cite>
+      <div class="case__cta"><a class="btn btn-primary" href="results.html">Read the case study <span class="arr">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLAGSHIP JOURNEY ============ -->
+<section class="band ch-ink2" id="fit" data-screen-label="The Journey">
+  <div class="wrap">
+    <div class="journey reveal d1">
+      <div class="journey__head">
+        <div>
+          <span class="journey__flag">Flagship engagement</span>
+          <h3>The 6-Month Team Impact Journey</h3>
+        </div>
+        <span class="journey__meta">1:1 strategic advisory throughout</span>
+      </div>
+      <div class="journey__stages">
+        <div class="jstage"><span class="js-n">Stage 01</span><h4>Diagnose</h4><p>Stakeholder intelligence, questionnaire and confidential interviews. We find out what's actually happening before a single session is designed.</p></div>
+        <div class="jstage"><span class="js-n">Stage 02</span><h4>Reframe</h4><p>Bespoke, fully-facilitated workshops built from the findings, turning data into a shared identity and a narrative that holds under pressure.</p></div>
+        <div class="jstage"><span class="js-n">Stage 03</span><h4>Embed</h4><p>We make it land and last. Socialisation, 1:1s with each leader and a legacy narrative that survives team changes.</p></div>
+      </div>
+    </div>
+    <p class="fit__close reveal d2" style="margin-top:clamp(36px,4vw,56px);">We take on a limited number of engagements each quarter, so every one stays senior-led. <b><a href="#contact" style="color:var(--mint);">If this sounds like your team, the next fifteen minutes are worth it →</a></b></p>
+  </div>
+</section>
+
+<!-- ============ BOOK A CALL — conversion ============ -->
+<section class="band book tight ch-ink2" id="contact" data-screen-label="Book a call">
+  <div class="wrap book__layout">
+    <div class="book__left">
+      <div>
+        <div class="chain reveal"></div>
+        <h2 class="reveal d1">Turn your most complex team into your most <em class="it">capable</em> one.</h2>
+        <p class="lead reveal d1">Book a 15-minute conversation. We'll show you what evidence-led leadership could surface inside your team, and the plan to act on it.</p>
+        <ul class="book__quick reveal d2">
+          <li>Fifteen focused minutes, no pitch and no slides.</li>
+          <li>You leave with at least one useful read on your team.</li>
+          <li>A clear next step, only if there's a fit.</li>
+        </ul>
+        <div class="book__proof reveal d2">
+          <blockquote>“Working with Inscape is driving a competitive advantage for my team.”</blockquote>
+          <cite>Sarah Powell · Head of European Assets &amp; Brand Strategy</cite>
+          <span class="logosline">Trusted by leaders at <b>UCB</b> · <b>Novartis</b> · <b>argenx</b> · <b>AstraZeneca</b></span>
+        </div>
+      </div>
+      <div class="book__contact reveal d2">
+        <div class="book__direct">
+          <span class="book__directk">Prefer email?</span>
+          <a class="book__email" href="mailto:Hello@inscape.co?subject=Consultation%20enquiry">Hello@inscape.co</a>
+        </div>
+        <div class="book__assure"><span class="dot"></span> Confidential · Senior-led · No obligation</div>
+      </div>
+    </div>
+    <div class="reveal d2" data-book-card></div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div>
+        <a class="brand" href="#top" aria-label="Inscape"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="2.5" opacity="0.5"/><circle cx="24" cy="24" r="5" fill="currentColor"/></svg></span><span class="brand__word">Inscape</span></a>
+        <p>Intelligence to action, stakeholder intelligence, leadership consultancy and organisational resilience &amp; wellbeing for pharma leaders.</p>
+      </div>
+      <div class="foot__col">
+        <h5>Pillars</h5>
+        <a href="intelligence.html">Stakeholder Intelligence</a>
+        <a href="team-performance.html">Team Performance</a>
+        <a href="resilience.html">Resilience &amp; Wellbeing</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="foot__col">
+        <h5>Connect</h5>
+        <a href="#contact">Book a consultation</a>
+        <a href="mailto:Hello@inscape.co">Hello@inscape.co</a>
+        <a href="https://pharmaleaders.substack.com" target="_blank" rel="noopener">Pharma Leaders newsletter</a>
+        <a href="https://www.linkedin.com/in/ben-woollard-79553837/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="foot__bot">
+      <small>© 2026 Inscape. All rights reserved.</small>
+      <small>Intelligence to Action</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* nav solid on scroll */
+const nav=document.getElementById('nav');
+const onScroll=()=>nav.classList.toggle('solid',window.scrollY>40);
+onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+/* mobile menu */
+document.getElementById('burger').addEventListener('click',()=>{
+  const links=document.querySelector('.nav__links');
+  const open=links.style.display==='flex';
+  links.style.cssText=open?'':'display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:18px;padding:22px var(--pad);background:rgba(6,24,28,.97);border-bottom:1px solid var(--line)';
+});
+
+/* booking block + form handler */
+
+/* hero — org matrix that disperses into an influence network */
+(function(){
+  const cv=document.getElementById('heroCanvas');if(!cv)return;
+  const ctx=cv.getContext('2d');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W=0,H=0,DPR=1,raf=null,startTime=null;
+  let DENSITY,INTENSITY,MIX,MINTRGB,SPECTRUM,ACC,ANCHOR;
+  const DEFAULT_SPECTRUM=[[0,[155,196,77]],[0.22,[127,196,160]],[0.44,[126,200,227]],[0.60,[157,184,224]],[0.80,[232,184,208]],[1,[214,83,156]]];
+  function readCfg(){const c=window.heroCfg||{};
+    DENSITY=c.density==null?22:c.density; INTENSITY=c.intensity==null?1:c.intensity;
+    MIX=c.mix||{keep:0.42,dot:1.0,nb:2}; MINTRGB=c.mint||[31,196,137];
+    SPECTRUM=c.spectrum||DEFAULT_SPECTRUM; ACC=c.accentRGB||'31,196,137'; ANCHOR=c.anchor||'#d6efe1';}
+
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  const clamp=(v,a,b)=>v<a?a:v>b?b:v;
+  const easeInOut=x=>x<0.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+  const smooth=(a,b,x)=>{x=clamp((x-a)/(b-a),0,1);return x*x*(3-2*x);};
+  function sampleSpectrum(t){t=clamp(t,0,1);for(let i=0;i<SPECTRUM.length-1;i++){const a=SPECTRUM[i],b=SPECTRUM[i+1];if(t<=b[0]){const u=(t-a[0])/(b[0]-a[0]);return[lerp(a[1][0],b[1][0],u),lerp(a[1][1],b[1][1],u),lerp(a[1][2],b[1][2],u)];}}return SPECTRUM[SPECTRUM.length-1][1].slice();}
+  const mixc=(c1,c2,a)=>[lerp(c1[0],c2[0],a),lerp(c1[1],c2[1],a),lerp(c1[2],c2[2],a)];
+  const rgbStr=c=>'rgb('+Math.round(c[0])+','+Math.round(c[1])+','+Math.round(c[2])+')';
+
+  let nodes=[],hEdges=[],mEdges=[];
+  function build(){
+    if(!W||!H)return;
+    readCfg();
+    const rng=mulberry32(7);
+    const N=Math.max(8,Math.round(DENSITY));
+    const cx=W*0.70, cy=H*0.50, R=Math.min(W,H)*0.42;
+    nodes=[];hEdges=[];mEdges=[];
+    const levels=N>=28?5:4;
+    const counts=levels===5?[1,3,5,8,Math.max(2,N-17)]:[1,3,6,Math.max(2,N-10)];
+    const levelIdx=[];
+    for(let l=0;l<levels;l++){levelIdx.push([]);for(let i=0;i<counts[l];i++){levelIdx[l].push(nodes.length);nodes.push({level:l,parent:-1});}}
+    const yTop=cy-R*0.95, yBot=cy+R*0.92;
+    const spanOf=l=>l===0?0:R*(0.55+1.15*((l-1)/Math.max(1,levels-2)));
+    for(let l=0;l<levels;l++){
+      const ids=levelIdx[l],c=ids.length,span=spanOf(l),y=yTop+(l/(levels-1))*(yBot-yTop);
+      ids.forEach((id,i)=>{const n=nodes[id];n.tx=c===1?cx:cx+(i-(c-1)/2)*(span/(c-1));n.ty=y+(rng()-0.5)*R*0.03;});
+    }
+    for(let l=1;l<levels;l++){for(const id of levelIdx[l]){const n=nodes[id];let best=levelIdx[l-1][0],bd=1e9;
+      for(const pid of levelIdx[l-1]){const d=Math.abs(nodes[pid].tx-n.tx);if(d<bd){bd=d;best=pid;}}n.parent=best;}}
+    nodes[0].ox=cx;nodes[0].oy=cy;
+    const radOf=l=>R*(0.30+0.62*((l-1)/Math.max(1,levels-2)));
+    let gi=0;
+    for(const n of nodes){if(n.level===0)continue;const a=gi*2.39996323+0.7;const rad=radOf(n.level)*(0.85+rng()*0.3);
+      n.ox=cx+Math.cos(a)*rad*1.16;n.oy=cy+Math.sin(a)*rad*0.92;gi++;}
+    const I=INTENSITY;
+    for(const n of nodes){n.nx=lerp(n.tx,n.ox,I);n.ny=lerp(n.ty,n.oy,I);}
+
+    // team colours — every node inherits its level-1 hub's hue, lightened by depth
+    const teamHue={};
+    levelIdx[1].forEach((id,k)=>{teamHue[id]=sampleSpectrum((k+0.5)/Math.max(1,levelIdx[1].length));});
+    const teamOf=i=>{let j=i;while(nodes[j].level>1)j=nodes[j].parent;return nodes[j].level===1?j:-1;};
+    for(let i=0;i<nodes.length;i++){const n=nodes[i];
+      n.r=n.level===0?6.8:Math.max(3.0,5.8-n.level*0.7)+(n.level>=levels-1?rng()*0.9:0);
+      const tm=teamOf(i);
+      if(tm<0){n.color=rgbStr(MINTRGB);}
+      else{
+        const hue=mixc(MINTRGB,teamHue[tm],0.82);
+        const light=clamp((n.level-1)/Math.max(1,levels-2),0,1);
+        n.color=rgbStr(mixc(hue,[244,249,242],light*0.20));
+      }
+      n.ax=6+rng()*10;n.ay=6+rng()*10;n.sx=0.10+rng()*0.18;n.sy=0.10+rng()*0.18;
+      n.px=rng()*6.283;n.py=rng()*6.283;
+    }
+    for(let i=1;i<nodes.length;i++)hEdges.push([nodes[i].parent,i]);
+    const nb=MIX.nb, thr=R*0.66, seen=new Set();
+    const add=(a,b)=>{if(a===b)return;const k=a<b?a+'-'+b:b+'-'+a;if(seen.has(k))return;seen.add(k);mEdges.push({a,b});};
+    for(let i=0;i<nodes.length;i++){
+      const d=[];
+      for(let j=0;j<nodes.length;j++){if(j===i)continue;const dx=nodes[i].ox-nodes[j].ox,dy=nodes[i].oy-nodes[j].oy;d.push([Math.hypot(dx,dy),j]);}
+      d.sort((p,q)=>p[0]-q[0]);
+      for(let k=0;k<nb&&k<d.length;k++){if(d[k][0]<thr)add(i,d[k][1]);}
+    }
+    const hubs=levelIdx[1];for(let i=0;i<hubs.length;i++)add(hubs[i],hubs[(i+1)%hubs.length]);
+  }
+
+  function line(a,b){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
+  function person(x,y,s,col){
+    const w=s*0.60, top=y-s*0.02, bot=y+s*0.58, hr=s*0.36, hy=y-s*0.54;
+    ctx.fillStyle=col;
+    ctx.beginPath();
+    ctx.moveTo(x-w,bot);
+    ctx.lineTo(x-w,top+s*0.22);
+    ctx.quadraticCurveTo(x-w,top, x-w*0.46,top);
+    ctx.quadraticCurveTo(x,top-s*0.07, x+w*0.46,top);
+    ctx.quadraticCurveTo(x+w,top, x+w,top+s*0.22);
+    ctx.lineTo(x+w,bot);
+    ctx.closePath();ctx.fill();
+    ctx.beginPath();ctx.arc(x,hy,hr,0,6.2832);ctx.fill();
+  }
+
+  function draw(ts){
+    if(startTime==null)startTime=ts;
+    const el=ts-startTime, hold=700, dur=3000;
+    const t=clamp((el-hold)/dur,0,1), te=reduce?1:easeInOut(t), time=ts/1000;
+    ctx.clearRect(0,0,W,H);
+    for(const n of nodes){
+      const dx=reduce?0:Math.sin(time*n.sx+n.px)*n.ax*te;
+      const dy=reduce?0:Math.cos(time*n.sy+n.py)*n.ay*te;
+      n.x=lerp(n.tx,n.nx,te)+dx;n.y=lerp(n.ty,n.ny,te)+dy;
+    }
+    const sOp=0.5*(1-te*(1-MIX.keep));
+    if(sOp>0.012){ctx.setLineDash([]);ctx.lineWidth=1;ctx.strokeStyle='rgba(231,227,212,'+sOp.toFixed(3)+')';
+      for(const e of hEdges)line(nodes[e[0]],nodes[e[1]]);}
+    const dOp=0.6*smooth(0.32,1,te)*MIX.dot;
+    if(dOp>0.012){ctx.setLineDash([2,6]);ctx.lineWidth=1.3;ctx.strokeStyle='rgba('+ACC+','+Math.min(0.85,dOp).toFixed(3)+')';
+      for(const e of mEdges)line(nodes[e.a],nodes[e.b]);ctx.setLineDash([]);}
+    for(let i=1;i<nodes.length;i++){const n=nodes[i];
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,6.2832);ctx.fillStyle=n.color;ctx.globalAlpha=n.level>=2?0.92:1;ctx.fill();
+      ctx.globalAlpha=1;}
+    const a=nodes[0],pr=Math.sin(time*1.2)*1.4;
+    ctx.strokeStyle='rgba('+ACC+','+(0.34+0.12*te).toFixed(3)+')';ctx.lineWidth=1.4;
+    ctx.beginPath();ctx.arc(a.x,a.y,a.r+13+pr,0,6.2832);ctx.stroke();
+    person(a.x,a.y,clamp(a.r*2.1,12,17),ANCHOR);
+    if(!reduce)raf=requestAnimationFrame(draw);
+  }
+
+  function resize(){
+    const rect=document.querySelector('.hero__art').getBoundingClientRect();
+    DPR=Math.min(2,window.devicePixelRatio||1);W=rect.width;H=rect.height;
+    cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    build();startTime=null;
+  }
+  let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(resize,150);});
+  window.__rebuildHero=function(){build();startTime=null;if(reduce)draw(performance.now());};
+  resize();
+  if(reduce){draw(performance.now());}else{if(raf)cancelAnimationFrame(raf);raf=requestAnimationFrame(draw);}
+})();
+
+/* reframe — filtration funnel */
+(function(){
+  const cv=document.getElementById('reframeCanvas');if(!cv)return;
+  const ctx=cv.getContext('2d');
+  const pctEl=document.getElementById('rfPct');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const MINT=[31,196,137], BLUE=[126,200,227], IVORY='#d6efe1';
+  const rgba=(c,a)=>'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')';
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  const clamp=(v,a,b)=>v<a?a:v>b?b:v;
+  const easeOut=x=>1-Math.pow(1-x,3);
+  const easeInOut=x=>x<0.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+
+  let W=0,H=0,DPR=1,parts=[],person={},started=false,startT=null,raf=null,visible=false;
+  const DUR=3400, HOLD=520;
+
+  function build(){
+    if(!W||!H)return;
+    const px=W*0.5, py0=H*0.80, py1=H*0.875, s=clamp(H*0.085,30,52);
+    person={px,py0,py1,s};
+    parts=[];
+    const N=120, descend=Math.round(N*0.155), topFew=11; // ~15% reaches you
+    for(let i=0;i<N;i++){
+      // start: the full picture, distributed across the upper field
+      const sx = W*0.08 + Math.random()*W*0.84;
+      const sy = H*0.05 + Math.random()*H*0.52;
+      // everyone first drifts DOWN together
+      const mx = sx + (Math.random()*2-1)*W*0.05;
+      const my = sy + H*(0.15+Math.random()*0.13);
+      let tx,ty,op,reaches=false;
+      if(i<descend){              // ~15% filters down to you
+        reaches=true;
+        tx = px + (Math.random()*2-1)*W*0.07;
+        ty = py0 - s*0.66 - Math.random()*H*0.045;
+        op = 0.92;
+      }else if(i<descend+topFew){ // a few stay concentrated above
+        tx = W*0.5 + (Math.random()*2-1)*W*0.18;
+        ty = H*0.06 + Math.random()*H*0.07;
+        op = 0.34+Math.random()*0.34;
+      }else{                      // the rest disperses back out, still throughout the picture
+        tx = W*0.08 + Math.random()*W*0.84;
+        ty = H*0.10 + Math.random()*H*0.60;
+        op = 0.30+Math.random()*0.34;
+      }
+      parts.push({sx,sy,mx,my,tx,ty,op,reaches,
+        r:1.6+Math.random()*2.5,
+        col:Math.random()<0.18?BLUE:MINT,
+        delay:Math.random()*0.16,
+        drift:(Math.random()*2-1)*W*0.05,
+        ax:1.1+Math.random()*1.9, ay:1.1+Math.random()*1.9,     // idle-drift amplitude (~1–3px)
+        fx:0.5+Math.random()*0.7, fy:0.5+Math.random()*0.7,      // idle-drift speed (period ~5–12s)
+        ph:Math.random()*6.283});
+    }
+  }
+
+  function personPath(x,y,s,col){
+    const w=s*0.60, top=y-s*0.02, bot=y+s*0.58, hr=s*0.36, hy=y-s*0.54;
+    ctx.fillStyle=col;
+    ctx.beginPath();
+    ctx.moveTo(x-w,bot);
+    ctx.lineTo(x-w,top+s*0.22);
+    ctx.quadraticCurveTo(x-w,top,x-w*0.46,top);
+    ctx.quadraticCurveTo(x,top-s*0.07,x+w*0.46,top);
+    ctx.quadraticCurveTo(x+w,top,x+w,top+s*0.22);
+    ctx.lineTo(x+w,bot);
+    ctx.closePath();ctx.fill();
+    ctx.beginPath();ctx.arc(x,hy,hr,0,6.2832);ctx.fill();
+  }
+
+  function frame(ts){
+    if(startT==null)startT=ts;
+    const raw=clamp((ts-startT-HOLD)/DUR,0,1), P=reduce?1:raw;
+    ctx.clearRect(0,0,W,H);
+
+    // membranes the truth filters through
+    const mem=[[H*0.27,'GLOBAL'],[H*0.46,'THE REGIONS'],[H*0.64,'EVERY FUNCTION']];
+    ctx.save();
+    ctx.setLineDash([2,8]);ctx.lineWidth=1;ctx.strokeStyle=rgba(MINT,0.34);
+    ctx.font='600 13.5px "Schibsted Grotesk", system-ui, monospace';ctx.textAlign='right';ctx.fillStyle='#c7d3d1';
+    mem.forEach(m=>{ctx.beginPath();ctx.moveTo(W*0.06,m[0]);ctx.lineTo(W*0.94,m[0]);ctx.stroke();
+      ctx.fillText(m[1],W*0.94,m[0]-11);});
+    ctx.restore();
+
+    // particles dip down together, then disperse back out across the picture
+    const time=ts/1000;
+    const idle=reduce?1:clamp((P-0.72)/0.28,0,1); // settle drift fades in at the end
+    let arrived=0;
+    for(const p of parts){
+      const lp=clamp((P-p.delay)/(1-0.16),0,1);
+      let x,y;
+      if(lp<0.5){const e=easeInOut(lp/0.5);x=lerp(p.sx,p.mx,e);y=lerp(p.sy,p.my,e);}
+      else{const e=easeInOut((lp-0.5)/0.5);x=lerp(p.mx,p.tx,e)+Math.sin(e*Math.PI)*p.drift;y=lerp(p.my,p.ty,e);}
+      // very subtle ongoing drift once settled
+      x+=Math.sin(time*p.fx+p.ph)*p.ax*idle;
+      y+=Math.cos(time*p.fy+p.ph*1.3)*p.ay*idle;
+      let a;
+      if(p.reaches){a=clamp(0.4+0.55*lp,0,0.95);if(lp>=0.85)arrived++;}
+      else{a=p.op*clamp(0.45+lp,0.45,1);}
+      ctx.beginPath();ctx.arc(x,y,p.r,0,6.2832);ctx.fillStyle=rgba(p.col,a);ctx.fill();
+    }
+
+    // person sinks down to receive what little reaches them
+    const {px,py0,py1,s}=person;
+    const py=lerp(py0,py1,easeInOut(P));
+    const pr=Math.sin(ts/520)*1.4;
+    ctx.strokeStyle=rgba(MINT,0.30+0.08*P);ctx.lineWidth=1.4;
+    ctx.beginPath();ctx.arc(px,py-s*0.10,s*0.92+pr,0,6.2832);ctx.stroke();
+    personPath(px,py,s,IVORY);
+
+    if(pctEl){const v=Math.round(15*easeOut(P));pctEl.textContent='~'+v+'%';}
+
+    if(!reduce && (visible || raw<1))raf=requestAnimationFrame(frame); else raf=null;
+  }
+
+  function resize(){
+    const rect=cv.parentElement.getBoundingClientRect();
+    const w=Math.round(rect.width), h=Math.round(rect.height);
+    if(w<2||h<2){W=0;H=0;return false;} // layout/fonts not settled yet
+    DPR=Math.min(2,window.devicePixelRatio||1);W=w;H=h;
+    cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    build();
+    return true;
+  }
+  function play(){if(W<2||H<2){if(!resize())return;}visible=true;started=true;startT=null;if(raf)cancelAnimationFrame(raf);raf=requestAnimationFrame(frame);}
+  window.__reframePlay=play;
+  function remeasure(){
+    if(!resize())return;                 // still 0×0 — wait for the next signal
+    if(reduce){frame(performance.now());}
+    else if(started){play();}            // size resolved/changed after start — rebuild & replay
+  }
+  window.addEventListener('resize',remeasure);
+  window.addEventListener('load',remeasure);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(remeasure);
+  if('ResizeObserver' in window){
+    const ro=new ResizeObserver(()=>{
+      const rect=cv.parentElement.getBoundingClientRect();
+      if(rect.width>=2&&rect.height>=2&&(Math.round(rect.width)!==W||Math.round(rect.height)!==H))remeasure();
+    });
+    ro.observe(cv.parentElement);
+  }
+  resize();
+  if(reduce){frame(performance.now());started=true;}
+  else{
+    const io=new IntersectionObserver((es)=>{es.forEach(e=>{
+      visible=e.isIntersecting;
+      if(visible){
+        if(!started){started=true;startT=null;}
+        if(!raf)raf=requestAnimationFrame(frame);
+      }else if(raf){cancelAnimationFrame(raf);raf=null;}
+    });},{threshold:.12});
+    io.observe(cv.parentElement);
+  }
+})();
+
+/* molecule */
+(function(){
+  const svg=document.getElementById('moleculeSvg');if(!svg)return;
+  const NS='http://www.w3.org/2000/svg';const cols=['#9bc44d','#7fc4a0','#7ec8e3','#9db8e0','#e8b8d0','#d6539c'];const nodes=[];
+  for(let i=0;i<26;i++){nodes.push({x:30+Math.random()*340,y:40+Math.random()*320,r:3+Math.random()*4,c:cols[i%cols.length]});}
+  for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
+    const d=Math.hypot(nodes[i].x-nodes[j].x,nodes[i].y-nodes[j].y);
+    if(d<78){const l=document.createElementNS(NS,'line');
+      l.setAttribute('x1',nodes[i].x);l.setAttribute('y1',nodes[i].y);l.setAttribute('x2',nodes[j].x);l.setAttribute('y2',nodes[j].y);
+      l.setAttribute('stroke','rgba(180,200,200,.22)');l.setAttribute('stroke-width','1');svg.appendChild(l);}}
+  nodes.forEach(n=>{const c=document.createElementNS(NS,'circle');
+    c.setAttribute('cx',n.x);c.setAttribute('cy',n.y);c.setAttribute('r',n.r);c.setAttribute('fill',n.c);c.setAttribute('opacity','.92');svg.appendChild(c);});
+})();
+
+/* reveal */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{rootMargin:'0px 0px -8% 0px',threshold:.12});
+document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+
+/* avatar monograms */
+(function(){
+  const people={'tm-sarah':{i:'SP',c:'#7ec8e3'},'tm-manuela':{i:'MM',c:'#84c7a6'},'tm-carina':{i:'CM',c:'#7ec8e3'},'tm-jon':{i:'JB',c:'#9bc44d'},'tm-johannes':{i:'JN',c:'#e8b8d0'},'tm-luisa':{i:'LS',c:'#9bc44d'},'tm-andreas':{i:'AS',c:'#84c7a6'}};
+  const mono=(init,c)=>{const s='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">'
+    +'<circle cx="50" cy="50" r="49" fill="#0c2429"/>'
+    +'<circle cx="50" cy="50" r="49" fill="'+c+'" fill-opacity="0.13"/>'
+    +'<circle cx="50" cy="50" r="49" fill="none" stroke="'+c+'" stroke-opacity="0.5" stroke-width="1.4"/>'
+    +'<text x="50" y="50" dy="0.35em" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="33" font-weight="600" letter-spacing="1" fill="'+c+'">'+init+'</text></svg>';
+    return 'data:image/svg+xml,'+encodeURIComponent(s);};
+  Object.keys(people).forEach(id=>{const el=document.getElementById(id);if(el&&!el.getAttribute('src'))el.setAttribute('src',mono(people[id].i,people[id].c));});
+})();
+
+/* logo wall — ambient "light-up": a group of 4 flickers within ~3s, then a 5s pause before others */
+(function(){
+  const wall=document.querySelector('.logos__right .logowall');if(!wall)return;
+  const cards=[...wall.querySelectorAll('.logocard')];
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  function flick(el){el.classList.add('lit');setTimeout(()=>el.classList.remove('lit'),1700);}
+  function shuf(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+  let pool=[];
+  function round(){
+    if(pool.length<4)pool=shuf(cards.slice());
+    pool.splice(0,4).forEach(el=>setTimeout(()=>flick(el),120+Math.random()*1400)); // staggered within ~1.5s
+  }
+  let started=false,timer=null;
+  const obs=new IntersectionObserver((es)=>{es.forEach(e=>{
+    if(e.isIntersecting&&!started){started=true;round();timer=setInterval(round,8000);} // 3s flicker + 5s pause
+    else if(!e.isIntersecting&&timer){clearInterval(timer);timer=null;started=false;} // pause off-screen
+  });},{threshold:.3});
+  obs.observe(wall);
+})();
+</script>
+
+<script src="book.js"></script>
+</body>
+</html>
+
+<style id="__om-edit-overrides">
+:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >div { font-weight: 900 !important }
+</style>
