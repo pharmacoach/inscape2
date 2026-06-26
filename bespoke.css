@@ -86,8 +86,11 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:700;letter-spacing:-.025em;li
 .nav__links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--mint);transition:width .35s var(--ease);}
 .nav__links a:hover{color:var(--ivory);}
 .nav__links a:hover::after{width:100%;}
-.nav__burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;}
-.nav__burger span{width:24px;height:2px;background:var(--ivory);transition:.3s;}
+.nav__burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;position:relative;z-index:51;}
+.nav__burger span{width:24px;height:2px;background:var(--ivory);transition:transform .3s var(--ease),opacity .2s;}
+body.menu-open .nav__burger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+body.menu-open .nav__burger span:nth-child(2){opacity:0;}
+body.menu-open .nav__burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 .nav__cta{display:flex;align-items:center;gap:26px;}
 
 /* methodology dropdown */
@@ -133,16 +136,36 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:700;letter-spacing:-.025em;li
 #testimonials{scroll-margin-top:90px;}
 
 @media (max-width:940px){.nav__links{display:none;}.nav__cta .btn{display:none;}.nav__burger{display:flex;}
-  /* opened mobile panel becomes its own scroll container so touch-drag scrolls the menu, not the page behind it */
-  .nav__links[style]{max-height:calc(100dvh - 64px);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
-  .nav__has-menu{flex-direction:column;align-items:flex-start;gap:14px;width:100%;}
-  .nav__menu-trigger{color:var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;}
+  /* open mobile menu: full-height fixed panel, clean text list, page behind locked */
+  body.menu-open{overflow:hidden;}
+  body.menu-open .nav__links{display:flex;flex-direction:column;align-items:stretch;gap:0;
+    position:fixed;left:0;right:0;top:0;bottom:0;z-index:49;
+    padding:92px var(--pad) 56px;
+    background:rgba(6,24,28,.985);backdrop-filter:blur(16px);
+    overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
+  /* top-level direct links (Insights, About) as full-width rows */
+  body.menu-open .nav__links>a{padding:16px 0;font-size:19px;color:var(--ivory);border-top:1px solid var(--line);}
+  body.menu-open .nav__links>a::after{display:none;}
+  /* grouped sections */
+  body.menu-open .nav__has-menu{flex-direction:column;align-items:stretch;gap:0;width:100%;border-top:1px solid var(--line);padding-top:8px;}
+  body.menu-open .nav__menu-trigger{padding:12px 0 2px;color:var(--label);font-size:12px;letter-spacing:.08em;text-transform:uppercase;}
   .nav__menu-trigger::after{display:none;} .nav__caret{display:none;}
-  .nav__menu{position:static;opacity:1;visibility:visible;transform:none;margin:0;min-width:0;width:100%;padding:0 0 0 16px;
-    grid-template-columns:1fr;
-    background:none;backdrop-filter:none;border:0;border-left:1px solid var(--line);border-radius:0;box-shadow:none;gap:14px;}
-  .nav__menu::before{display:none;} .nav__menu a{padding:0;} .nav__menu a:hover{background:none;} .nm__d{display:none;}
-  .nav__menu .mega__img{aspect-ratio:16/7;margin-bottom:10px;}}
+  /* submenu becomes a plain text list */
+  body.menu-open .nav__menu{position:static;opacity:1;visibility:visible;transform:none;margin:0 0 4px;min-width:0;width:100%;
+    display:flex;flex-direction:column;gap:0;padding:0;
+    background:none;backdrop-filter:none;border:0;border-radius:0;box-shadow:none;}
+  .nav__menu::before{display:none;}
+  body.menu-open .nav__menu a{padding:11px 0;display:block;}
+  body.menu-open .nav__menu a:hover{background:none;}
+  body.menu-open .nav__menu .nm__d{display:none;}
+  body.menu-open .nav__menu .nm__t{display:block;padding:0;font-size:16px;font-weight:500;color:var(--ivory-2);}
+  /* drop the photo thumbnails */
+  body.menu-open .nav__menu .mega__img{display:none;}
+  /* Results items: keep their inline label, flattened to text */
+  body.menu-open .nav__menu--results{grid-template-columns:1fr;}
+  body.menu-open .nav__menu--results .mega__img{display:block;aspect-ratio:auto;background:none;border:0;padding:0;margin:0;overflow:visible;border-radius:0;}
+  body.menu-open .nav__menu--results .rm-logos{display:none;}
+  body.menu-open .nav__menu--results .mega__img span{position:static;font-size:16px;font-weight:500;color:var(--ivory-2);}}
 
 /* =========================================================
    HERO — restrained
