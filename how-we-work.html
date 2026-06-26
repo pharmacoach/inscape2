@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How We Work · Inscape</title>
+<meta name="description" content="The Inscape method, end to end. From stakeholder intelligence to leadership change to resilience — and the full menu of how we work with leaders and their teams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="bespoke.css">
+<style id="hwj-styles">
+  /* The 6-Month Journey — hero timeline (scoped to this page) */
+  .hwj-band{padding-top:clamp(10px,1.4vw,26px);}
+  /* page head & journey share the same dark bg — tighten the seam so the short title doesn't leave a void */
+  .pagehead{padding-bottom:clamp(72px,8vw,118px);}
+  /* bolder plan-to-performance flow on the page head */
+  .flow--bold{gap:clamp(16px,2vw,34px);margin-top:clamp(32px,3.6vw,48px);align-items:flex-start;flex-wrap:wrap;}
+  .flow--bold .fb{display:flex;flex-direction:column;gap:7px;}
+  .flow--bold .fb b{font-family:var(--display);font-weight:800;font-size:clamp(22px,2.5vw,36px);letter-spacing:-.025em;color:var(--ivory);line-height:1;}
+  .flow--bold .fb i{font-family:var(--mono);font-style:normal;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--label);}
+  .flow--bold .ar{font-size:clamp(20px,2.2vw,30px);color:var(--mint);line-height:1;padding-top:clamp(3px,.5vw,8px);}
+  .hwj-flag{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mint);}
+  .hwj-flag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(var(--mint-rgb),.18);}
+  .hwj-title{font-family:var(--display);font-weight:800;font-size:clamp(42px,6.2vw,92px);line-height:.95;letter-spacing:-.035em;color:var(--ivory);margin-top:22px;max-width:15ch;}
+  .hwj-lead{margin-top:24px;max-width:62ch;font-size:clamp(17px,1.6vw,22px);line-height:1.55;color:var(--muted);}
+  .hwj-track{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,3.4vw,60px);margin-top:clamp(48px,5.2vw,82px);position:relative;}
+  .hwj-track::before{content:"";position:absolute;top:7px;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(var(--mint-rgb),.55),rgba(var(--mint-rgb),.12));transform:scaleX(0);transform-origin:left center;}
+  .hwj-track.in::before{animation:hwjLine 1s var(--ease) .05s forwards;}
+  @keyframes hwjLine{to{transform:scaleX(1);}}
+  .hwj-stage{position:relative;padding-top:46px;transition:transform .4s var(--ease),opacity .35s var(--ease);}
+  .hwj-stage::after{content:"";position:absolute;top:0;left:0;width:15px;height:15px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 5px var(--ink-2),0 0 0 10px rgba(var(--mint-rgb),.16);transform:scale(0);}
+  .hwj-track.in .hwj-stage::after{animation:hwjPop .6s var(--ease) forwards;}
+  .hwj-track.in .hwj-stage:nth-child(1)::after{animation-delay:.45s;}
+  .hwj-track.in .hwj-stage:nth-child(2)::after{animation-delay:.78s;}
+  .hwj-track.in .hwj-stage:nth-child(3)::after{animation-delay:1.11s;}
+  @keyframes hwjPop{0%{transform:scale(0);}55%{transform:scale(1.45);box-shadow:0 0 0 5px var(--ink-2),0 0 0 17px rgba(var(--mint-rgb),.36);}100%{transform:scale(1);box-shadow:0 0 0 5px var(--ink-2),0 0 0 10px rgba(var(--mint-rgb),.16);}}
+  .hwj-stage h3,.hwj-stage p{opacity:0;transform:translateY(12px);transition:opacity .6s var(--ease),transform .6s var(--ease);}
+  .hwj-track.in .hwj-stage h3,.hwj-track.in .hwj-stage p{opacity:1;transform:none;}
+  .hwj-track.in .hwj-stage:nth-child(1) h3{transition-delay:.55s;}.hwj-track.in .hwj-stage:nth-child(1) p{transition-delay:.64s;}
+  .hwj-track.in .hwj-stage:nth-child(2) h3{transition-delay:.88s;}.hwj-track.in .hwj-stage:nth-child(2) p{transition-delay:.97s;}
+  .hwj-track.in .hwj-stage:nth-child(3) h3{transition-delay:1.21s;}.hwj-track.in .hwj-stage:nth-child(3) p{transition-delay:1.30s;}
+  .hwj-stage:hover{transform:translateY(-5px);}
+  @media (hover:hover){
+    .hwj-track:hover .hwj-stage{opacity:.4;}
+    .hwj-track:hover .hwj-stage:hover{opacity:1;}
+    .hwj-track:hover .hwj-stage:hover::after{box-shadow:0 0 0 5px var(--ink-2),0 0 0 14px rgba(var(--mint-rgb),.36);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hwj-track.in::before{transform:scaleX(1);animation:none;}
+    .hwj-track.in .hwj-stage::after{transform:scale(1);animation:none;}
+    .hwj-stage h3,.hwj-stage p{opacity:1;transform:none;transition:none;}
+  }
+  .hwj-stage h3{font-family:var(--serif);font-weight:500;font-size:clamp(27px,2.7vw,40px);letter-spacing:-.01em;color:var(--ivory);margin:0 0 12px;}
+  .hwj-stage p{font-size:clamp(15px,1.15vw,17px);line-height:1.62;color:var(--muted);}
+  .hwj-foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:clamp(42px,4.6vw,66px);padding-top:clamp(28px,3vw,40px);border-top:1px solid var(--line);}
+  .hwj-meta{font-family:var(--mono);font-size:12px;letter-spacing:.012em;color:var(--label);display:inline-flex;align-items:center;gap:10px;}
+  .hwj-meta::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mint);}
+  .hwj-actions{display:flex;gap:18px;flex-wrap:wrap;align-items:center;}
+  /* bridge between the journey and the pillars */
+  .hwj-bridge{text-align:center;padding-bottom:clamp(38px,4.6vw,62px);}
+  .hwj-bridge::before{content:"";display:block;width:2px;height:clamp(38px,4.6vw,60px);margin:0 auto clamp(20px,2.4vw,30px);background:linear-gradient(var(--mint-deep),rgba(63,141,106,.12));}
+  .hwj-bridge p{font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.1vw,28px);letter-spacing:-.01em;color:var(--ink);margin:0;}
+  /* pillars carry no order — a coloured rule, not a number */
+  .pillars__grid .prule{display:block;width:46px;height:4px;border-radius:2px;background:var(--mint-deep);margin-bottom:26px;}
+  @media (max-width:760px){
+    .hwj-track{grid-template-columns:1fr;gap:30px;}
+    .hwj-track::before{display:none;}
+    .hwj-stage{padding-top:26px;padding-left:24px;}
+    .hwj-stage::after{top:6px;}
+    .hwj-stage::before{content:"";position:absolute;top:6px;left:6px;bottom:0;width:2px;background:linear-gradient(rgba(var(--mint-rgb),.5),transparent);}
+    .hwj-stage:last-child::before{display:none;}
+  }
+  /* brochure menu — collapsible groups */
+  .menu-section .menu-group{margin-top:0;border-top:1px solid var(--line);}
+  .menu-section .menu-group:first-of-type{margin-top:clamp(34px,4vw,56px);}
+  summary.menu-group__head{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:clamp(22px,2.4vw,32px) 0;transition:padding-left .35s var(--ease);}
+  summary.menu-group__head::-webkit-details-marker{display:none;}
+  summary.menu-group__head:hover{padding-left:10px;}
+  summary.menu-group__head:hover h3{color:var(--mint);}
+  summary.menu-group__head h3{transition:color .3s;}
+  .menu-group__head .mg-right{display:flex;align-items:center;gap:clamp(14px,1.6vw,26px);}
+  .mg-toggle{position:relative;width:30px;height:30px;flex:none;border:1px solid var(--line);border-radius:50%;transition:border-color .35s,background .35s;}
+  summary.menu-group__head:hover .mg-toggle{border-color:rgba(var(--mint-rgb),.55);background:rgba(var(--mint-rgb),.08);}
+  .mg-toggle::before,.mg-toggle::after{content:"";position:absolute;top:50%;left:50%;width:11px;height:1.6px;border-radius:2px;background:var(--mint);transform:translate(-50%,-50%);transition:transform .4s var(--ease),opacity .4s var(--ease);}
+  .mg-toggle::after{transform:translate(-50%,-50%) rotate(90deg);}
+  .menu-group[open] .mg-toggle::after{transform:translate(-50%,-50%) rotate(0);opacity:0;}
+  .menu-group .idx.compact{margin-top:0;border-top:1px solid var(--line);}
+  .menu-group[open] > .idx.compact{animation:mgOpen .42s var(--ease);}
+  @keyframes mgOpen{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion:reduce){.menu-group[open] > .idx.compact{animation:none;}}
+  /* nested "see more" inside a menu group */
+  .see-more{border-bottom:none;}
+  summary.see-more__btn{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--mint);padding:24px 0 4px;transition:gap .3s var(--ease);}
+  summary.see-more__btn::-webkit-details-marker{display:none;}
+  summary.see-more__btn:hover{gap:14px;}
+  .see-more__chev{display:inline-block;transition:transform .4s var(--ease);}
+  .see-more[open] .see-more__chev{transform:rotate(90deg);}
+  .see-more .lbl-less{display:none;}
+  .see-more[open] .lbl-more{display:none;}
+  .see-more[open] .lbl-less{display:inline;}
+  .see-more[open] > a:first-of-type{border-top:1px solid var(--line);}
+  .see-more[open] > a{animation:mgOpen .42s var(--ease);}
+  @media (prefers-reduced-motion:reduce){.see-more[open] > a{animation:none;}}
+</style>
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><circle cx='24' cy='24' r='21' fill='none' stroke='%2384c7a6' stroke-width='3'/><circle cx='24' cy='24' r='12.5' fill='none' stroke='%2384c7a6' stroke-width='3' opacity='.5'/><circle cx='24' cy='24' r='5.5' fill='%2384c7a6'/></svg>">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="brand" href="index.html" aria-label="Inscape"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="2.5" opacity="0.5"/><circle cx="24" cy="24" r="5" fill="currentColor"/></svg></span><span class="brand__word">Inscape</span><span class="brand__desc">Pharma leadership consultancy</span></a>
+  <nav class="nav__links">
+    <div class="nav__has-menu">
+      <a class="nav__menu-trigger" href="how-we-work.html" aria-haspopup="true">Methodology</a>
+      <div class="nav__menu" role="menu">
+        <a href="how-we-work.html" role="menuitem">
+          <div class="mega__img"><img src="assets/scene-flipchart.jpg" alt="How we work"></div>
+          <span class="nm__t">How we work</span>
+          <span class="nm__d">The method, end to end</span>
+        </a>
+        <a href="intelligence.html" role="menuitem">
+          <div class="mega__img"><img src="assets/intel-review.jpg" alt="Intelligence"></div>
+          <span class="nm__t">Intelligence</span>
+          <span class="nm__d">See what's really happening</span>
+        </a>
+        <a href="team-performance.html" role="menuitem">
+          <div class="mega__img"><img src="assets/scene-room.jpg" alt="Team Performance"></div>
+          <span class="nm__t">Team Performance</span>
+          <span class="nm__d">Turn complexity into capability</span>
+        </a>
+        <a href="resilience.html" role="menuitem">
+          <div class="mega__img"><img src="assets/resil-group.jpg" alt="Resilience"></div>
+          <span class="nm__t">Resilience</span>
+          <span class="nm__d">Make performance sustainable</span>
+        </a>
+      </div>
+    </div>
+    <div class="nav__has-menu">
+      <a class="nav__menu-trigger" href="results.html" aria-haspopup="true">Results</a>
+      <div class="nav__menu nav__menu--results" role="menu">
+        <a href="results.html#testimonials" role="menuitem">
+          <div class="mega__img rm-black rm-tm">
+            <div class="rm-logos" aria-hidden="true"><img src="assets/logos/mono/novartis.png" alt=""><img src="assets/logos/mono/astrazeneca.png" alt=""><img src="assets/logos/mono/ucb.png" alt=""><img src="assets/logos/mono/argenx.png" alt=""><img src="assets/logos/mono/chiesi.png" alt=""><img src="assets/logos/mono/menarini.png" alt=""></div>
+            <span>“Our partner of choice.”</span>
+          </div>
+          <span class="nm__d">What pharma leaders say</span>
+        </a>
+        <a href="results.html#case-studies" role="menuitem">
+          <div class="mega__img rm-black"><span>Case studies</span></div>
+          <span class="nm__d">Client results, in depth</span>
+        </a>
+      </div>
+    </div>
+    <a href="insights.html">Insights</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div class="nav__cta">
+    <a class="btn btn-primary" href="index.html#contact">Book a consultation <span class="arr">→</span></a>
+    <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ PAGE HEAD ============ -->
+<section class="band pagehead ch-ink2" data-screen-label="How we work head">
+  <div class="wrap">
+    <a class="crumb reveal" href="index.html">← Inscape</a>
+    <div class="chapter-head reveal">
+      <div class="ch-body" style="padding-top:0">
+        <h1>How <span class="it">we</span> work.</h1>
+        <p class="lead">We turn what's really happening inside a team into a clear plan, and the plan into performance. Three connected disciplines, run as one system: we gather the intelligence, translate it into leadership change, and build the resilience to make it last.</p>
+        <div class="flow flow--bold reveal d1"><span class="fb"><b>Intelligence</b><i>What's really happening</i></span><span class="ar">→</span><span class="fb"><b>A clear plan</b><i>Shared and owned</i></span><span class="ar">→</span><span class="fb"><b>Performance</b><i>That lasts</i></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE 6-MONTH JOURNEY (hero) ============ -->
+<section class="band ch-ink2 hwj-band" data-screen-label="The 6-Month Journey">
+  <div class="wrap">
+    <div class="hwj-intro">
+      <span class="hwj-flag reveal">Flagship engagement · Most requested</span>
+      <h2 class="hwj-title reveal d1">The 6-Month Team Impact Journey</h2>
+      <p class="hwj-lead reveal d1">The most-requested thing we do with teams: three connected stages that turn a group of strong individuals into one team — with 1:1 strategic advisory running throughout.</p>
+    </div>
+    <ol class="hwj-track reveal d2">
+      <li class="hwj-stage">
+        <h3>Diagnose</h3>
+        <p>Stakeholder intelligence, questionnaire and confidential interviews. We find out what's actually happening before a single session is designed.</p>
+      </li>
+      <li class="hwj-stage">
+        <h3>Reframe</h3>
+        <p>Bespoke, fully-facilitated workshops built from the findings, turning data into a shared identity and a narrative that holds under pressure.</p>
+      </li>
+      <li class="hwj-stage">
+        <h3>Embed</h3>
+        <p>We make it land and last. Socialisation, 1:1s with each leader and a legacy narrative that survives team changes.</p>
+      </li>
+    </ol>
+    <div class="hwj-foot reveal d3">
+      <span class="hwj-meta">1:1 strategic advisory throughout</span>
+      <div class="hwj-actions">
+        <a class="btn btn-primary" href="index.html#contact">Talk to us about a journey <span class="arr">→</span></a>
+        <a class="tlink" href="team-performance.html">See the full method →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE THREE PILLARS ============ -->
+<section class="band ch-light" data-screen-label="The pillars">
+  <div class="wrap">
+    <div class="hwj-bridge reveal">
+      <p>Every pillar runs through these three stages.</p>
+    </div>
+    <div class="pillars__grid">
+      <a class="pillar reveal" href="intelligence.html">
+        <span class="pnum">01</span>
+        <h3>Stakeholder Intelligence</h3>
+        <p>We listen before we lead: a confidential, structured diagnostic across your stakeholder ecosystem that maps the real dynamics most leaders never get to see.</p>
+        <ul><li>AI-driven stakeholder diagnostic</li><li>1:1 intelligence interviews</li><li>Findings report &amp; perception map</li></ul>
+        <span class="go">Explore →</span>
+      </a>
+      <a class="pillar reveal d1" href="team-performance.html">
+        <span class="pnum">02</span>
+        <h3>Team Performance</h3>
+        <p>Turn what's really happening inside them into a clear plan, and the plan into performance. A structured journey of coaching, facilitation and capability-building that ladders up to lasting team impact.</p>
+        <ul><li>6-month team impact journeys</li><li>Coaching &amp; workshop facilitation</li><li>Influence, decisions &amp; presence</li><li>Media &amp; videography</li><li>AI upskilling</li></ul>
+        <span class="go">Explore →</span>
+      </a>
+      <a class="pillar reveal d2" href="resilience.html">
+        <span class="pnum">03</span>
+        <h3>Resilience &amp; Wellbeing</h3>
+        <p>Making performance sustainable, from individual resilience to organisational wellbeing. Building cultures where people stay well and lead well through every life stage, with menopause training and guidance woven in as part of that picture.</p>
+        <ul><li>Organisational wellbeing</li><li>Menopause training &amp; guidance</li><li>Resilience programmes</li></ul>
+        <span class="go">Explore →</span>
+      </a>
+    </div>
+    <p class="story__close reveal d3" style="margin-top:clamp(40px,5vw,72px);font-size:clamp(18px,1.8vw,24px);max-width:52ch;color:var(--ink);">Within a quarter, you stop managing resistance and start compounding momentum. <b>That is the shift we are hired for.</b></p>
+  </div>
+</section>
+
+<!-- ============ THE FULL MENU — BROCHURE ============ -->
+<section class="band ch-ink menu-section" id="menu" data-screen-label="The full menu">
+  <div class="wrap">
+    <span class="eyebrow reveal">The full menu</span>
+    <h2 class="reveal d1" style="font-size:clamp(32px,4.4vw,64px);margin-top:16px;max-width:16ch">Everything we do, in one place.</h2>
+    <p class="lead reveal d1" style="margin-top:20px;max-width:56ch">From a free open workshop to a six-month journey that turns a group of strong people into one team. Every engagement starts from the same place: the evidence.</p>
+
+    <!-- FREE WORKSHOPS -->
+    <details class="menu-group reveal" open>
+      <summary class="menu-group__head">
+        <h3>Most popular workshops</h3>
+        <span class="mg-right"><span class="note">Short, high-energy sessions teams ask for by name.</span><span class="mg-toggle" aria-hidden="true"></span></span>
+      </summary>
+      <div class="idx compact">
+        <a href="index.html#contact">
+          <span class="n">01</span>
+          <div class="idx__mid"><h4>Navigating the Matrix</h4><p class="meta">Leading across a matrix organisation, turning competing reporting lines and priorities into momentum rather than gridlock, with tactics applied to your live accounts.</p></div>
+          <span class="go">→</span>
+        </a>
+        <a href="index.html#contact">
+          <span class="n">02</span>
+          <div class="idx__mid"><h4>Strategic Workshops</h4><p class="meta">Facilitated strategy sessions that turn a leadership team's competing priorities into one agreed plan, with the trade-offs made explicit and owned in the room.</p></div>
+          <span class="go">→</span>
+        </a>
+        <a href="index.html#contact">
+          <span class="n">03</span>
+          <div class="idx__mid"><h4>Influencing Without Authority</h4><p class="meta">For project and asset leaders who hold no formal power over the people they need to align. A taster of the matrix leadership work.</p></div>
+          <span class="go">→</span>
+        </a>
+        <details class="see-more">
+          <summary class="see-more__btn"><span class="lbl-more">See more workshops</span><span class="lbl-less">Show fewer</span><span class="see-more__chev" aria-hidden="true">→</span></summary>
+          <a href="index.html#contact">
+            <span class="n">04</span>
+            <div class="idx__mid"><h4>AI for Pharma Leaders</h4><p class="meta">Where AI genuinely moves the needle, and where it just adds expensive complexity. The working session behind the newsletter's most-shared issue.</p></div>
+            <span class="go">→</span>
+          </a>
+          <a href="index.html#contact">
+            <span class="n">05</span>
+            <div class="idx__mid"><h4>Stakeholder Influence</h4><p class="meta">Build the influence to move stakeholders you don't control. Practical tactics for matrix environments, applied to the relationships your team needs most this quarter.</p></div>
+            <span class="go">→</span>
+          </a>
+          <a href="index.html#contact">
+            <span class="n">06</span>
+            <div class="idx__mid"><h4>Executive Presence, by the evidence</h4><p class="meta">What the research actually shows about commanding a room, and how to master the elements that turn presence from forgettable to unforgettable.</p></div>
+            <span class="go">→</span>
+          </a>
+          <a href="index.html#contact">
+            <span class="n">07</span>
+            <div class="idx__mid"><h4>Crossing Stronger Together</h4><p class="meta">A short, high-energy session on how teams ask for what they need and give other teams what they need, the fastest way to reduce cross-functional friction.</p></div>
+            <span class="go">→</span>
+          </a>
+          <a href="index.html#contact">
+            <span class="n">08</span>
+            <div class="idx__mid"><h4>Create a Common Language</h4><p class="meta">Our team is used to working with strengths: Clifton StrengthsFinder, HBDI, DISC, MBTI, Genius, and a variety of other tools, giving your team one shared vocabulary for how they work together.</p></div>
+            <span class="go">→</span>
+          </a>
+        </details>
+      </div>
+    </details>
+
+    <!-- COACHING -->
+    <details class="menu-group reveal">
+      <summary class="menu-group__head">
+        <h3>Coaching &amp; the individual leader</h3>
+        <span class="mg-right"><span class="note">High-performance coaching for the people carrying the team.</span><span class="mg-toggle" aria-hidden="true"></span></span>
+      </summary>
+      <div class="idx compact">
+        <a href="team-performance.html">
+          <span class="n">01</span>
+          <div class="idx__mid"><h4 class="tagline">High-Performance Coaching <span class="pop">7× avg. ROI</span></h4><p class="meta">1:1 executive coaching, leadership 360s, mentoring and on-call support, for leaders stepping up or stepping into something harder.</p></div>
+          <span class="go">→</span>
+        </a>
+        <a href="team-performance.html">
+          <span class="n">02</span>
+          <div class="idx__mid"><h4>Your First 90 Days</h4><p class="meta">Fast, structured support for leaders in a new role. Clarity, relationships and early wins for when first impressions and momentum matter most.</p></div>
+          <span class="go">→</span>
+        </a>
+      </div>
+    </details>
+
+    <!-- RESILIENCE & WELLBEING -->
+    <details class="menu-group reveal">
+      <summary class="menu-group__head">
+        <h3>Resilience &amp; wellbeing</h3>
+        <span class="mg-right"><span class="note">Making high performance sustainable, at every level.</span><span class="mg-toggle" aria-hidden="true"></span></span>
+      </summary>
+      <div class="idx compact">
+        <a href="resilience.html">
+          <span class="n">01</span>
+          <div class="idx__mid"><h4>Menopause Awareness &amp; Group Coaching for Senior Leaders</h4><p class="meta">Practical training and confidential group coaching that keeps senior women leading well through every life stage, woven into the wider wellbeing picture.</p></div>
+          <span class="go">→</span>
+        </a>
+        <a href="resilience.html">
+          <span class="n">02</span>
+          <div class="idx__mid"><h4>The Resilience Action Plan</h4><p class="meta">A confidential 1:1 with a specialist coach. Each leader leaves with a personalised plan grounded in their own pressures, not generic advice about sleep and step counts.</p></div>
+          <span class="go">→</span>
+        </a>
+        <a href="resilience.html">
+          <span class="n">03</span>
+          <div class="idx__mid"><h4>Organisational Wellbeing Implementation</h4><p class="meta">Embedding wellbeing at organisational level, policy, systems and culture that protect performance under real pressure.</p></div>
+          <span class="go">→</span>
+        </a>
+        <a href="resilience.html">
+          <span class="n">04</span>
+          <div class="idx__mid"><h4>Wellbeing for the First 90 Days</h4><p class="meta">Structured wellbeing support through any major transition, whether a leader is returning from maternity leave or stepping into a bigger role. We can run this for every new leader who joins your team, so they start well and stay well.</p></div>
+          <span class="go">→</span>
+        </a>
+        <a href="resilience.html">
+          <span class="n">05</span>
+          <div class="idx__mid"><h4>Pre &amp; Post Maternity Leave Planning</h4><p class="meta">Preparation before leave and a structured debrief on return, so leaders step away with a clear handover and come back with momentum rather than starting from cold.</p></div>
+          <span class="go">→</span>
+        </a>
+      </div>
+    </details>
+
+    <!-- INTELLIGENCE -->
+    <details class="menu-group reveal">
+      <summary class="menu-group__head">
+        <h3>See what's really happening</h3>
+        <span class="mg-right"><span class="note">The evidence that every engagement starts from.</span><span class="mg-toggle" aria-hidden="true"></span></span>
+      </summary>
+      <div class="idx compact">
+        <a href="intelligence.html">
+          <span class="n">01</span>
+          <div class="idx__mid"><h4>Stakeholder Intelligence Diagnostic</h4><p class="meta">Confidential listening across your stakeholder ecosystem. A findings report, perception map and communication blueprint, the evidence to move with precision.</p></div>
+          <span class="go">→</span>
+        </a>
+      </div>
+    </details>
+
+    <!-- MORE WAYS -->
+    <details class="menu-group reveal">
+      <summary class="menu-group__head">
+        <h3>More ways we work</h3>
+        <span class="mg-right"><span class="mg-toggle" aria-hidden="true"></span></span>
+      </summary>
+      <div class="idx compact">
+        <a href="team-performance.html">
+          <span class="n">01</span>
+          <div class="idx__mid"><h4>Storytelling, Media &amp; Videography</h4><p class="meta">Capture the work as it happens and turn it into a narrative asset, a story that carries the shared identity beyond the room and keeps it alive long after.</p></div>
+          <span class="go">→</span>
+        </a>
+        <a href="team-performance.html">
+          <span class="n">02</span>
+          <div class="idx__mid"><h4>Matrix Leadership Intensive</h4><p class="meta">A working day for project and asset leaders. Influence without authority, applied to the live accounts your team is stuck on this week.</p></div>
+          <span class="go">→</span>
+        </a>
+        <a href="team-performance.html">
+          <span class="n">03</span>
+          <div class="idx__mid"><h4>Team Strength Analysis</h4><p class="meta">A structured read of where your team is strongest and where it's exposed, so you can deploy people to their best.</p></div>
+          <span class="go">→</span>
+        </a>
+        <a href="index.html#contact">
+          <span class="n">04</span>
+          <div class="idx__mid"><h4>AI Upskilling for Teams</h4><p class="meta">Helping leadership teams find the one or two bottlenecks where AI creates real value, and build the habits to use it well.</p></div>
+          <span class="go">→</span>
+        </a>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="band final ch-ink2" data-screen-label="Final CTA">
+  <div class="wrap">
+    <div class="chain reveal"></div>
+    <h2 class="reveal d1">Find out what's holding your team back.</h2>
+    <p class="lead reveal d2">Book a 15-minute conversation. We'll show you where the method would start for your team, and the plan to act on it.</p>
+    <div class="reveal d3" style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px">
+      <a class="btn btn-primary btn-lg" href="index.html#contact">Book a consultation <span class="arr">→</span></a>
+      <a class="btn btn-ghost btn-lg" href="results.html">See the results</a>
+    </div>
+    <p class="cta-assure reveal d3">A 15-minute call, with no pitch and no obligation. You'll leave with at least one useful insight, whether we work together or not.</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div>
+        <a class="brand" href="index.html" aria-label="Inscape"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="2.5" opacity="0.5"/><circle cx="24" cy="24" r="5" fill="currentColor"/></svg></span><span class="brand__word">Inscape</span></a>
+        <p>Intelligence to action, stakeholder intelligence, leadership consultancy and organisational resilience &amp; wellbeing for pharma leaders.</p>
+      </div>
+      <div class="foot__col">
+        <h5>Pillars</h5>
+        <a href="intelligence.html">Stakeholder Intelligence</a>
+        <a href="team-performance.html">Team Performance</a>
+        <a href="resilience.html">Resilience &amp; Wellbeing</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="foot__col">
+        <h5>Connect</h5>
+        <a href="index.html#contact">Book a consultation</a>
+        <a href="mailto:Hello@inscape.co">Hello@inscape.co</a>
+        <a href="https://pharmaleaders.substack.com" target="_blank" rel="noopener">Pharma Leaders newsletter</a>
+        <a href="https://www.linkedin.com/in/ben-woollard-79553837/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="index.html">Home</a>
+      </div>
+    </div>
+    <div class="foot__bot">
+      <small>© 2026 Inscape. All rights reserved.</small>
+      <small>Intelligence to Action</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+const onScroll=()=>nav.classList.toggle('solid',window.scrollY>40);
+onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+document.getElementById('burger').addEventListener('click',()=>{
+  const links=document.querySelector('.nav__links');
+  const open=links.style.display==='flex';
+  links.style.cssText=open?'':'display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:18px;padding:22px var(--pad);background:rgba(6,24,28,.97);border-bottom:1px solid var(--line)';
+});
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.12});
+document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
