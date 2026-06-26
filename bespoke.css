@@ -161,6 +161,11 @@ body.menu-open .nav__burger span:nth-child(3){transform:translateY(-7px) rotate(
     display:flex;flex-direction:column;gap:0;padding:0;
     background:none;backdrop-filter:none;border:0;border-radius:0;box-shadow:none;}
   .mmenu .nav__menu::before{display:none;}
+  /* kill the desktop dropdown's open-animation (translateX/transition) from leaking into
+     the overlay — :focus-within on tap was sliding submenus off to the left */
+  .mmenu .nav__menu,
+  .mmenu .nav__has-menu:hover .nav__menu,
+  .mmenu .nav__has-menu:focus-within .nav__menu{transform:none;transition:none;left:auto;right:auto;}
   .mmenu .nav__menu a{display:block;padding:11px 0;text-decoration:none;}
   .mmenu .nav__menu .nm__d{display:none;}
   .mmenu .nav__menu .nm__t{display:block;padding:0;font-size:16px;font-weight:500;color:var(--ivory-2);}
