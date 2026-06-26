@@ -135,40 +135,42 @@ body.menu-open .nav__burger span:nth-child(3){transform:translateY(-7px) rotate(
 @media (max-width:940px){.nav__menu--results{width:auto;grid-template-columns:1fr;padding:0;gap:14px;}.nav__menu--results .nm__role{display:none;}}
 #testimonials{scroll-margin-top:90px;}
 
-@media (max-width:940px){.nav__links{display:none;}.nav__cta .btn{display:none;}.nav__burger{display:flex;}
-  /* open mobile menu: full-height fixed panel, clean text list, page behind locked */
+@media (max-width:940px){.nav__links{display:none;}.nav__cta .btn{display:none;}.nav__burger{display:flex;}}
+
+/* ---------- mobile menu overlay (JS injects #mmenu as a direct child of <body>) ---------- */
+.mmenu{display:none;}
+@media (max-width:940px){
   body.menu-open{overflow:hidden;}
-  /* nav's backdrop-filter/transform would otherwise become the containing block for the
-     fixed panel (collapsing it to the nav's height once scrolled) — neutralise while open */
-  body.menu-open .nav,body.menu-open .nav.solid{backdrop-filter:none;-webkit-backdrop-filter:none;transform:none;}
-  body.menu-open .nav__links{display:flex;flex-direction:column;align-items:stretch;gap:0;
-    position:fixed;left:0;right:0;top:0;height:100vh;height:100dvh;z-index:49;
+  /* keep the nav bar (brand + burger) tappable above the overlay so it can close */
+  body.menu-open .nav{z-index:90;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;transform:none;border-bottom-color:transparent;}
+  .mmenu{position:fixed;top:0;left:0;right:0;width:100%;height:100vh;height:100dvh;z-index:80;
+    flex-direction:column;align-items:stretch;gap:0;
     padding:92px var(--pad) 56px;
-    background:rgba(6,24,28,.985);backdrop-filter:blur(16px);
+    background:#06181c;
     overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
-  /* top-level direct links (Insights, About) as full-width rows */
-  body.menu-open .nav__links>a{padding:16px 0;font-size:19px;color:var(--ivory);border-top:1px solid var(--line);}
-  body.menu-open .nav__links>a::after{display:none;}
+  body.menu-open .mmenu{display:flex;}
+  /* top-level direct links (Insights, About) */
+  .mmenu>a{display:block;padding:16px 0;font-size:19px;color:var(--ivory);border-top:1px solid var(--line);text-decoration:none;}
+  .mmenu>a::after{display:none;}
   /* grouped sections */
-  body.menu-open .nav__has-menu{flex-direction:column;align-items:stretch;gap:0;width:100%;border-top:1px solid var(--line);padding-top:8px;}
-  body.menu-open .nav__menu-trigger{padding:12px 0 2px;color:var(--label);font-size:12px;letter-spacing:.08em;text-transform:uppercase;}
-  .nav__menu-trigger::after{display:none;} .nav__caret{display:none;}
-  /* submenu becomes a plain text list */
-  body.menu-open .nav__menu{position:static;opacity:1;visibility:visible;transform:none;margin:0 0 4px;min-width:0;width:100%;
+  .mmenu .nav__has-menu{display:flex;flex-direction:column;align-items:stretch;gap:0;width:100%;border-top:1px solid var(--line);padding-top:8px;position:static;}
+  .mmenu .nav__menu-trigger{display:block;padding:12px 0 2px;color:var(--label);font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;}
+  .mmenu .nav__menu-trigger::after,.mmenu .nav__caret{display:none;}
+  /* submenu as a plain text list */
+  .mmenu .nav__menu{position:static;opacity:1;visibility:visible;transform:none;margin:0 0 4px;min-width:0;width:100%;
     display:flex;flex-direction:column;gap:0;padding:0;
     background:none;backdrop-filter:none;border:0;border-radius:0;box-shadow:none;}
-  .nav__menu::before{display:none;}
-  body.menu-open .nav__menu a{padding:11px 0;display:block;}
-  body.menu-open .nav__menu a:hover{background:none;}
-  body.menu-open .nav__menu .nm__d{display:none;}
-  body.menu-open .nav__menu .nm__t{display:block;padding:0;font-size:16px;font-weight:500;color:var(--ivory-2);}
-  /* drop the photo thumbnails */
-  body.menu-open .nav__menu .mega__img{display:none;}
-  /* Results items: keep their inline label, flattened to text */
-  body.menu-open .nav__menu--results{grid-template-columns:1fr;}
-  body.menu-open .nav__menu--results .mega__img{display:block;aspect-ratio:auto;background:none;border:0;padding:0;margin:0;overflow:visible;border-radius:0;}
-  body.menu-open .nav__menu--results .rm-logos{display:none;}
-  body.menu-open .nav__menu--results .mega__img span{position:static;font-size:16px;font-weight:500;color:var(--ivory-2);}}
+  .mmenu .nav__menu::before{display:none;}
+  .mmenu .nav__menu a{display:block;padding:11px 0;text-decoration:none;}
+  .mmenu .nav__menu .nm__d{display:none;}
+  .mmenu .nav__menu .nm__t{display:block;padding:0;font-size:16px;font-weight:500;color:var(--ivory-2);}
+  .mmenu .mega__img{display:none;}
+  /* Results items keep their inline label, flattened to text */
+  .mmenu .nav__menu--results{grid-template-columns:1fr;}
+  .mmenu .nav__menu--results .mega__img{display:block;aspect-ratio:auto;background:none;border:0;padding:0;margin:0;overflow:visible;border-radius:0;}
+  .mmenu .nav__menu--results .rm-logos{display:none;}
+  .mmenu .nav__menu--results .mega__img span{position:static;font-size:16px;font-weight:500;color:var(--ivory-2);}
+}
 
 /* =========================================================
    HERO — restrained

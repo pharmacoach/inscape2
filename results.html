@@ -324,12 +324,22 @@ const nav=document.getElementById('nav');
 const onScroll=()=>nav.classList.toggle('solid',window.scrollY>40);
 onScroll();window.addEventListener('scroll',onScroll,{passive:true});
 (function(){
-  var burger=document.getElementById('burger'); if(!burger) return;
+  var burger=document.getElementById('burger');
+  var src=document.querySelector('.nav__links');
+  if(!burger||!src) return;
   var body=document.body;
+  // build the mobile menu as a direct child of <body> so it can't be trapped by the
+  // nav's containing block (fixed-position + backdrop-filter); guarantees a full-screen overlay
+  var overlay=document.createElement('nav');
+  overlay.id='mmenu';
+  overlay.className='mmenu';
+  overlay.setAttribute('aria-label','Mobile menu');
+  overlay.innerHTML=src.innerHTML;
+  body.appendChild(overlay);
   function close(){ body.classList.remove('menu-open'); }
-  burger.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); body.classList.toggle('menu-open'); });
-  document.querySelectorAll('.nav__links a').forEach(function(a){ a.addEventListener('click',close); });
-  var brand=document.querySelector('.brand'); if(brand){ brand.addEventListener('click',close); }
+  function toggle(e){ if(e){ e.preventDefault(); } body.classList.toggle('menu-open'); }
+  burger.addEventListener('click',toggle);
+  overlay.addEventListener('click',function(e){ if(e.target.closest('a')) close(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
   window.addEventListener('pageshow',close);
 })();
