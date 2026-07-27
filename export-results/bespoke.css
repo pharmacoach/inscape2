@@ -86,11 +86,8 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:700;letter-spacing:-.025em;li
 .nav__links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--mint);transition:width .35s var(--ease);}
 .nav__links a:hover{color:var(--ivory);}
 .nav__links a:hover::after{width:100%;}
-.nav__burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;position:relative;z-index:51;}
-.nav__burger span{width:24px;height:2px;background:var(--ivory);transition:transform .3s var(--ease),opacity .2s;}
-body.menu-open .nav__burger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-body.menu-open .nav__burger span:nth-child(2){opacity:0;}
-body.menu-open .nav__burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav__burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;}
+.nav__burger span{width:24px;height:2px;background:var(--ivory);transition:.3s;}
 .nav__cta{display:flex;align-items:center;gap:26px;}
 
 /* methodology dropdown */
@@ -135,46 +132,13 @@ body.menu-open .nav__burger span:nth-child(3){transform:translateY(-7px) rotate(
 @media (max-width:940px){.nav__menu--results{width:auto;grid-template-columns:1fr;padding:0;gap:14px;}.nav__menu--results .nm__role{display:none;}}
 #testimonials{scroll-margin-top:90px;}
 
-@media (max-width:940px){.nav__links{display:none;}.nav__cta .btn{display:none;}.nav__burger{display:flex;}}
-
-/* ---------- mobile menu overlay (JS injects #mmenu as a direct child of <body>) ---------- */
-.mmenu{display:none;}
-@media (max-width:940px){
-  body.menu-open{overflow:hidden;}
-  /* keep the nav bar (brand + burger) tappable above the overlay so it can close */
-  body.menu-open .nav{z-index:90;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;transform:none;border-bottom-color:transparent;}
-  .mmenu{position:fixed;top:0;left:0;right:0;width:100%;height:100vh;height:100dvh;z-index:80;
-    flex-direction:column;align-items:stretch;gap:0;
-    padding:92px var(--pad) 56px;
-    background:#06181c;
-    overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
-  body.menu-open .mmenu{display:flex;}
-  /* top-level direct links (Insights, About) */
-  .mmenu>a{display:block;padding:16px 0;font-size:19px;color:var(--ivory);border-top:1px solid var(--line);text-decoration:none;}
-  .mmenu>a::after{display:none;}
-  /* grouped sections */
-  .mmenu .nav__has-menu{display:flex;flex-direction:column;align-items:stretch;gap:0;width:100%;border-top:1px solid var(--line);padding-top:8px;position:static;}
-  .mmenu .nav__menu-trigger{display:block;padding:12px 0 2px;color:var(--label);font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;}
-  .mmenu .nav__menu-trigger::after,.mmenu .nav__caret{display:none;}
-  /* submenu as a plain text list */
-  .mmenu .nav__menu{position:static;opacity:1;visibility:visible;transform:none;margin:0 0 4px;min-width:0;width:100%;
-    display:flex;flex-direction:column;gap:0;padding:0;
-    background:none;backdrop-filter:none;border:0;border-radius:0;box-shadow:none;}
-  .mmenu .nav__menu::before{display:none;}
-  /* kill the desktop dropdown's open-animation (translateX/transition) from leaking into
-     the overlay — :focus-within on tap was sliding submenus off to the left */
-  .mmenu .nav__menu,
-  .mmenu .nav__has-menu:hover .nav__menu,
-  .mmenu .nav__has-menu:focus-within .nav__menu{transform:none;transition:none;left:auto;right:auto;}
-  .mmenu .nav__menu a{display:block;padding:11px 0;text-decoration:none;}
-  .mmenu .nav__menu .nm__d{display:none;}
-  .mmenu .nav__menu .nm__t{display:block;padding:0;font-size:16px;font-weight:500;color:var(--ivory-2);}
-  .mmenu .mega__img{display:none;}
-  /* Results items keep their inline label, flattened to text */
-  .mmenu .nav__menu--results{grid-template-columns:1fr;}
-  .mmenu .nav__menu--results .mega__img{display:none;}
-  .mmenu .nav__menu--results .nm__d{display:block;padding:0;font-size:16px;font-weight:500;color:var(--ivory-2);}
-}
+@media (max-width:940px){.nav__links{display:none;}.nav__cta .btn{display:none;}.nav__burger{display:flex;}
+  .nav__has-menu{flex-direction:column;align-items:flex-start;gap:14px;width:100%;}
+  .nav__menu-trigger{color:var(--label);font-size:13px;letter-spacing:.04em;text-transform:uppercase;}
+  .nav__menu-trigger::after{display:none;} .nav__caret{display:none;}
+  .nav__menu{position:static;opacity:1;visibility:visible;transform:none;margin:0;min-width:0;padding:0 0 0 16px;
+    background:none;backdrop-filter:none;border:0;border-left:1px solid var(--line);border-radius:0;box-shadow:none;gap:14px;}
+  .nav__menu::before{display:none;} .nav__menu a{padding:0;} .nav__menu a:hover{background:none;} .nm__d{display:none;}}
 
 /* =========================================================
    HERO — restrained

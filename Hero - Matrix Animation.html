@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hero · Matrix Animation Study · Inscape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="bespoke.css">
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><circle cx='24' cy='24' r='21' fill='none' stroke='%2384c7a6' stroke-width='3'/><circle cx='24' cy='24' r='12.5' fill='none' stroke='%2384c7a6' stroke-width='3' opacity='.5'/><circle cx='24' cy='24' r='5.5' fill='%2384c7a6'/></svg>">
+<style>
+  .hero__art canvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
+
+  /* control dock */
+  .dock{position:fixed;right:22px;bottom:22px;z-index:40;width:264px;
+    background:linear-gradient(180deg,rgba(10,34,40,.94),rgba(6,22,27,.96));
+    border:1px solid rgba(233,227,212,.16);border-radius:12px;
+    backdrop-filter:blur(14px);box-shadow:0 24px 60px rgba(0,0,0,.5);
+    padding:16px 16px 14px;color:var(--ivory);font-family:var(--sans);}
+  .dock__title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;}
+  .dock__title b{font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mint);}
+  .dock__title .x{font-family:var(--display);font-weight:600;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);cursor:pointer;border:0;background:none;}
+  .seg{display:flex;gap:4px;background:rgba(255,255,255,.05);border:1px solid rgba(233,227,212,.1);border-radius:8px;padding:3px;}
+  .seg button{flex:1;appearance:none;border:0;background:none;cursor:pointer;
+    font-family:var(--display);font-weight:600;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);padding:7px 4px;border-radius:6px;transition:background .2s,color .2s;white-space:nowrap;}
+  .seg button.on{background:var(--mint);color:#06231f;}
+  .dock__grp{margin-top:14px;transition:opacity .25s;}
+  .dock__grp.dim{opacity:.32;pointer-events:none;}
+  .dock__lab{display:flex;align-items:center;justify-content:space-between;
+    font-family:var(--display);font-weight:600;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+    margin:14px 0 7px;}
+  .dock__lab:first-child{margin-top:0;}
+  .dock__lab output{color:var(--ivory-2);font-variant-numeric:tabular-nums;}
+  input[type=range]{-webkit-appearance:none;width:100%;height:3px;border-radius:3px;
+    background:rgba(233,227,212,.18);outline:none;margin:2px 0;}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;
+    background:var(--mint);cursor:pointer;box-shadow:0 0 0 4px rgba(132,199,166,.18);}
+  input[type=range]::-moz-range-thumb{width:15px;height:15px;border:0;border-radius:50%;background:var(--mint);cursor:pointer;}
+  .dock__foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:16px;padding-top:13px;border-top:1px solid rgba(233,227,212,.1);}
+  .legend{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:600;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);}
+  .legend span{display:inline-flex;align-items:center;gap:5px;}
+  .legend i{width:16px;height:0;display:inline-block;}
+  .legend i.ls{border-top:1.5px solid rgba(231,227,212,.8);}
+  .legend i.ld{border-top:1.5px dotted var(--mint);}
+  .replay{appearance:none;border:1px solid rgba(132,199,166,.4);background:rgba(132,199,166,.08);
+    color:var(--mint);font-family:var(--display);font-weight:600;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    border-radius:100px;padding:7px 13px;cursor:pointer;transition:background .2s,border-color .2s;white-space:nowrap;}
+  .replay:hover{background:rgba(132,199,166,.16);border-color:var(--mint);}
+  .dock.min .dock__grp,.dock.min .dock__foot,.dock.min #modeSeg{display:none;}
+  .dock.min{width:auto;}
+
+  .study-tag{position:fixed;left:22px;bottom:22px;z-index:40;font-family:var(--display);font-weight:600;
+    font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);
+    background:rgba(6,22,27,.7);border:1px solid rgba(233,227,212,.1);border-radius:100px;padding:8px 15px;backdrop-filter:blur(8px);}
+  @media (max-width:640px){.dock{right:12px;left:12px;bottom:12px;width:auto;}.study-tag{display:none;}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav b1" id="nav">
+  <a class="brand" href="#top" aria-label="Inscape"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="2.5" opacity="0.5"/><circle cx="24" cy="24" r="5" fill="currentColor"/></svg></span><span class="brand__word">Inscape</span></a>
+  <nav class="nav__links">
+    <a href="intelligence.html">Intelligence</a>
+    <a href="consultancy.html">Team Performance</a>
+    <a href="resilience.html">Resilience</a>
+  </nav>
+  <div class="nav__cta">
+    <a class="btn btn-primary" href="#contact">Book a consultation <span class="arr">→</span></a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" data-screen-label="Hero">
+  <div class="hero__art" aria-hidden="true">
+    <div class="glow"></div>
+    <canvas id="heroCanvas"></canvas>
+    <div class="scrim"></div>
+    <div class="grain"></div>
+  </div>
+  <div class="hero__inner">
+    <span class="eyebrow">Intelligence to Action</span>
+    <h1 class="hero__title">
+      <span class="big">Evidence-led<br>leadership</span>
+      <span class="sub">for pharma's most complex teams.</span>
+    </h1>
+    <p class="hero__support"><b>For the SVP and VP leaders carrying pharma's most complex teams.</b> We turn what's really happening inside them into a clear plan, and the plan into performance.</p>
+    <div class="hero__actions">
+      <a class="btn btn-primary btn-lg" href="#contact">Book a consultation <span class="arr">→</span></a>
+      <a class="tlink" href="#contact">Request in-depth case studies →</a>
+    </div>
+  </div>
+</section>
+
+<span class="study-tag">Hero animation study · not the live page</span>
+
+<!-- ============ CONTROL DOCK ============ -->
+<div class="dock" id="dock">
+  <div class="dock__title"><b>Hero motion</b><button class="x" id="toggleDock">Hide</button></div>
+  <div class="seg" id="modeSeg">
+    <button data-mode="matrix" class="on">Matrix</button>
+    <button data-mode="current">Current</button>
+  </div>
+  <div class="dock__grp" id="mtxControls">
+    <div class="dock__lab">Density <output id="oDen">22</output></div>
+    <input type="range" id="den" min="12" max="34" step="1" value="22">
+    <div class="dock__lab">Dispersal <output id="oInt">100%</output></div>
+    <input type="range" id="int" min="0" max="1" step="0.01" value="1">
+    <div class="dock__lab">Lines</div>
+    <div class="seg" id="mixSeg">
+      <button data-mix="influence">Influence</button>
+      <button data-mix="balanced" class="on">Balanced</button>
+      <button data-mix="structure">Structure</button>
+    </div>
+  </div>
+  <div class="dock__foot">
+    <span class="legend"><span><i class="ls"></i>Report</span><span><i class="ld"></i>Influence</span></span>
+    <button class="replay" id="replay">⟲ Replay</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const cv=document.getElementById('heroCanvas');
+  const ctx=cv.getContext('2d');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W=0,H=0,DPR=1,raf=null,startTime=null,cStart=null;
+
+  /* ---------- persisted params ---------- */
+  const DEF={mode:'matrix',density:22,intensity:1,mix:'balanced'};
+  let params=Object.assign({},DEF);
+  try{const s=JSON.parse(localStorage.getItem('heroProtoParams'));if(s)params=Object.assign(params,s);}catch(e){}
+  const save=()=>{try{localStorage.setItem('heroProtoParams',JSON.stringify(params));}catch(e){}};
+
+  const MIX={
+    influence:{keep:0.12,dot:1.18,nb:3},
+    balanced:{keep:0.42,dot:1.0,nb:2},
+    structure:{keep:0.78,dot:0.66,nb:1}
+  };
+  const ACCENTS=['#9bc44d','#7ec8e3','#e8b8d0'];
+
+  /* ---------- helpers ---------- */
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  const clamp=(v,a,b)=>v<a?a:v>b?b:v;
+  const easeInOut=x=>x<0.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+  const smooth=(a,b,x)=>{x=clamp((x-a)/(b-a),0,1);return x*x*(3-2*x);};
+  // brand spectrum sampler — used to tint each dot ever so slightly
+  const SPECTRUM=[[0,[155,196,77]],[0.22,[127,196,160]],[0.44,[126,200,227]],[0.60,[157,184,224]],[0.80,[232,184,208]],[1,[214,83,156]]];
+  const MINTRGB=[132,199,166];
+  function sampleSpectrum(t){t=clamp(t,0,1);for(let i=0;i<SPECTRUM.length-1;i++){const a=SPECTRUM[i],b=SPECTRUM[i+1];if(t<=b[0]){const u=(t-a[0])/(b[0]-a[0]);return[lerp(a[1][0],b[1][0],u),lerp(a[1][1],b[1][1],u),lerp(a[1][2],b[1][2],u)];}}return SPECTRUM[SPECTRUM.length-1][1].slice();}
+  const mixc=(c1,c2,a)=>[lerp(c1[0],c2[0],a),lerp(c1[1],c2[1],a),lerp(c1[2],c2[2],a)];
+  const rgbStr=c=>'rgb('+Math.round(c[0])+','+Math.round(c[1])+','+Math.round(c[2])+')';
+
+  /* ---------- MATRIX model ---------- */
+  let nodes=[],hEdges=[],mEdges=[];
+  function build(){
+    if(!W||!H)return;
+    const rng=mulberry32(7);
+    const N=Math.max(8,Math.round(params.density));
+    const cx=W*0.70, cy=H*0.50, R=Math.min(W,H)*0.42;
+    nodes=[];hEdges=[];mEdges=[];
+
+    // ---- reporting tiers (a deeper org chart up front) ----
+    const levels=N>=28?5:4;
+    const counts=levels===5?[1,3,5,8,Math.max(2,N-17)]:[1,3,6,Math.max(2,N-10)];
+    const levelIdx=[];
+    for(let l=0;l<levels;l++){levelIdx.push([]);for(let i=0;i<counts[l];i++){levelIdx[l].push(nodes.length);nodes.push({level:l,parent:-1});}}
+
+    // tree layout — a widening pyramid
+    const yTop=cy-R*0.95, yBot=cy+R*0.92;
+    const spanOf=l=>l===0?0:R*(0.55+1.15*((l-1)/Math.max(1,levels-2)));
+    for(let l=0;l<levels;l++){
+      const ids=levelIdx[l],c=ids.length,span=spanOf(l),y=yTop+(l/(levels-1))*(yBot-yTop);
+      ids.forEach((id,i)=>{const n=nodes[id];n.tx=c===1?cx:cx+(i-(c-1)/2)*(span/(c-1));n.ty=y+(rng()-0.5)*R*0.03;});
+    }
+    // parent = nearest node one level up (keeps reporting lines tidy)
+    for(let l=1;l<levels;l++){for(const id of levelIdx[l]){const n=nodes[id];let best=levelIdx[l-1][0],bd=1e9;
+      for(const pid of levelIdx[l-1]){const d=Math.abs(nodes[pid].tx-n.tx);if(d<bd){bd=d;best=pid;}}n.parent=best;}}
+
+    // organic (matrix) layout
+    nodes[0].ox=cx;nodes[0].oy=cy;
+    const radOf=l=>R*(0.30+0.62*((l-1)/Math.max(1,levels-2)));
+    let gi=0;
+    for(const n of nodes){if(n.level===0)continue;const a=gi*2.39996323+0.7;const rad=radOf(n.level)*(0.85+rng()*0.3);
+      n.ox=cx+Math.cos(a)*rad*1.16;n.oy=cy+Math.sin(a)*rad*0.92;gi++;}
+
+    // intensity blend → net positions
+    const I=params.intensity;
+    for(const n of nodes){n.nx=lerp(n.tx,n.ox,I);n.ny=lerp(n.ty,n.oy,I);}
+
+    // team colours — every node inherits its level-1 hub's hue, lightened by depth
+    const teamHue={};
+    levelIdx[1].forEach((id,k)=>{teamHue[id]=sampleSpectrum((k+0.5)/Math.max(1,levelIdx[1].length));});
+    const teamOf=i=>{let j=i;while(nodes[j].level>1)j=nodes[j].parent;return nodes[j].level===1?j:-1;};
+    for(let i=0;i<nodes.length;i++){const n=nodes[i];
+      n.r=n.level===0?6.8:Math.max(3.0,5.8-n.level*0.7)+(n.level>=levels-1?rng()*0.9:0);
+      const tm=teamOf(i);
+      if(tm<0){n.color=rgbStr(MINTRGB);}                       // anchor (drawn separately)
+      else{
+        const hue=mixc(MINTRGB,teamHue[tm],0.82);             // team hue, still inside the brand
+        const light=clamp((n.level-1)/Math.max(1,levels-2),0,1); // deeper in the team = lighter shade
+        n.color=rgbStr(mixc(hue,[244,249,242],light*0.20));
+      }
+      n.ax=6+rng()*10;n.ay=6+rng()*10;n.sx=0.10+rng()*0.18;n.sy=0.10+rng()*0.18;
+      n.px=rng()*6.283;n.py=rng()*6.283;
+    }
+
+    // hierarchy edges (solid reporting lines)
+    for(let i=1;i<nodes.length;i++)hEdges.push([nodes[i].parent,i]);
+
+    // matrix edges (dotted, proximity on organic positions)
+    const nb=MIX[params.mix].nb, thr=R*0.66, seen=new Set();
+    const add=(a,b)=>{if(a===b)return;const k=a<b?a+'-'+b:b+'-'+a;if(seen.has(k))return;seen.add(k);mEdges.push({a,b});};
+    for(let i=0;i<nodes.length;i++){
+      const d=[];
+      for(let j=0;j<nodes.length;j++){if(j===i)continue;const dx=nodes[i].ox-nodes[j].ox,dy=nodes[i].oy-nodes[j].oy;d.push([Math.hypot(dx,dy),j]);}
+      d.sort((p,q)=>p[0]-q[0]);
+      for(let k=0;k<nb&&k<d.length;k++){if(d[k][0]<thr)add(i,d[k][1]);}
+    }
+    const hubs=levelIdx[1];for(let i=0;i<hubs.length;i++)add(hubs[i],hubs[(i+1)%hubs.length]);   // lateral exec ties
+  }
+
+  function line(a,b){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
+  // tiny head-and-shoulders silhouette, sized by s, in colour col
+  function person(x,y,s,col){
+    const w=s*0.60, top=y-s*0.02, bot=y+s*0.58, hr=s*0.36, hy=y-s*0.54;
+    ctx.fillStyle=col;
+    ctx.beginPath();
+    ctx.moveTo(x-w,bot);
+    ctx.lineTo(x-w,top+s*0.22);
+    ctx.quadraticCurveTo(x-w,top, x-w*0.46,top);
+    ctx.quadraticCurveTo(x,top-s*0.07, x+w*0.46,top);
+    ctx.quadraticCurveTo(x+w,top, x+w,top+s*0.22);
+    ctx.lineTo(x+w,bot);
+    ctx.closePath();ctx.fill();
+    ctx.beginPath();ctx.arc(x,hy,hr,0,6.2832);ctx.fill();
+  }
+
+  function drawMatrix(ts){
+    if(startTime==null)startTime=ts;
+    const el=ts-startTime, hold=700, dur=3000;
+    const t=clamp((el-hold)/dur,0,1), te=reduce?1:easeInOut(t), time=ts/1000;
+    ctx.clearRect(0,0,W,H);
+    for(const n of nodes){
+      const dx=reduce?0:Math.sin(time*n.sx+n.px)*n.ax*te;
+      const dy=reduce?0:Math.cos(time*n.sy+n.py)*n.ay*te;
+      n.x=lerp(n.tx,n.nx,te)+dx;n.y=lerp(n.ty,n.ny,te)+dy;
+    }
+    const cfg=MIX[params.mix];
+    // solid reporting lines
+    const sOp=0.5*(1-te*(1-cfg.keep));
+    if(sOp>0.012){ctx.setLineDash([]);ctx.lineWidth=1;ctx.strokeStyle='rgba(231,227,212,'+sOp.toFixed(3)+')';
+      for(const e of hEdges)line(nodes[e[0]],nodes[e[1]]);}
+    // dotted influence lines
+    const dOp=0.6*smooth(0.32,1,te)*cfg.dot;
+    if(dOp>0.012){ctx.setLineDash([2,6]);ctx.lineWidth=1.3;ctx.strokeStyle='rgba(132,199,166,'+Math.min(0.85,dOp).toFixed(3)+')';
+      for(const e of mEdges)line(nodes[e.a],nodes[e.b]);ctx.setLineDash([]);}
+    // nodes — circles, shaded by team
+    for(let i=1;i<nodes.length;i++){const n=nodes[i];
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,6.2832);ctx.fillStyle=n.color;ctx.globalAlpha=n.level>=2?0.92:1;ctx.fill();
+      ctx.globalAlpha=1;}
+    // anchor — the one head-and-shoulders figure (the leader)
+    const a=nodes[0],pr=Math.sin(time*1.2)*1.4;
+    ctx.strokeStyle='rgba(132,199,166,'+(0.34+0.12*te).toFixed(3)+')';ctx.lineWidth=1.4;
+    ctx.beginPath();ctx.arc(a.x,a.y,a.r+13+pr,0,6.2832);ctx.stroke();
+    person(a.x,a.y,clamp(a.r*2.1,12,17),'#d6efe1');
+    if(!reduce&&params.mode==='matrix')raf=requestAnimationFrame(drawMatrix);
+  }
+
+  /* ---------- CURRENT (constellation) model ---------- */
+  let rings=[],cnodes=[],clines=[];
+  function buildConstellation(){
+    if(!W||!H)return;
+    const rng=mulberry32(21);
+    const cx=W*0.76, cy=H*0.42, base=Math.min(W,H);
+    rings=[0.08,0.155,0.235,0.325,0.43,0.55].map(f=>f*base);
+    const cols=['#84c7a6','#9bc44d','#7ec8e3','#e8b8d0'];
+    cnodes=[];
+    for(let i=0;i<30;i++){const ang=rng()*6.283,rad=base*0.09+rng()*base*0.5;
+      const x=cx+Math.cos(ang)*rad*1.15,y=cy+Math.sin(ang)*rad*0.9;
+      cnodes.push({bx:x,by:y,r:2+rng()*3.4,c:cols[rng()<0.78?0:1+Math.floor(rng()*3)],
+        ax:7+rng()*11,ay:7+rng()*11,sx:0.1+rng()*0.16,sy:0.1+rng()*0.16,px:rng()*6.283,py:rng()*6.283,ts:0.5+rng()*0.8,tp:rng()*6.283});}
+    clines=[];
+    for(let i=0;i<cnodes.length;i++)for(let j=i+1;j<cnodes.length;j++){
+      const d=Math.hypot(cnodes[i].bx-cnodes[j].bx,cnodes[i].by-cnodes[j].by);
+      if(d<base*0.17)clines.push([i,j]);}
+    cnodes.cx=cx;cnodes.cy=cy;
+  }
+  function drawConstellation(ts){
+    if(cStart==null)cStart=ts;const s=(ts-cStart)/1000;const cx=cnodes.cx,cy=cnodes.cy;
+    ctx.clearRect(0,0,W,H);
+    // rings
+    rings.forEach((r,i)=>{ctx.beginPath();ctx.arc(cx,cy,r,0,6.2832);
+      ctx.strokeStyle='rgba(132,199,166,'+Math.max(0.08,0.5-i*0.07).toFixed(2)+')';ctx.lineWidth=i===2?1.6:1;ctx.stroke();});
+    ctx.fillStyle='#84c7a6';ctx.beginPath();ctx.arc(cx,cy,6,0,6.2832);ctx.fill();
+    for(const n of cnodes){n.x=n.bx+(reduce?0:Math.sin(s*n.sx+n.px)*n.ax);n.y=n.by+(reduce?0:Math.cos(s*n.sy+n.py)*n.ay);}
+    ctx.lineWidth=1;ctx.strokeStyle='rgba(190,205,205,.15)';
+    for(const l of clines){const a=cnodes[l[0]],b=cnodes[l[1]];ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
+    for(const n of cnodes){const dist=Math.hypot(n.x-cx,n.y-cy);let near=1e9;
+      for(const r of rings){const dd=Math.abs(dist-r);if(dd<near)near=dd;}
+      const flare=Math.max(0,1-near/14),tw=0.5+0.45*(0.5+0.5*Math.sin(s*n.ts+n.tp));
+      ctx.globalAlpha=Math.min(1,tw+flare*1.1);
+      if(flare>0.03){ctx.shadowColor=n.c;ctx.shadowBlur=2+flare*11;ctx.fillStyle=flare>0.55?'#eafff4':n.c;
+        ctx.beginPath();ctx.arc(n.x,n.y,n.r*(1+flare*1.2),0,6.2832);ctx.fill();}
+      else{ctx.shadowBlur=0;ctx.fillStyle=n.c;ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,6.2832);ctx.fill();}
+      ctx.globalAlpha=1;ctx.shadowBlur=0;}
+    if(!reduce&&params.mode==='current')raf=requestAnimationFrame(drawConstellation);
+  }
+
+  /* ---------- engine ---------- */
+  function stop(){if(raf)cancelAnimationFrame(raf);raf=null;}
+  function start(){
+    stop();
+    if(params.mode==='matrix'){build();startTime=null;
+      if(reduce){drawMatrix(performance.now());}else raf=requestAnimationFrame(drawMatrix);}
+    else{buildConstellation();cStart=null;
+      if(reduce){drawConstellation(performance.now());}else raf=requestAnimationFrame(drawConstellation);}
+  }
+  function resize(){
+    const rect=document.querySelector('.hero__art').getBoundingClientRect();
+    DPR=Math.min(2,window.devicePixelRatio||1);W=rect.width;H=rect.height;
+    cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    if(params.mode==='matrix')build();else buildConstellation();
+  }
+  let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{resize();},150);});
+
+  /* ---------- controls ---------- */
+  const den=document.getElementById('den'),oDen=document.getElementById('oDen');
+  const int=document.getElementById('int'),oInt=document.getElementById('oInt');
+  const mtx=document.getElementById('mtxControls');
+  function syncUI(){
+    den.value=params.density;oDen.textContent=params.density;
+    int.value=params.intensity;oInt.textContent=Math.round(params.intensity*100)+'%';
+    document.querySelectorAll('#modeSeg button').forEach(b=>b.classList.toggle('on',b.dataset.mode===params.mode));
+    document.querySelectorAll('#mixSeg button').forEach(b=>b.classList.toggle('on',b.dataset.mix===params.mix));
+    mtx.classList.toggle('dim',params.mode!=='matrix');
+  }
+  den.addEventListener('input',()=>{params.density=+den.value;oDen.textContent=den.value;save();if(params.mode==='matrix'){build();}});
+  int.addEventListener('input',()=>{params.intensity=+int.value;oInt.textContent=Math.round(int.value*100)+'%';save();if(params.mode==='matrix'){build();}});
+  document.querySelectorAll('#modeSeg button').forEach(b=>b.addEventListener('click',()=>{params.mode=b.dataset.mode;save();syncUI();start();}));
+  document.querySelectorAll('#mixSeg button').forEach(b=>b.addEventListener('click',()=>{params.mix=b.dataset.mix;save();syncUI();if(params.mode==='matrix')build();}));
+  document.getElementById('replay').addEventListener('click',()=>{if(params.mode==='matrix'){startTime=null;}else{cStart=null;buildConstellation();}if(reduce){start();}});
+  const dock=document.getElementById('dock'),tog=document.getElementById('toggleDock');
+  tog.addEventListener('click',()=>{const m=dock.classList.toggle('min');tog.textContent=m?'Tune':'Hide';});
+
+  /* ---------- go ---------- */
+  syncUI();resize();start();
+})();
+</script>
+
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#06181c"/><g stroke="#84c7a6" fill="none"><circle cx="50" cy="34" r="3" fill="#84c7a6"/><circle cx="34" cy="58" r="2.5" fill="#84c7a6"/><circle cx="66" cy="58" r="2.5" fill="#84c7a6"/><path d="M50 34 L34 58 M50 34 L66 58" stroke-width="1.2"/><path d="M34 58 L66 58" stroke-width="1" stroke-dasharray="2 3"/></g></svg>
+</template>
+
+</body>
+</html>

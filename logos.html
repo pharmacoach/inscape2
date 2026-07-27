@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inscape — Logo Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Schibsted+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#081e22; --petrol:#0e2c33; --petrol-2:#123a42;
+    --ivory:#f1ede2; --ivory-2:#e7e2d4; --muted:#9fb1b1; --muted-2:#748a8b;
+    --mint:#84c7a6; --line:rgba(233,227,212,.14);
+    --serif:"Spectral",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif; --mono:"Schibsted Grotesk",system-ui,sans-serif;
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font-family:var(--sans); background:#10151a; }
+  .lc-eyebrow{ font-family:var(--mono); font-weight:600; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--mint); }
+  .lc-tag{ font-family:var(--mono); font-weight:600; font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
+  .lc-cap{ font-family:var(--sans); font-size:13.5px; line-height:1.55; color:var(--muted); }
+  .lc-cap b{ color:var(--ivory-2); font-weight:600; }
+  .divider{ height:1px; background:var(--line); width:100%; }
+  /* wordmarks */
+  .wm-sans{ font-family:var(--sans); font-weight:600; text-transform:uppercase; line-height:1; color:var(--ivory); }
+  .wm-serif{ font-family:var(--serif); font-weight:500; line-height:1; color:var(--ivory); letter-spacing:.005em; }
+  .chip{ display:flex; align-items:center; justify-content:center; border-radius:8px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+
+<script type="text/babel">
+const { DesignCanvas, DCSection, DCArtboard } = window;
+
+/* ---------- Logo marks (simple geometry only) ---------- */
+// 1 — Aperture: concentric lens + focal dot (insight / focus)
+function MarkAperture({ s=56, c="var(--mint)" }){
+  return (
+    <svg width={s} height={s} viewBox="0 0 48 48" fill="none">
+      <circle cx="24" cy="24" r="22" stroke={c} strokeWidth="2"/>
+      <circle cx="24" cy="24" r="13" stroke={c} strokeWidth="2" opacity="0.5"/>
+      <circle cx="24" cy="24" r="4.5" fill={c}/>
+    </svg>
+  );
+}
+// 2 — Horizon: a rising form within a ring (the inner landscape)
+function MarkHorizon({ s=56, c="var(--mint)" }){
+  return (
+    <svg width={s} height={s} viewBox="0 0 48 48" fill="none">
+      <circle cx="24" cy="24" r="22" stroke={c} strokeWidth="2"/>
+      <path d="M9 29 H39" stroke={c} strokeWidth="2"/>
+      <path d="M15.5 29 a8.5 8.5 0 0 1 17 0" stroke={c} strokeWidth="2"/>
+      <circle cx="24" cy="20.5" r="2.4" fill={c}/>
+    </svg>
+  );
+}
+// 3 — Frame: corner brackets + focal dot (heritage nod to the bracket logo)
+function MarkFrame({ s=56, c="var(--mint)" }){
+  return (
+    <svg width={s} height={s} viewBox="0 0 48 48" fill="none">
+      <path d="M7 17 V7 H17" stroke={c} strokeWidth="2" strokeLinecap="square"/>
+      <path d="M31 7 H41 V17" stroke={c} strokeWidth="2" strokeLinecap="square"/>
+      <path d="M41 31 V41 H31" stroke={c} strokeWidth="2" strokeLinecap="square"/>
+      <path d="M17 41 H7 V31" stroke={c} strokeWidth="2" strokeLinecap="square"/>
+      <circle cx="24" cy="24" r="4.5" fill={c}/>
+    </svg>
+  );
+}
+
+/* ---------- Artboard scaffold ---------- */
+function Concept({ idx, name, blurb, Mark, lockup, stacked, reversed, AB }){
+  return (
+    <div style={{ background:"var(--petrol)", width:"100%", height:"100%", padding:"44px 46px",
+                  display:"flex", flexDirection:"column", gap:26 }}>
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"baseline" }}>
+        <span className="lc-eyebrow">Concept {idx}</span>
+        <span className="lc-tag">Inscape</span>
+      </div>
+
+      {/* primary lockup */}
+      <div style={{ flex:"0 0 auto", display:"flex", flexDirection:"column", gap:18,
+                    padding:"46px 0 40px", minHeight:200, justifyContent:"center" }}>
+        {lockup}
+      </div>
+
+      <div className="divider"></div>
+
+      {/* variations */}
+      <div style={{ display:"flex", gap:14, alignItems:"stretch" }}>
+        <div className="chip" style={{ flex:1, height:120, background:"var(--ink)", flexDirection:"column", gap:12 }}>
+          <Mark s={44}/>
+          <span className="lc-tag" style={{ letterSpacing:".2em", fontSize:9 }}>On ink</span>
+        </div>
+        <div className="chip" style={{ flex:1, height:120, background:"var(--ivory)", flexDirection:"column", gap:12 }}>
+          <Mark s={44} c="#0e2c33"/>
+          <span className="lc-tag" style={{ color:"#5b6f6f", letterSpacing:".2em", fontSize:9 }}>Reversed</span>
+        </div>
+        <div className="chip" style={{ flex:1.5, height:120, background:"var(--petrol-2)", padding:"0 18px" }}>
+          {stacked}
+        </div>
+      </div>
+
+      <div className="divider"></div>
+      <p className="lc-cap"><b>{name}.</b> {blurb}</p>
+    </div>
+  );
+}
+
+/* ---------- wordmark helpers ---------- */
+const Tagline = ({mt=14, c="var(--muted)"}) => (
+  <div className="lc-tag" style={{ marginTop:mt, color:c }}>Intelligence to Action</div>
+);
+
+function App(){
+  return (
+    <DesignCanvas>
+      <DCSection id="logos" title="Inscape — Identity" subtitle="Three directions · mark + wordmark · Intelligence to Action">
+
+        {/* ---------------- Concept 1 — Aperture ---------------- */}
+        <DCArtboard id="c1" label="01 · Aperture" width={600} height={680}>
+          <Concept
+            idx="01" Mark={MarkAperture}
+            name="Aperture"
+            blurb="A lens drawn to a single focal point — insight, clarity, attention. The most literal expression of intelligence. Confident and clinical; scales to a favicon."
+            lockup={
+              <div style={{ display:"flex", alignItems:"center", gap:22 }}>
+                <MarkAperture s={66}/>
+                <div>
+                  <div className="wm-sans" style={{ fontSize:42, letterSpacing:".26em", paddingLeft:".04em" }}>Inscape</div>
+                  <Tagline/>
+                </div>
+              </div>
+            }
+            stacked={
+              <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:12, width:"100%" }}>
+                <MarkAperture s={36}/>
+                <div className="wm-sans" style={{ fontSize:18, letterSpacing:".30em", paddingLeft:".05em" }}>Inscape</div>
+              </div>
+            }
+          />
+        </DCArtboard>
+
+        {/* ---------------- Concept 2 — Horizon ---------------- */}
+        <DCArtboard id="c2" label="02 · Horizon" width={600} height={680}>
+          <Concept
+            idx="02" Mark={MarkHorizon}
+            name="Horizon"
+            blurb="The inner landscape — a rising form held within a ring. Warmer and more editorial, paired with a Spectral wordmark. Speaks to depth, wellbeing and the long view."
+            lockup={
+              <div style={{ display:"flex", alignItems:"center", gap:22 }}>
+                <MarkHorizon s={66}/>
+                <div>
+                  <div className="wm-serif" style={{ fontSize:50 }}>Inscape</div>
+                  <Tagline mt={12}/>
+                </div>
+              </div>
+            }
+            stacked={
+              <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:10, width:"100%" }}>
+                <MarkHorizon s={36}/>
+                <div className="wm-serif" style={{ fontSize:24 }}>Inscape</div>
+              </div>
+            }
+          />
+        </DCArtboard>
+
+        {/* ---------------- Concept 3 — Frame ---------------- */}
+        <DCArtboard id="c3" label="03 · Frame" width={600} height={680}>
+          <Concept
+            idx="03" Mark={MarkFrame}
+            name="Frame"
+            blurb="Corner brackets close around a focal point — a nod to the original bracketed identity, modernised. A 'framed view': stakeholder intelligence, precisely scoped. Strong heritage continuity."
+            lockup={
+              <div style={{ display:"flex", alignItems:"center", gap:22 }}>
+                <MarkFrame s={66}/>
+                <div>
+                  <div className="wm-sans" style={{ fontSize:42, letterSpacing:".24em", paddingLeft:".04em" }}>Inscape</div>
+                  <Tagline/>
+                </div>
+              </div>
+            }
+            stacked={
+              <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:12, width:"100%" }}>
+                <MarkFrame s={36}/>
+                <div className="wm-sans" style={{ fontSize:18, letterSpacing:".28em", paddingLeft:".05em" }}>Inscape</div>
+              </div>
+            }
+          />
+        </DCArtboard>
+
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

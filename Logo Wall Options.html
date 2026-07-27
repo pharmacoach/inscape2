@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inscape — Logo Wall Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600&family=Schibsted+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#081e22; --petrol:#0e2c33; --petrol-2:#123a42;
+    --ivory:#f1ede2; --ivory-2:#e7e2d4; --muted:#9fb1b1; --muted-2:#748a8b;
+    --mint:#84c7a6; --line:rgba(233,227,212,.14);
+    --serif:"Spectral",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif; --mono:"Schibsted Grotesk",system-ui,sans-serif;
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font-family:var(--sans); background:#10151a; }
+
+  /* ---- shared section scaffold inside each artboard ---- */
+  .wallframe{ background:var(--petrol); width:100%; height:100%; padding:44px 52px; display:flex; flex-direction:column; }
+  .wh-eyebrow{ font-family:var(--mono); font-weight:600; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--mint); }
+  .wh-tag{ font-family:var(--mono); font-weight:600; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted-2); }
+  .wh-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px; }
+  .wh-note{ font-family:var(--sans); font-size:13px; line-height:1.55; color:var(--muted); max-width:52ch; margin:10px 0 0; }
+  .wh-note b{ color:var(--ivory-2); font-weight:600; }
+  .wall{ display:grid; grid-template-columns:repeat(4,1fr); margin-top:30px; }
+
+  /* ============ A · MONOCHROME, NO CARDS ============ */
+  .wall--mono{ gap:30px 34px; }
+  .wall--mono .cell{ display:flex; align-items:center; justify-content:center; height:52px; }
+  .wall--mono img{ max-width:100%; max-height:100%; width:auto; object-fit:contain; opacity:.74; transition:opacity .3s; }
+  .wall--mono .cell:hover img{ opacity:1; }
+
+  /* ============ B · HAIRLINE FRAME ============ */
+  .wall--frame{ gap:14px; }
+  .wall--frame .cell{ display:flex; align-items:center; justify-content:center; height:66px; padding:10px 16px;
+    border:1px solid var(--line); border-radius:4px; transition:border-color .3s, background .3s; }
+  .wall--frame .cell:hover{ border-color:rgba(132,199,166,.5); background:rgba(132,199,166,.05); }
+  .wall--frame img{ max-width:100%; max-height:100%; width:auto; object-fit:contain; opacity:.78; transition:opacity .3s; }
+  .wall--frame .cell:hover img{ opacity:1; }
+
+  /* ============ C · DARK IN-PALETTE PLATES ============ */
+  .wall--dark{ gap:14px; }
+  .wall--dark .cell{ display:flex; align-items:center; justify-content:center; height:66px; padding:11px 18px;
+    background:var(--petrol-2); border:1px solid var(--line); border-radius:8px;
+    transition:background .3s, transform .3s; }
+  .wall--dark .cell:hover{ background:#16454f; transform:translateY(-2px); }
+  .wall--dark img{ max-width:100%; max-height:100%; width:auto; object-fit:contain; opacity:.82; transition:opacity .3s; }
+  .wall--dark .cell:hover img{ opacity:1; }
+
+  /* ============ D · SOFT IVORY PLATE (full colour) ============ */
+  .wall--ivory{ gap:14px; }
+  .wall--ivory .cell{ display:flex; align-items:center; justify-content:center; height:66px; padding:11px 18px;
+    background:var(--ivory); border-radius:8px; opacity:.92; box-shadow:0 1px 0 rgba(255,255,255,.4) inset;
+    transition:transform .3s, opacity .3s; }
+  .wall--ivory .cell:hover{ opacity:1; transform:translateY(-2px); }
+  .wall--ivory img{ max-width:100%; max-height:100%; width:auto; object-fit:contain; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+
+<script type="text/babel">
+const { DesignCanvas, DCSection, DCArtboard } = window;
+
+const LOGOS = ['chiesi','argenx','beigene','alexion','novartis','astrazeneca','nhs-england','ucb','creation','menarini','stemline'];
+const NAMES = {chiesi:'Chiesi',argenx:'argenx',beigene:'BeiGene',alexion:'Alexion',novartis:'Novartis',astrazeneca:'AstraZeneca','nhs-england':'NHS England',ucb:'UCB',creation:'Creation',menarini:'Menarini',stemline:'Stemline'};
+
+function Wall({variant, dir}){
+  return (
+    <div className={"wall wall--"+variant}>
+      {LOGOS.map(k=>(
+        <span className="cell" key={k}>
+          <img src={dir+k+".png"} alt={NAMES[k]}/>
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function Board({idx, title, note, variant, dir}){
+  return (
+    <div className="wallframe">
+      <div className="wh-head">
+        <span className="wh-eyebrow">Option {idx} · {title}</span>
+        <span className="wh-tag">Trusted by leaders at</span>
+      </div>
+      <p className="wh-note">{note}</p>
+      <Wall variant={variant} dir={dir}/>
+    </div>
+  );
+}
+
+function App(){
+  return (
+    <DesignCanvas>
+      <DCSection id="opts" title="Logo Wall — on the dark band" subtitle="Same 11 partners, four treatments · pick a direction">
+
+        <DCArtboard id="a" label="A · Monochrome, no cards" width={760} height={470}>
+          <Board idx="A" title="Monochrome, no cards" variant="mono" dir="assets/logos/mono/"
+            note={<>The premium-standard logo wall. Each mark recoloured to a single <b>ivory tint</b> and set straight on the band — no plates at all. Reads as one calm family, lets the typography lead, brightens on hover. <b>My recommendation.</b></>}/>
+        </DCArtboard>
+
+        <DCArtboard id="b" label="B · Hairline frames" width={760} height={470}>
+          <Board idx="B" title="Hairline frames" variant="frame" dir="assets/logos/mono/"
+            note={<>Same monochrome marks, but each sits in a <b>thin ruled box</b> — echoing Inscape's bracket / framed-view language. More structured and grid-like; the frame warms to mint on hover.</>}/>
+        </DCArtboard>
+
+        <DCArtboard id="c" label="C · Dark in-palette plates" width={760} height={470}>
+          <Board idx="C" title="Dark plates" variant="dark" dir="assets/logos/mono/"
+            note={<>Keeps the <b>card layout you have today</b> — but the plate becomes <b>deep petrol</b> instead of white, with the marks in ivory. You retain the tidy grid and hover lift, just in-palette. A natural middle ground between A and the current design.</>}/>
+        </DCArtboard>
+
+        <DCArtboard id="d" label="D · Soft ivory plates (full colour)" width={760} height={470}>
+          <Board idx="D" title="Soft ivory plates" variant="ivory" dir="assets/logos/"
+            note={<>The smallest change: keep colour logos on plates, but make the plate <b>warm ivory</b> (the brand off-white) rather than pure #fff. Quieter than today — though because each logo PNG carries its own white background, a <b>faint white box</b> still shows behind the mark. Only the monochrome options fully escape that.</>}/>
+        </DCArtboard>
+
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

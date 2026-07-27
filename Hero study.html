@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inscape · Hero study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#081e22; --ink-2:#0a2329; --surface:#0e2c33; --surface-2:#123a42;
+  --line:rgba(233,227,212,.13); --line-soft:rgba(233,227,212,.07);
+  --ivory:#f1ede2; --ivory-2:#e7e2d4; --muted:#9fb1b1; --muted-2:#748a8b;
+  --mint:#84c7a6; --mint-deep:#5fae8b; --rose:#e3aac6;
+  --spectrum:linear-gradient(90deg,#9bc44d 0%,#7fc4a0 22%,#7ec8e3 44%,#9db8e0 60%,#e8b8d0 80%,#d6539c 100%);
+  --display:"Schibsted Grotesk",system-ui,sans-serif;
+  --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --serif:"Spectral",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --pad:clamp(22px,5vw,70px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+body{background:var(--ink);color:var(--ivory);font-family:var(--sans);font-size:18px;line-height:1.6;overflow-x:hidden;}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+
+/* =========================================================
+   HERO  — bespoke study
+   ========================================================= */
+.hero{
+  position:relative; min-height:100svh; display:flex; align-items:center;
+  padding:120px var(--pad) 70px; overflow:hidden;
+}
+/* atmosphere */
+.hero__bg{position:absolute;inset:0;z-index:0;}
+.hero__bg .glow{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(60% 52% at 82% 30%, rgba(132,199,166,.22), transparent 60%),
+    radial-gradient(95% 90% at 6% 96%, rgba(18,58,66,.55), transparent 62%),
+    linear-gradient(180deg,#05161a 0%,#071d21 52%,var(--ink) 100%);
+}
+.hero__bg .grain{
+  position:absolute;inset:0;opacity:.05;mix-blend-mode:overlay;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* aperture echo of the logo, far right, structural not decorative */
+.aperture{position:absolute;top:50%;right:-8%;transform:translateY(-50%);width:min(58vw,760px);aspect-ratio:1;z-index:1;opacity:.9;}
+.aperture svg{width:100%;height:100%;animation:apSpin 80s linear infinite;transform-origin:center;}
+@keyframes apSpin{to{transform:rotate(360deg);}}
+.hero__scrim{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(96deg, rgba(5,20,23,.92) 0%, rgba(5,20,23,.6) 44%, rgba(5,20,23,.05) 74%, transparent 100%);
+}
+
+.hero__inner{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;}
+
+/* eyebrow — mono kicker with a spectrum tick */
+.kicker{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--mint);
+  margin-bottom:clamp(28px,3vw,44px);
+}
+.kicker::before{content:"";width:34px;height:2px;border-radius:2px;background:var(--spectrum);}
+
+/* THE HEADLINE — weighted, syncopated, structural */
+.display{display:flex;flex-direction:column;}
+.display .big{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(46px,7.1vw,98px);line-height:.95;letter-spacing:-.032em;
+  color:var(--ivory);
+}
+.display .mid{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(21px,2.5vw,34px);line-height:1;letter-spacing:-.004em;
+  color:var(--muted);
+  padding-left:.22em;margin:.30em 0 .26em;
+}
+.display .big em{
+  font-family:var(--serif);font-weight:300;font-style:italic;
+  color:var(--mint);letter-spacing:0;
+}
+
+/* subline — hierarchy by colour + weight, words unchanged */
+.sub{max-width:44ch;margin-top:clamp(30px,3.4vw,46px);font-size:clamp(17px,1.35vw,20px);line-height:1.62;color:var(--muted);}
+.sub b{color:var(--ivory-2);font-weight:500;}
+
+/* CTAs */
+.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(34px,3.6vw,48px);}
+.btn{
+  display:inline-flex;align-items:center;gap:.6em;
+  font-family:var(--sans);font-weight:600;font-size:15px;letter-spacing:.01em;
+  padding:16px 28px;border-radius:2px;border:1px solid transparent;cursor:pointer;
+  transition:transform .3s var(--ease), background .3s, border-color .3s, color .3s;
+}
+.btn .arr{transition:transform .3s var(--ease);}
+.btn:hover .arr{transform:translateX(4px);}
+.btn-primary{background:var(--mint);color:#06231f;}
+.btn-primary:hover{background:#96d3b4;}
+.btn-ghost{border-color:var(--line);color:var(--ivory);}
+.btn-ghost:hover{border-color:var(--mint);color:#fff;}
+
+/* entrance: headline first, rest 75ms behind */
+.display .big,.display .mid{overflow:hidden;}
+.r{opacity:0;transform:translateY(20px);animation:rise .9s var(--ease) both;}
+.r.title{transform:translateY(26px);}
+.r.d0{animation-delay:0s;}
+.r.d1{animation-delay:.075s;}
+.r.d2{animation-delay:.15s;}
+.r.d3{animation-delay:.225s;}
+.r.d4{animation-delay:.30s;}
+@keyframes rise{to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion:reduce){.r{animation:none;opacity:1;transform:none;}.aperture svg{animation:none;}}
+
+@media (max-width:760px){
+  .hero__scrim{background:linear-gradient(180deg, rgba(5,20,23,.4), rgba(5,20,23,.85));}
+  .aperture{right:-30%;opacity:.55;}
+}
+
+/* =========================================================
+   TYPE-SCALE SPEC  — reusable across the site
+   ========================================================= */
+.spec{background:var(--ink-2);border-top:1px solid var(--line);padding:clamp(64px,8vw,110px) var(--pad);}
+.spec__wrap{max-width:1240px;margin:0 auto;}
+.spec__eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--mint);}
+.spec h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.4vw,44px);letter-spacing:-.025em;line-height:1.04;margin:18px 0 6px;color:var(--ivory);}
+.spec__note{color:var(--muted);max-width:60ch;margin-bottom:46px;font-size:16px;}
+.scale{display:flex;flex-direction:column;border-top:1px solid var(--line);}
+.row{display:grid;grid-template-columns:minmax(220px,1.6fr) 1fr;gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line);}
+.row__sample{color:var(--ivory);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.row__meta{display:flex;flex-wrap:wrap;gap:8px 10px;}
+.tok{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory-2);border:1px solid var(--line);border-radius:100px;padding:5px 12px;white-space:nowrap;}
+.tok.k{color:var(--mint);border-color:rgba(132,199,166,.4);}
+@media (max-width:680px){.row{grid-template-columns:1fr;}.row__sample{white-space:normal;}}
+</style>
+</head>
+<body>
+
+<!-- ====================== HERO ====================== -->
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="glow"></div>
+    <div class="grain"></div>
+  </div>
+  <div class="aperture" aria-hidden="true">
+    <svg viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="70"  stroke="#84c7a6" stroke-opacity=".34"/>
+      <circle cx="300" cy="300" r="140" stroke="#84c7a6" stroke-opacity=".24"/>
+      <circle cx="300" cy="300" r="212" stroke="#84c7a6" stroke-opacity=".16"/>
+      <circle cx="300" cy="300" r="288" stroke="#84c7a6" stroke-opacity=".10"/>
+      <circle cx="300" cy="300" r="9" fill="#84c7a6"/>
+      <circle cx="370" cy="300" r="3.4" fill="#9bc44d"/>
+      <circle cx="232" cy="318" r="3" fill="#7ec8e3"/>
+      <circle cx="300" cy="160" r="3.6" fill="#e8b8d0"/>
+      <circle cx="438" cy="372" r="2.6" fill="#7fc4a0"/>
+      <circle cx="176" cy="226" r="2.4" fill="#9db8e0"/>
+      <circle cx="412" cy="206" r="2.8" fill="#84c7a6"/>
+      <circle cx="208" cy="430" r="2.6" fill="#e3aac6"/>
+      <circle cx="500" cy="316" r="2.4" fill="#9bc44d"/>
+      <circle cx="300" cy="512" r="3" fill="#7ec8e3"/>
+    </svg>
+  </div>
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <div class="hero__inner">
+    <span class="kicker r d1">Inscape · Intelligence to Action</span>
+
+    <h1 class="display">
+      <span class="big r title d0">Evidence-led leadership</span>
+      <span class="mid r d2">for pharma's most</span>
+      <span class="big r title d1"><em>complex</em> teams.</span>
+    </h1>
+
+    <p class="sub r d3">
+      <b>For the VP and SVP leaders carrying pharma's most complex teams.</b>
+      We turn what's really happening inside them into a clear plan, and the plan into performance.
+    </p>
+
+    <div class="actions r d4">
+      <a class="btn btn-primary" href="#">Book a consultation <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="#">Request in-depth case studies <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== TYPE-SCALE SPEC ====================== -->
+<section class="spec">
+  <div class="spec__wrap">
+    <span class="spec__eyebrow">The system</span>
+    <h2>Type scale</h2>
+    <p class="spec__note">Schibsted Grotesk across the full weight range, with Spectral italic as the structural accent. Deliberate ratio jumps, not incremental steps. Optical tracking tightens as size grows.</p>
+
+    <div class="scale">
+      <div class="row">
+        <div class="row__sample" style="font-family:var(--display);font-weight:800;font-size:46px;letter-spacing:-.032em;">Display</div>
+        <div class="row__meta"><span class="tok k">Schibsted 800</span><span class="tok">clamp 46–98px</span><span class="tok">tracking −.032em</span><span class="tok">leading .95</span></div>
+      </div>
+      <div class="row">
+        <div class="row__sample" style="font-family:var(--display);font-weight:400;font-size:30px;letter-spacing:-.004em;color:var(--muted);">Connective line</div>
+        <div class="row__meta"><span class="tok k">Schibsted 400</span><span class="tok">clamp 21–34px</span><span class="tok">tracking −.004em</span><span class="tok">muted</span></div>
+      </div>
+      <div class="row">
+        <div class="row__sample" style="font-family:var(--serif);font-weight:300;font-style:italic;font-size:34px;color:var(--mint);">Accent — Spectral italic</div>
+        <div class="row__meta"><span class="tok k">Spectral 300 italic</span><span class="tok">mint</span><span class="tok">structural, not decorative</span></div>
+      </div>
+      <div class="row">
+        <div class="row__sample" style="font-family:var(--display);font-weight:700;font-size:30px;letter-spacing:-.025em;">Section heading</div>
+        <div class="row__meta"><span class="tok k">Schibsted 700</span><span class="tok">clamp 28–60px</span><span class="tok">tracking −.025em</span></div>
+      </div>
+      <div class="row">
+        <div class="row__sample" style="font-family:var(--sans);font-weight:500;font-size:20px;color:var(--ivory-2);">Lead / subhead</div>
+        <div class="row__meta"><span class="tok k">Hanken 500</span><span class="tok">clamp 17–20px</span><span class="tok">leading 1.62</span></div>
+      </div>
+      <div class="row">
+        <div class="row__sample" style="font-family:var(--sans);font-weight:400;font-size:17px;color:var(--muted);">Body copy</div>
+        <div class="row__meta"><span class="tok k">Hanken 400</span><span class="tok">16–18px</span><span class="tok">leading 1.6</span></div>
+      </div>
+      <div class="row">
+        <div class="row__sample" style="font-family:var(--mono);font-weight:400;font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--mint);">Eyebrow / label</div>
+        <div class="row__meta"><span class="tok k">IBM Plex Mono</span><span class="tok">12.5px</span><span class="tok">tracking +.32em</span><span class="tok">uppercase</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

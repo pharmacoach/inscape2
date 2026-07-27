@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inscape · Brand Kit</title>
+<meta name="description" content="The Pharma Coach / Inscape brand kit — logos, typography, colour and the design library in one place.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><circle cx='24' cy='24' r='21' fill='none' stroke='%2384c7a6' stroke-width='3'/><circle cx='24' cy='24' r='12.5' fill='none' stroke='%2384c7a6' stroke-width='3' opacity='.5'/><circle cx='24' cy='24' r='5.5' fill='%2384c7a6'/></svg>">
+<style>
+:root{
+  --ink:#06181c; --ink-2:#081e22; --surface:#0e2c33; --surface-2:#123a42;
+  --ivory:#f1ede2; --ivory-2:#e7e2d4; --paper:#efe9da;
+  --muted:#9fb1b1; --muted-2:#748a8b;
+  --line:rgba(233,227,212,.13); --line-soft:rgba(233,227,212,.07);
+  --mint:#84c7a6; --mint-deep:#3f8d6a; --rose:#e3aac6;
+  --spectrum:linear-gradient(90deg,#9bc44d 0%,#7fc4a0 22%,#7ec8e3 44%,#9db8e0 60%,#e8b8d0 80%,#d6539c 100%);
+  --display:"Schibsted Grotesk",system-ui,sans-serif;
+  --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --serif:"Spectral",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --label:"Schibsted Grotesk",system-ui,sans-serif;
+  --pad:clamp(22px,5vw,72px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;}
+body{background:var(--ink);color:var(--ivory);font-family:var(--sans);font-size:17px;line-height:1.6;}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+::selection{background:var(--mint);color:#06231f;}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:var(--pad);}
+
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--label);font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--mint);}
+.eyebrow::before{content:"";width:10px;height:10px;flex:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none'%3E%3Ccircle cx='24' cy='24' r='20' stroke='%2384c7a6' stroke-width='4'/%3E%3C/svg%3E") center/contain no-repeat;}
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;letter-spacing:-.025em;line-height:1.04;}
+.it{font-family:var(--serif);font-weight:300;font-style:italic;color:var(--mint);}
+
+/* ---- masthead ---- */
+.mast{padding:clamp(64px,10vw,128px) 0 clamp(40px,6vw,72px);border-bottom:1px solid var(--line);background:radial-gradient(120% 90% at 88% 8%,rgba(132,199,166,.10),transparent 56%);}
+.mast h1{font-size:clamp(40px,7vw,86px);font-weight:800;letter-spacing:-.04em;margin-top:26px;}
+.mast p{max-width:54ch;margin-top:22px;color:var(--muted);font-size:clamp(16px,1.3vw,19px);}
+.mast__meta{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:34px;font-family:var(--label);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);}
+.mast__meta b{color:var(--ivory-2);font-weight:500;}
+
+/* ---- section scaffold ---- */
+section.blk{padding:clamp(56px,8vw,104px) 0;border-bottom:1px solid var(--line);}
+.blk__head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(30px,4vw,52px);}
+.blk__head h2{font-size:clamp(26px,3.2vw,40px);}
+.blk__head .num{font-family:var(--label);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--muted-2);}
+
+/* ---- logos ---- */
+.logo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media (max-width:760px){.logo-grid{grid-template-columns:1fr;}}
+.logo-card{border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
+.logo-stage{flex:1;display:flex;align-items:center;justify-content:center;padding:clamp(32px,5vw,60px);min-height:200px;}
+.logo-stage img{width:min(78%,420px);height:auto;}
+.stage-light{background:var(--paper);}
+.stage-dark{background:var(--ink-2);background-image:radial-gradient(90% 90% at 50% 30%,rgba(132,199,166,.08),transparent 60%);}
+.stage-petrol{background:var(--surface);}
+.logo-card figcaption{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 22px;border-top:1px solid var(--line);background:var(--ink-2);}
+.logo-card figcaption .t{font-weight:600;font-size:14.5px;}
+.logo-card figcaption .f{font-family:var(--label);font-weight:600;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);}
+.dl{font-family:var(--label);font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mint);border:1px solid var(--line);border-radius:100px;padding:7px 14px;transition:border-color .3s,color .3s;}
+.dl:hover{border-color:var(--mint);color:#fff;}
+
+/* concept marks */
+.marks{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px;}
+@media (max-width:760px){.marks{grid-template-columns:repeat(2,1fr);}}
+.mark-card{border:1px solid var(--line);border-radius:10px;padding:30px 18px 18px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;background:var(--ink-2);}
+.mark-card .label{font-family:var(--label);font-weight:600;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+.mark-card .label b{display:block;color:var(--ivory-2);font-size:12px;letter-spacing:.04em;text-transform:none;font-weight:600;margin-bottom:3px;}
+
+/* ---- typography ---- */
+.type-card{border:1px solid var(--line);border-radius:10px;padding:clamp(26px,3.5vw,42px);margin-bottom:20px;background:var(--ink-2);}
+.type-card .meta{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-bottom:20px;margin-bottom:24px;border-bottom:1px solid var(--line-soft);}
+.type-card .meta .role{font-family:var(--label);font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mint);}
+.type-card .meta .name{font-size:clamp(20px,2.2vw,28px);font-family:var(--display);}
+.type-card .meta .wts{font-family:var(--label);font-weight:600;font-size:11px;letter-spacing:.1em;color:var(--muted-2);}
+.specimen{line-height:1.05;color:var(--ivory);word-break:break-word;}
+.charset{margin-top:18px;font-size:14px;letter-spacing:.04em;color:var(--muted);word-break:break-word;}
+.usage{margin-top:14px;font-size:13.5px;color:var(--muted-2);}
+.usage b{color:var(--ivory-2);font-weight:500;}
+
+/* ---- colour ---- */
+.swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+@media (max-width:860px){.swatches{grid-template-columns:repeat(3,1fr);}}
+@media (max-width:480px){.swatches{grid-template-columns:repeat(2,1fr);}}
+.sw{border:1px solid var(--line);border-radius:9px;overflow:hidden;}
+.sw .chip{height:96px;}
+.sw .info{padding:11px 13px;background:var(--ink-2);}
+.sw .info .n{font-size:13px;font-weight:600;}
+.sw .info .hex{font-family:var(--label);font-weight:600;font-size:11px;letter-spacing:.06em;color:var(--muted-2);text-transform:uppercase;margin-top:2px;}
+.spectrum-bar{height:56px;border-radius:9px;margin-top:24px;background:var(--spectrum);}
+.spectrum-cap{font-family:var(--label);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-top:12px;}
+
+/* ---- design library ---- */
+.lib{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+@media (max-width:820px){.lib{grid-template-columns:1fr;}}
+.lib-card{border:1px solid var(--line);border-radius:11px;overflow:hidden;background:var(--ink-2);transition:border-color .35s,transform .35s var(--ease);display:block;}
+.lib-card:hover{border-color:var(--mint);transform:translateY(-3px);}
+.preview{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;background:var(--surface);border-bottom:1px solid var(--line);}
+.preview iframe{position:absolute;top:0;left:0;border:0;transform-origin:top left;pointer-events:none;background:var(--ink);}
+.preview .gloss{position:absolute;inset:0;z-index:2;}
+.lib-card .cap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;}
+.lib-card .cap h4{font-size:18px;}
+.lib-card .cap p{font-size:13px;color:var(--muted);margin-top:3px;}
+.lib-card .cap .go{font-family:var(--label);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mint);white-space:nowrap;}
+
+footer{padding:48px 0 70px;}
+footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;}
+footer small{font-family:var(--label);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);}
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="mast">
+  <div class="wrap">
+    <span class="eyebrow">Brand Kit · Internal reference</span>
+    <h1>The Pharma Coach<br><span class="it">brand &amp; design library</span></h1>
+    <p>Every logo, font, colour and page design in one place. The working reference for the Inscape direction — built from the live design system so it always matches what's on the site.</p>
+    <div class="mast__meta">
+      <span>Brand · <b>The Pharma Coach</b></span>
+      <span>Direction · <b>Inscape</b></span>
+      <span>Tagline · <b>Intelligence to Action</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LOGOS ============ -->
+<section class="blk" id="logos">
+  <div class="wrap">
+    <div class="blk__head">
+      <h2>Logos</h2>
+      <span class="num">01 / Identity</span>
+    </div>
+
+    <div class="logo-grid">
+      <figure class="logo-card">
+        <div class="logo-stage stage-light"><img src="assets/logo-colour.png" alt="The Pharma Coach — colour logo"></div>
+        <figcaption>
+          <div><div class="t">Primary · Colour</div><div class="f">logo-colour.png · use on light</div></div>
+          <a class="dl" href="assets/logo-colour.png" download>Download</a>
+        </figcaption>
+      </figure>
+      <figure class="logo-card">
+        <div class="logo-stage stage-dark"><img src="assets/logo-white.png" alt="The Pharma Coach — white logo"></div>
+        <figcaption>
+          <div><div class="t">Reversed · White</div><div class="f">logo-white.png · use on dark</div></div>
+          <a class="dl" href="assets/logo-white.png" download>Download</a>
+        </figcaption>
+      </figure>
+    </div>
+
+    <p class="usage" style="margin-top:30px"><b>Inscape monogram.</b> The concentric aperture used as the favicon and nav mark across the site, plus the explored concept directions.</p>
+    <div class="marks">
+      <div class="mark-card">
+        <svg width="56" height="56" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#84c7a6" stroke-width="2"/><circle cx="24" cy="24" r="13" stroke="#84c7a6" stroke-width="2" opacity="0.5"/><circle cx="24" cy="24" r="4.5" fill="#84c7a6"/></svg>
+        <span class="label"><b>Aperture</b>In use · nav + favicon</span>
+      </div>
+      <div class="mark-card">
+        <svg width="56" height="56" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#84c7a6" stroke-width="2"/><path d="M9 29 H39" stroke="#84c7a6" stroke-width="2"/><path d="M15.5 29 a8.5 8.5 0 0 1 17 0" stroke="#84c7a6" stroke-width="2"/><circle cx="24" cy="20.5" r="2.4" fill="#84c7a6"/></svg>
+        <span class="label"><b>Horizon</b>Concept</span>
+      </div>
+      <div class="mark-card">
+        <svg width="56" height="56" viewBox="0 0 48 48" fill="none"><path d="M7 17 V7 H17" stroke="#84c7a6" stroke-width="2" stroke-linecap="square"/><path d="M31 7 H41 V17" stroke="#84c7a6" stroke-width="2" stroke-linecap="square"/><path d="M41 31 V41 H31" stroke="#84c7a6" stroke-width="2" stroke-linecap="square"/><path d="M17 41 H7 V31" stroke="#84c7a6" stroke-width="2" stroke-linecap="square"/><circle cx="24" cy="24" r="4.5" fill="#84c7a6"/></svg>
+        <span class="label"><b>Frame</b>Concept</span>
+      </div>
+      <a class="mark-card" href="logos.html" target="_blank" style="justify-content:center;color:var(--mint)">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M7 17 L17 7 M17 7 H9 M17 7 V15" stroke="#84c7a6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="label" style="color:var(--mint)"><b style="color:var(--mint)">Open concepts</b>logos.html</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section class="blk" id="type">
+  <div class="wrap">
+    <div class="blk__head">
+      <h2>Typography</h2>
+      <span class="num">02 / Type</span>
+    </div>
+
+    <div class="type-card">
+      <div class="meta">
+        <div><div class="role">Display · headlines</div><div class="name" style="font-family:var(--display)">Schibsted Grotesk</div></div>
+        <div class="wts">400 · 500 · 600 · 700 · 800 · 900</div>
+      </div>
+      <div class="specimen" style="font-family:var(--display);font-weight:800;font-size:clamp(40px,7vw,82px);letter-spacing:-.035em">Intelligence to Action</div>
+      <div class="charset" style="font-family:var(--display)">AaBbCcDdEeFfGg 0123456789 &amp; ? !</div>
+      <p class="usage"><b>Use for</b> headlines, oversized numerals, the nav wordmark. Tight tracking, heavy weights.</p>
+    </div>
+
+    <div class="type-card">
+      <div class="meta">
+        <div><div class="role">Serif · editorial accent</div><div class="name" style="font-family:var(--serif)">Spectral</div></div>
+        <div class="wts">300 · 400 · 500 · 600 · italics</div>
+      </div>
+      <div class="specimen" style="font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(32px,5.5vw,64px);color:var(--mint)">You can't lead what you can't see.</div>
+      <div class="charset" style="font-family:var(--serif)">AaBbCcDdEeFfGg 0123456789 &amp; ? !</div>
+      <p class="usage"><b>Use for</b> italic emphasis inside headlines, pull quotes, testimonials. Always the lighter weights.</p>
+    </div>
+
+    <div class="type-card">
+      <div class="meta">
+        <div><div class="role">Sans · body</div><div class="name" style="font-family:var(--sans)">Hanken Grotesk</div></div>
+        <div class="wts">400 · 500 · 600 · 700</div>
+      </div>
+      <div class="specimen" style="font-family:var(--sans);font-weight:400;font-size:clamp(19px,2vw,26px);line-height:1.5;color:var(--ivory-2)">We coach you and your leaders through it, from the first decision to the impact that holds. Clear, warm, and built for reading at length.</div>
+      <div class="charset" style="font-family:var(--sans)">AaBbCcDdEeFfGg 0123456789 &amp; ? !</div>
+      <p class="usage"><b>Use for</b> all body copy, leads, buttons, navigation links.</p>
+    </div>
+
+    <div class="type-card">
+      <div class="meta">
+        <div><div class="role">Caps · labels</div><div class="name" style="font-family:var(--display)">Schibsted Grotesk</div></div>
+        <div class="wts">600 · uppercase · tracked</div>
+      </div>
+      <div class="specimen" style="font-family:var(--display);font-weight:600;font-size:clamp(16px,2vw,24px);letter-spacing:.2em;text-transform:uppercase;color:var(--mint)">Stakeholder Intelligence</div>
+      <div class="charset" style="font-family:var(--display);font-weight:600;letter-spacing:.1em;text-transform:uppercase">AaBbCcDdEe 0123456789 &amp; ? !</div>
+      <p class="usage"><b>Use for</b> eyebrows, kickers, metadata, captions — the display font set in tracked caps, replacing IBM Plex Mono. One fewer family, and a calmer, more editorial feel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COLOUR ============ -->
+<section class="blk" id="colour">
+  <div class="wrap">
+    <div class="blk__head">
+      <h2>Colour</h2>
+      <span class="num">03 / Palette</span>
+    </div>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#06181c"></div><div class="info"><div class="n">Ink</div><div class="hex">#06181C</div></div></div>
+      <div class="sw"><div class="chip" style="background:#081e22"></div><div class="info"><div class="n">Ink 2</div><div class="hex">#081E22</div></div></div>
+      <div class="sw"><div class="chip" style="background:#0e2c33"></div><div class="info"><div class="n">Surface</div><div class="hex">#0E2C33</div></div></div>
+      <div class="sw"><div class="chip" style="background:#123a42"></div><div class="info"><div class="n">Surface 2</div><div class="hex">#123A42</div></div></div>
+      <div class="sw"><div class="chip" style="background:#84c7a6"></div><div class="info"><div class="n">Mint</div><div class="hex">#84C7A6</div></div></div>
+      <div class="sw"><div class="chip" style="background:#3f8d6a"></div><div class="info"><div class="n">Mint Deep</div><div class="hex">#3F8D6A</div></div></div>
+      <div class="sw"><div class="chip" style="background:#e3aac6"></div><div class="info"><div class="n">Rose</div><div class="hex">#E3AAC6</div></div></div>
+      <div class="sw"><div class="chip" style="background:#f1ede2"></div><div class="info"><div class="n">Ivory</div><div class="hex">#F1EDE2</div></div></div>
+      <div class="sw"><div class="chip" style="background:#efe9da"></div><div class="info"><div class="n">Paper</div><div class="hex">#EFE9DA</div></div></div>
+      <div class="sw"><div class="chip" style="background:#9fb1b1"></div><div class="info"><div class="n">Muted</div><div class="hex">#9FB1B1</div></div></div>
+      <div class="sw"><div class="chip" style="background:#748a8b"></div><div class="info"><div class="n">Muted 2</div><div class="hex">#748A8B</div></div></div>
+      <div class="sw"><div class="chip" style="background:#e7e2d4"></div><div class="info"><div class="n">Ivory 2</div><div class="hex">#E7E2D4</div></div></div>
+    </div>
+    <div class="spectrum-bar"></div>
+    <p class="spectrum-cap">Spectrum gradient — distilled from the logo's PHARMA wordmark. Use sparingly, for accents and dividers only.</p>
+  </div>
+</section>
+
+<!-- ============ DESIGN LIBRARY ============ -->
+<section class="blk" id="library">
+  <div class="wrap">
+    <div class="blk__head">
+      <h2>Design library</h2>
+      <span class="num">04 / Pages</span>
+    </div>
+    <div class="lib" id="lib"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <small>The Pharma Coach · Inscape Brand Kit</small>
+    <small>Intelligence to Action</small>
+  </div>
+</footer>
+
+<script>
+/* live, scaled previews of every page design */
+const PAGES=[
+  {file:'Inscape - Bespoke.html', title:'Homepage', desc:'Full bespoke landing page'},
+  {file:'intelligence.html', title:'Stakeholder Intelligence', desc:'Pillar 01'},
+  {file:'consultancy.html', title:'Team Performance', desc:'Pillar 02'},
+  {file:'resilience.html', title:'Resilience & Wellbeing', desc:'Pillar 03'},
+  {file:'team.html', title:'Meet the Team', desc:'People, by pillar'},
+  {file:'logos.html', title:'Logo Concepts', desc:'Identity exploration'},
+];
+const BASE=1440; // virtual render width for previews
+const lib=document.getElementById('lib');
+PAGES.forEach(p=>{
+  const a=document.createElement('a');
+  a.className='lib-card';a.href=encodeURI(p.file);a.target='_blank';
+  a.innerHTML=`<div class="preview"><iframe loading="lazy" scrolling="no" src="${encodeURI(p.file)}"></iframe><div class="gloss"></div></div>`+
+    `<div class="cap"><div><h4>${p.title}</h4><p>${p.desc}</p></div><span class="go">Open →</span></div>`;
+  lib.appendChild(a);
+});
+function fit(){
+  document.querySelectorAll('.preview').forEach(box=>{
+    const f=box.querySelector('iframe');
+    const scale=box.clientWidth/BASE;
+    f.style.width=BASE+'px';
+    f.style.height=Math.round(box.clientHeight/scale)+'px';
+    f.style.transform='scale('+scale+')';
+  });
+}
+window.addEventListener('load',fit);
+window.addEventListener('resize',fit);
+setTimeout(fit,400);
+</script>
+</body>
+</html>
