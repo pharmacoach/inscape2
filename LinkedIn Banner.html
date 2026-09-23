@@ -42,8 +42,10 @@ img{display:block;max-width:100%;}
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 
 /* portrait, bleeding off the right edge */
-.banner .photo{position:absolute;top:0;right:0;width:660px;height:100%;z-index:2;}
-.banner .photo img{width:100%;height:100%;object-fit:cover;object-position:46% 40%;filter:saturate(.62) contrast(1.04) brightness(.96);}
+.banner .photo{position:absolute;top:0;right:0;width:660px;height:100%;z-index:2;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,transparent 8%,rgba(0,0,0,.4) 26%,black 52%,black 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,transparent 8%,rgba(0,0,0,.4) 26%,black 52%,black 100%);}
+.banner .photo img{width:100%;height:100%;object-fit:cover;object-position:46% 40%;filter:saturate(.7) contrast(1.0) brightness(1.18);}
 .banner .photo::after{content:"";position:absolute;inset:0;
   background:linear-gradient(90deg,#06181c 0%,rgba(6,24,28,.86) 14%,rgba(6,24,28,.42) 34%,rgba(6,24,28,.08) 58%,transparent 80%),
              linear-gradient(180deg,rgba(10,39,48,.35),transparent 30%,transparent 72%,rgba(6,24,28,.55));
@@ -78,6 +80,32 @@ img{display:block;max-width:100%;}
 .banner .tag{margin-top:22px;display:inline-flex;align-items:center;gap:12px;
   font-family:var(--display);font-weight:600;font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mint);}
 .banner .tag::before{content:"";width:34px;height:1.5px;background:linear-gradient(90deg,var(--mint),transparent);}
+#b2 .net{transform:translateX(-70px);}
+.content--top{justify-content:center !important;left:528px !important;width:584px !important;}
+.net-left{left:0 !important;right:auto !important;width:512px !important;z-index:4 !important;}
+.net-right{left:auto !important;right:79px !important;width:460px !important;z-index:4 !important;}
+.content--corp{left:396px !important;width:610px !important;}
+.content--corp h1{font-size:60px;}
+.content--corp p.sub{font-size:20px;max-width:54ch;}
+#b11,#b12,#b13{width:1128px !important;height:191px !important;}
+#b11 .net-right,#b12 .net-right,#b13 .net-right{right:56px !important;width:328px !important;}
+#b11 .net-left,#b12 .net-left,#b13 .net-left{left:56px !important;width:328px !important;}
+#b11 .content--corp,#b12 .content--corp,#b13 .content--corp{left:637px !important;right:auto !important;width:auto !important;}
+#b11 .content--corp,#b13 .content--corp{left:637px !important;right:auto !important;}
+#b11 .net,#b12 .net,#b13 .net{left:225px !important;right:auto !important;width:376px !important;}
+#b11 .brand,#b12 .brand,#b13 .brand{margin-bottom:8px !important;gap:9px;}
+#b11 .brand__mark,#b12 .brand__mark,#b13 .brand__mark{width:26px;height:26px;}
+#b11 .brand__word,#b12 .brand__word,#b13 .brand__word{font-size:20px;}
+#b11 .eyebrow,#b12 .eyebrow,#b13 .eyebrow{font-size:9px;letter-spacing:.16em;margin-bottom:7px !important;gap:8px;}
+#b11 .eyebrow .dot,#b12 .eyebrow .dot,#b13 .eyebrow .dot{width:6px;height:6px;}
+#b11 h1,#b12 h1,#b13 h1{font-size:26px !important;line-height:1.04;max-width:20ch;}
+#b11 .sub{font-size:12px !important;margin-top:6px !important;max-width:40ch !important;white-space:normal !important;}
+#b12 h1{font-size:20px !important;white-space:nowrap !important;max-width:none !important;}
+#b12 p:not(.sub){font-size:13px !important;margin-top:1px !important;white-space:nowrap !important;}
+#b12 .sub{font-size:10.5px !important;margin-top:4px !important;white-space:nowrap !important;max-width:none !important;}
+#b12 .content--corp{width:auto !important;left:637px !important;right:auto !important;}
+#b13 .tag{font-size:10px !important;margin-top:8px !important;}
+#b13 .tag::before{width:22px;}
 </style>
 </head>
 <body>
@@ -111,8 +139,10 @@ img{display:block;max-width:100%;}
     <div class="content">
       <a class="brand"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="2.5" opacity="0.5"/><circle cx="24" cy="24" r="5" fill="currentColor"/></svg></span><span class="brand__word">Inscape</span></a>
       <span class="eyebrow"><span class="dot fill"></span>Intelligence to action</span>
-      <h1>Evidence-led leadership <span class="it">for pharma's most complex teams.</span></h1>
-      <p class="sub"><b>For the SVP &amp; VP leaders</b> carrying the hardest calls — turning what's really happening into a clear plan.</p>
+      <h1 style="color:var(--ivory);">Evidence-led<br>leadership</h1>
+      <p style="margin-top:4px;font-family:var(--serif);font-weight:300;font-style:italic;font-size:30px;color:var(--mint);">for pharma's most complex teams.</p>
+      <p class="sub" style="white-space:nowrap;max-width:none;font-size:16px;margin-top:14px;">For the SVP and VP leaders carrying Pharma's most complex teams</p>
+      <p class="sub" style="font-size:16px;margin-top:0;white-space:nowrap;max-width:none;">We turn what's really happening inside into a plan and performance.</p>
     </div>
   </div>
   <div class="note">LinkedIn personal cover · 1584 × 396px · avatar sits lower-left</div>
@@ -136,6 +166,167 @@ img{display:block;max-width:100%;}
   <div class="note">LinkedIn personal cover · 1584 × 396px · avatar sits lower-left</div>
 </div>
 
+<!-- ===================== VARIANT 4 — Insight hook, avatar-safe ===================== -->
+<div class="stack" style="left:80px;top:1760px;">
+  <div class="cap"><b>04 · Insight hook — avatar-safe</b></div>
+  <div class="banner" id="b4" data-screen-label="Banner 04 — Insight hook, avatar-safe">
+    <canvas class="net net-left"></canvas>
+    <div class="scrim"></div>
+    <div class="grain"></div>
+    <div class="photo"><img src="assets/gallery3.jpg" alt="Ben Woollard addressing a room of pharma leaders"></div>
+    <div class="content content--top">
+      <a class="brand" style="margin-bottom:18px;"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="2.5" opacity="0.5"/><circle cx="24" cy="24" r="5" fill="currentColor"/></svg></span><span class="brand__word">Inscape</span></a>
+      <span class="eyebrow" style="margin-bottom:14px;"><span class="dot"></span>Evidence-led leadership consultancy</span>
+      <h1>The higher you lead,<br>the <span class="it">less</span> you're told.</h1>
+      <p class="sub" style="margin-top:14px;">We rebuild how pharma's most complex teams make decisions — and own them.</p>
+    </div>
+  </div>
+  <div class="note">Network map left · text vertically centred, clear of the profile-photo circle</div>
+</div>
+
+<!-- ===================== VARIANT 5 — Positioning, avatar-safe ===================== -->
+<div class="stack" style="left:80px;top:2320px;">
+  <div class="cap"><b>05 · Positioning line — avatar-safe</b></div>
+  <div class="banner" id="b5" data-screen-label="Banner 05 — Positioning, avatar-safe">
+    <canvas class="net net-left"></canvas>
+    <div class="scrim"></div>
+    <div class="grain"></div>
+    <div class="photo"><img src="assets/gallery3.jpg" alt="Ben Woollard addressing a room of pharma leaders"></div>
+    <div class="content content--top">
+      <a class="brand" style="margin-bottom:18px;"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="2.5" opacity="0.5"/><circle cx="24" cy="24" r="5" fill="currentColor"/></svg></span><span class="brand__word">Inscape</span></a>
+      <span class="eyebrow" style="margin-bottom:14px;"><span class="dot fill"></span>Intelligence to action</span>
+      <h1 style="color:var(--ivory);">Evidence-led<br>leadership</h1>
+      <p style="margin-top:2px;font-family:var(--serif);font-weight:300;font-style:italic;font-size:28px;color:var(--mint);">for pharma's most complex teams.</p>
+      <p class="sub" style="white-space:nowrap;max-width:none;font-size:15px;margin-top:12px;">For the SVP and VP leaders carrying Pharma's most complex teams</p>
+      <p class="sub" style="font-size:15px;margin-top:0;white-space:nowrap;max-width:none;">We turn what's really happening inside into a plan and performance.</p>
+    </div>
+  </div>
+  <div class="note">Network map left · text vertically centred, clear of the profile-photo circle</div>
+</div>
+
+<!-- ===================== VARIANT 6 — Pillar line, avatar-safe ===================== -->
+<div class="stack" style="left:80px;top:2880px;">
+  <div class="cap"><b>06 · Pillar line — avatar-safe</b></div>
+  <div class="banner" id="b6" data-screen-label="Banner 06 — Pillar line, avatar-safe">
+    <canvas class="net net-left"></canvas>
+    <div class="scrim"></div>
+    <div class="grain"></div>
+    <div class="photo"><img src="assets/gallery3.jpg" alt="Ben Woollard addressing a room of pharma leaders"></div>
+    <div class="content content--top">
+      <a class="brand" style="margin-bottom:18px;"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="2.5" opacity="0.5"/><circle cx="24" cy="24" r="5" fill="currentColor"/></svg></span><span class="brand__word">Inscape</span></a>
+      <span class="eyebrow" style="margin-bottom:14px;"><span class="dot"></span>Stakeholder intelligence</span>
+      <h1>You can't lead<br>what you <span class="it">can't see.</span></h1>
+      <div class="tag" style="margin-top:16px;">25,000 hours inside pharma</div>
+    </div>
+  </div>
+  <div class="note">Network map left · text vertically centred, clear of the profile-photo circle</div>
+</div>
+
+<!-- ===================== VARIANT 7 — Insight hook, Jo-Ann ===================== -->
+<div class="stack" style="left:80px;top:3440px;">
+  <div class="cap"><b>07 · Insight hook — Jo-Ann</b></div>
+  <div class="banner" id="b7" data-screen-label="Banner 07 — Insight hook, Jo-Ann">
+    <canvas class="net net-left"></canvas>
+    <div class="scrim"></div>
+    <div class="grain"></div>
+    <div class="photo"><img src="assets/jo-ann-3.jpg" alt="Jo-Ann presenting to a room" style="object-position:50% 48%;transform:scaleX(-1);"></div>
+    <div class="content content--top">
+      <a class="brand" style="margin-bottom:18px;"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="2.5" opacity="0.5"/><circle cx="24" cy="24" r="5" fill="currentColor"/></svg></span><span class="brand__word">Inscape</span></a>
+      <span class="eyebrow" style="margin-bottom:14px;"><span class="dot"></span>Evidence-led leadership consultancy</span>
+      <h1>The higher you lead,<br>the <span class="it">less</span> you're told.</h1>
+      <p class="sub" style="margin-top:14px;">We rebuild how pharma's most complex teams make decisions — and own them.</p>
+    </div>
+  </div>
+  <div class="note">Network map left · text vertically centred, clear of the profile-photo circle</div>
+</div>
+
+<!-- ===================== VARIANT 8 — Positioning, Jo-Ann ===================== -->
+<div class="stack" style="left:80px;top:4000px;">
+  <div class="cap"><b>08 · Positioning line — Jo-Ann</b></div>
+  <div class="banner" id="b8" data-screen-label="Banner 08 — Positioning, Jo-Ann">
+    <canvas class="net net-left"></canvas>
+    <div class="scrim"></div>
+    <div class="grain"></div>
+    <div class="photo"><img src="assets/jo-ann-3.jpg" alt="Jo-Ann presenting to a room" style="object-position:50% 48%;transform:scaleX(-1);"></div>
+    <div class="content content--top">
+      <a class="brand" style="margin-bottom:18px;"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="2.5" opacity="0.5"/><circle cx="24" cy="24" r="5" fill="currentColor"/></svg></span><span class="brand__word">Inscape</span></a>
+      <span class="eyebrow" style="margin-bottom:14px;"><span class="dot fill"></span>Intelligence to action</span>
+      <h1 style="color:var(--ivory);">Evidence-led<br>leadership</h1>
+      <p style="margin-top:2px;font-family:var(--serif);font-weight:300;font-style:italic;font-size:28px;color:var(--mint);">for pharma's most complex teams.</p>
+      <p class="sub" style="white-space:nowrap;max-width:none;font-size:15px;margin-top:12px;">For the SVP and VP leaders carrying Pharma's most complex teams</p>
+      <p class="sub" style="font-size:15px;margin-top:0;white-space:nowrap;max-width:none;">We turn what's really happening inside into a plan and performance.</p>
+    </div>
+  </div>
+  <div class="note">Network map left · text vertically centred, clear of the profile-photo circle</div>
+</div>
+
+<!-- ===================== VARIANT 9 — Pillar line, Jo-Ann ===================== -->
+<div class="stack" style="left:80px;top:4560px;">
+  <div class="cap"><b>09 · Pillar line — Jo-Ann</b></div>
+  <div class="banner" id="b9" data-screen-label="Banner 09 — Pillar line, Jo-Ann">
+    <canvas class="net net-left"></canvas>
+    <div class="scrim"></div>
+    <div class="grain"></div>
+    <div class="photo"><img src="assets/jo-ann-3.jpg" alt="Jo-Ann presenting to a room" style="object-position:50% 48%;transform:scaleX(-1);"></div>
+    <div class="content content--top">
+      <a class="brand" style="margin-bottom:18px;"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="2.5" opacity="0.5"/><circle cx="24" cy="24" r="5" fill="currentColor"/></svg></span><span class="brand__word">Inscape</span></a>
+      <span class="eyebrow" style="margin-bottom:14px;"><span class="dot"></span>Stakeholder intelligence</span>
+      <h1>You can't lead<br>what you <span class="it">can't see.</span></h1>
+      <div class="tag" style="margin-top:16px;">25,000 hours inside pharma</div>
+    </div>
+  </div>
+  <div class="note">Network map left · text vertically centred, clear of the profile-photo circle</div>
+</div>
+
+<!-- ===================== VARIANT 11 — Insight hook, corporate (no photo) ===================== -->
+<div class="stack" style="left:80px;top:5120px;">
+  <div class="cap"><b>11 · Insight hook — corporate, no photo</b></div>
+  <div class="banner" id="b11" data-screen-label="Banner 11 — Insight hook, corporate">
+    <canvas class="net net-left"></canvas>
+    <div class="grain"></div>
+    <div class="content content--top content--corp">
+      <a class="brand" style="margin-bottom:18px;"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="2.5" opacity="0.5"/><circle cx="24" cy="24" r="5" fill="currentColor"/></svg></span><span class="brand__word">Inscape</span></a>
+      <span class="eyebrow" style="margin-bottom:14px;"><span class="dot"></span>Evidence-led leadership consultancy</span>
+      <h1>The higher you lead,<br>the <span class="it">less</span> you're told.</h1>
+      <p class="sub" style="margin-top:16px;">We rebuild how pharma's most complex teams make decisions — and own them.</p>
+    </div>
+  </div>
+  <div class="note">Corporate page variant · no photo — text fills the freed space</div>
+</div>
+
+<!-- ===================== VARIANT 12 — Positioning, corporate (no photo) ===================== -->
+<div class="stack" style="left:80px;top:5680px;">
+  <div class="cap"><b>12 · Positioning line — corporate, no photo</b></div>
+  <div class="banner" id="b12" data-screen-label="Banner 12 — Positioning, corporate">
+    <canvas class="net net-left"></canvas>
+    <div class="grain"></div>
+    <div class="content content--top content--corp">
+      <a class="brand" style="margin-bottom:18px;"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="2.5" opacity="0.5"/><circle cx="24" cy="24" r="5" fill="currentColor"/></svg></span><span class="brand__word">Inscape</span></a>
+      <span class="eyebrow" style="margin-bottom:14px;"><span class="dot fill"></span>Intelligence to action</span>
+      <h1 style="color:var(--ivory);white-space:nowrap;max-width:none;">Evidence-led leadership</h1>
+      <p style="margin-top:4px;font-family:var(--serif);font-weight:300;font-style:italic;font-size:32px;color:var(--mint);">for pharma's most complex teams.</p>
+      <p class="sub" style="white-space:nowrap;max-width:none;font-size:17px;margin-top:14px;">For the SVP and VP leaders carrying Pharma's most complex teams</p>
+      <p class="sub" style="font-size:17px;margin-top:0;white-space:nowrap;max-width:none;">We turn what's really happening inside into a plan and performance</p>
+    </div>
+  </div>
+  <div class="note">Corporate page variant · no photo — text fills the freed space</div>
+</div>
+
+<!-- ===================== VARIANT 13 — Pillar line, corporate (no photo) ===================== -->
+<div class="stack" style="left:80px;top:6240px;">
+  <div class="cap"><b>13 · Pillar line — corporate, no photo</b></div>
+  <div class="banner" id="b13" data-screen-label="Banner 13 — Pillar line, corporate">
+    <canvas class="net net-left"></canvas>
+    <div class="grain"></div>
+    <div class="content content--top content--corp">
+      <a class="brand" style="margin-bottom:18px;"><span class="brand__mark"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="13" stroke="currentColor" stroke-width="2.5" opacity="0.5"/><circle cx="24" cy="24" r="5" fill="currentColor"/></svg></span><span class="brand__word">Inscape</span></a>
+      <span class="eyebrow" style="margin-bottom:14px;"><span class="dot"></span>Stakeholder intelligence</span>
+      <h1>You can't lead<br>what you <span class="it">can't see.</span></h1>
+      <div class="tag" style="margin-top:18px;">25,000 hours inside pharma</div>
+    </div>
+  </div>
+  <div class="note">Corporate page variant · no photo — text fills the freed space</div>
+</div>
 <script>
 /* ---- Inscape org-matrix → influence network, adapted for a wide short banner ---- */
 const SPECTRUM=[[0,[155,196,77]],[0.22,[127,196,160]],[0.44,[126,200,227]],[0.60,[157,184,224]],[0.80,[232,184,208]],[1,[214,83,156]]];
@@ -149,23 +340,29 @@ function sampleSpectrum(t){t=clamp(t,0,1);for(let i=0;i<SPECTRUM.length-1;i++){c
 const mixc=(c1,c2,a)=>[lerp(c1[0],c2[0],a),lerp(c1[1],c2[1],a),lerp(c1[2],c2[2],a)];
 const rgbStr=c=>'rgb('+Math.round(c[0])+','+Math.round(c[1])+','+Math.round(c[2])+')';
 
-function banner(cv,seed){
+function banner(cv,seed,cxFrac,shapeX,shapeY,marginX,marginY,yBoost){
+  cxFrac=cxFrac==null?0.60:cxFrac;
+  shapeX=shapeX==null?1.55:shapeX; shapeY=shapeY==null?0.74:shapeY;
+  marginX=marginX==null?1.25:marginX; marginY=marginY==null?0.48:marginY;
+  yBoost=yBoost==null?1:yBoost;
   const ctx=cv.getContext('2d');
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   let W=0,H=0,DPR=1,raf=null,startTime=null,nodes=[],hEdges=[],mEdges=[];
-  const MIX={keep:0.40,dot:1.0,nb:2}, DENSITY=24, INTENSITY=1;
+  const MIX={keep:0.40,dot:1.0,nb:2}, DENSITY=24, INTENSITY=1, GLOBAL_ALPHA=0.5;
 
   function build(){
     if(!W||!H)return;
     const rng=mulberry32(seed);
     const N=Math.max(8,Math.round(DENSITY));
-    const cx=W*0.60, cy=H*0.50, R=Math.min(W,H)*1.02;
+    const cx=W*cxFrac, cy=H*0.50;
+    const halfX=Math.min(cx,W-cx), halfY=Math.min(cy,H-cy);
+    const R=Math.min(halfX/marginX, halfY/marginY);
     nodes=[];hEdges=[];mEdges=[];
     const levels=5;
     const counts=[1,3,5,7,N-16];
     const levelIdx=[];
     for(let l=0;l<levels;l++){levelIdx.push([]);for(let i=0;i<counts[l];i++){levelIdx[l].push(nodes.length);nodes.push({level:l,parent:-1});}}
-    const yTop=cy-R*0.46, yBot=cy+R*0.46;
+    const yTop=cy-R*0.46*yBoost, yBot=cy+R*0.46*yBoost;
     const spanOf=l=>l===0?0:R*(0.7+1.7*((l-1)/Math.max(1,levels-2)));
     for(let l=0;l<levels;l++){
       const ids=levelIdx[l],c=ids.length,span=spanOf(l),y=yTop+(l/(levels-1))*(yBot-yTop);
@@ -177,7 +374,7 @@ function banner(cv,seed){
     const radOf=l=>R*(0.16+0.34*((l-1)/Math.max(1,levels-2)));
     let gi=0;
     for(const n of nodes){if(n.level===0)continue;const a=gi*2.39996323+0.7;const rad=radOf(n.level)*(0.85+rng()*0.3);
-      n.ox=cx+Math.cos(a)*rad*1.55;n.oy=cy+Math.sin(a)*rad*0.74;gi++;}
+      n.ox=cx+Math.cos(a)*rad*shapeX;n.oy=cy+Math.sin(a)*rad*shapeY*yBoost;gi++;}
     for(const n of nodes){n.nx=lerp(n.tx,n.ox,INTENSITY);n.ny=lerp(n.ty,n.oy,INTENSITY);}
     const teamHue={};
     levelIdx[1].forEach((id,k)=>{teamHue[id]=sampleSpectrum((k+0.5)/Math.max(1,levelIdx[1].length));});
@@ -228,7 +425,7 @@ function banner(cv,seed){
     if(dOp>0.012){ctx.setLineDash([2,6]);ctx.lineWidth=1.3;ctx.strokeStyle='rgba('+ACC+','+Math.min(0.85,dOp).toFixed(3)+')';
       for(const e of mEdges)line(nodes[e.a],nodes[e.b]);ctx.setLineDash([]);}
     for(let i=1;i<nodes.length;i++){const n=nodes[i];
-      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,6.2832);ctx.fillStyle=n.color;ctx.globalAlpha=n.level>=2?0.92:1;ctx.fill();ctx.globalAlpha=1;}
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,6.2832);ctx.fillStyle=n.color;ctx.fill();}
     const a=nodes[0],pr=Math.sin(time*1.2)*1.2;
     ctx.strokeStyle='rgba('+ACC+','+(0.32+0.12*te).toFixed(3)+')';ctx.lineWidth=1.4;
     ctx.beginPath();ctx.arc(a.x,a.y,a.r+12+pr,0,6.2832);ctx.stroke();
@@ -237,13 +434,23 @@ function banner(cv,seed){
   }
   function resize(){
     const rect=cv.getBoundingClientRect();
-    DPR=Math.min(2,window.devicePixelRatio||1);W=rect.width;H=rect.height;
+    DPR=Math.max(2,Math.min(3,window.devicePixelRatio||1));W=rect.width;H=rect.height;
     cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
     ctx.setTransform(DPR,0,0,DPR,0,0);build();startTime=null;
   }
   function paint(){ startTime=performance.now()-6000; draw(performance.now()); } // synchronous settled frame; draw() self-reschedules rAF when animating
   resize();
   paint();
+  // fail-safe: force a re-measure if the first pass landed on a zero-size box (canvas-mode layout race)
+  let tries=0;
+  const kick=setInterval(()=>{
+    tries++;
+    if(cv.width&&cv.height){clearInterval(kick);return;}
+    if(raf)cancelAnimationFrame(raf);
+    resize();
+    paint();
+    if(tries>40)clearInterval(kick);
+  },150);
   // re-measure & repaint once the canvas actually has a size (canvas-mode / offscreen first layout)
   const ro=new ResizeObserver(()=>{
     const r=cv.getBoundingClientRect();
@@ -260,6 +467,15 @@ window.addEventListener('load',()=>{
   banner(document.querySelector('#b1 .net'),7);
   banner(document.querySelector('#b2 .net'),19);
   banner(document.querySelector('#b3 .net'),31);
+  banner(document.querySelector('#b4 .net'),43,0.50,1.05,0.98,0.86,0.30);
+  banner(document.querySelector('#b5 .net'),57,0.50,1.05,0.98,0.86,0.30);
+  banner(document.querySelector('#b6 .net'),71,0.50,1.05,0.98,0.86,0.30);
+  banner(document.querySelector('#b7 .net'),83,0.50,1.05,0.98,0.86,0.30);
+  banner(document.querySelector('#b8 .net'),97,0.50,1.05,0.98,0.86,0.30);
+  banner(document.querySelector('#b9 .net'),101,0.50,1.05,0.98,0.86,0.30);
+  banner(document.querySelector('#b11 .net'),131,0.50,1.55,0.74,0.90,0.42,1.25);
+  banner(document.querySelector('#b12 .net'),151,0.50,1.55,0.74,0.90,0.42,1.25);
+  banner(document.querySelector('#b13 .net'),171,0.50,1.55,0.74,0.90,0.42,1.25);
 });
 </script>
 </body>

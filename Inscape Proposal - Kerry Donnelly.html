@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Inscape Proposal — Kerry Donnelly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<style>
+:root{
+  --ink:#1c454e;--petrol:#204c56;--muted:#5c6f70;--line:#dfe4e0;
+  --mint:#1fc489;--mint-deep:#0e9b6a;--paper:#fbfaf6;
+  --display:"Schibsted Grotesk",system-ui,sans-serif;
+  --serif:"Spectral",Georgia,serif;
+}
+*{box-sizing:border-box}
+body{font-family:var(--display);color:var(--ink);font-size:15px;line-height:1.65}
+h1,h2,h3{font-family:var(--display);color:var(--petrol);letter-spacing:-.01em;margin:0}
+p{margin:0 0 12px}
+p b{color:var(--petrol);font-weight:700}
+.circles{position:absolute;top:-70px;right:-70px;width:260px;height:260px;pointer-events:none}
+.circles svg{display:none}
+.c{position:absolute;border-radius:50%;border:2px solid var(--mint)}
+.c1{width:260px;height:260px;top:0;right:0;opacity:.55}
+.c2{width:170px;height:170px;top:46px;right:46px;opacity:.75;border-color:var(--mint-deep)}
+.c3{width:80px;height:80px;top:92px;right:92px;background:var(--mint);border:none;opacity:.9}
+
+header.doc-head{display:flex;align-items:center;gap:10px}
+header.doc-head img{height:26px}
+header.doc-head span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+footer.doc-foot{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);padding-top:8px}
+
+.cover{position:relative;padding:30px 0 26px;border-bottom:3px solid var(--mint);margin-bottom:30px;overflow:visible}
+.cover .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mint-deep);font-weight:700;margin-bottom:14px}
+.cover .eyebrow::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--mint)}
+.cover h1{font-size:38px;font-weight:700;line-height:1.08;max-width:80%}
+.cover .sub{font-family:var(--serif);font-style:italic;font-weight:400;font-size:20px;color:var(--petrol);margin-top:10px;max-width:80%}
+.cover .who{font-size:13px;color:var(--muted);margin-top:16px;font-weight:600}
+
+h2.section{font-size:22px;font-weight:700;margin-top:38px;padding-top:6px;border-top:1px solid var(--line);display:flex;align-items:baseline;gap:12px}
+h2.section .no{font-family:var(--serif);font-weight:300;font-style:italic;color:var(--mint-deep);font-size:16px}
+h3.sub{font-size:16px;font-weight:700;color:var(--mint-deep);margin-top:22px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;font-size:12px}
+h3.stage{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--petrol);margin-top:20px;margin-bottom:4px}
+
+ul.dot{list-style:none;margin:0 0 12px;padding:0}
+ul.dot li{position:relative;padding-left:20px;margin-bottom:8px;break-inside:avoid}
+ul.dot li::before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;border:1.8px solid var(--mint)}
+
+.options{display:grid;grid-template-columns:1fr;gap:14px;margin-top:16px}
+.opt{border:1px solid var(--line);border-radius:8px;padding:18px 20px;break-inside:avoid}
+.opt.featured{border-color:var(--mint);background:rgba(31,196,137,.04)}
+.opt .head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.opt .head h4{font-size:16px;font-weight:700;color:var(--petrol);margin:0}
+.opt .price{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--mint-deep)}
+.opt .desc{font-size:13px;color:var(--muted);margin:6px 0 10px}
+.opt ul.dot li{font-size:13px}
+
+.callout{border-left:3px solid var(--mint);background:#f4faf7;padding:14px 18px;margin:16px 0;break-inside:avoid;font-size:13px;color:var(--petrol)}
+.callout b{color:var(--mint-deep)}
+table.rel{width:100%;border-collapse:collapse;margin-top:10px}
+table.rel td{font-size:13px;padding:10px 0;border-top:1px solid var(--line);vertical-align:top}
+table.rel td.lbl{width:26%;font-weight:700;color:var(--petrol);padding-right:16px}
+</style>
+</head>
+<body>
+<doc-page margin="0.85in">
+<footer slot="footer" class="doc-foot"><span>Inscape</span><span>Levelling Up Your Team</span></footer>
+
+<div class="cover">
+  <div class="c c1"></div><div class="c c2"></div><div class="c c3"></div>
+  <img src="assets/brand/inscape-logo-colour.png" alt="Inscape" style="height:32px;margin-bottom:22px">
+  <span class="eyebrow">Proposal</span>
+  <h1>Levelling Up Your Team</h1>
+  <p class="sub">Clarity of expectation, agreed priorities.</p>
+  <p class="who">A proposal for Kerry Donnelly, UCB</p>
+</div>
+
+<h2 class="section"><span class="no">01</span>Context</h2>
+<p>Two teams have become one. The access strategy leads and the pricing leads now sit in a single team for the first time, with solid knowledge of both areas expected of everyone going forward. You know almost all of them already, which helps. It also means you already know where the gaps are.</p>
+<p>Three things are happening at once. You are recruiting into vacancies, designing a leadership layer that may end up being largely new people, and raising expectations across a team where more than a third are currently contractors.</p>
+<p><b>Underneath all of it sits something you have been hearing for twelve months. People are still not clear who is supposed to be doing what.</b> In a highly matrixed organisation the old question of whose responsibility it is to do what work goes unanswered, and work gets picked up by whoever is least busy rather than by whoever should own it.</p>
+<p>Part of that is cultural. Calling a spade a spade is hard in an organisation that hands people job titles which describe very little, and the gap gets filled with assumption.</p>
+<p><b>The same pattern shows up one level higher. Priorities get discussed at length and agreed out loud far less often,</b> which leaves people carrying different versions of what comes first.</p>
+<p>Your ways of working framework has been rolling out since January and the core ask has survived the last six months of change. <b>What it needs underneath it is clarity on who owns what,</b> which is what lets a framework like that land fully.</p>
+
+<h2 class="section"><span class="no">02</span>Objectives</h2>
+<ul class="dot">
+<li><b>Get the team up to the level you need.</b> What good looks like, defined at each level, specific enough for your leaders to coach against.</li>
+<li><b>Settle responsibility.</b> Every significant piece of work carries one name, agreed by the team rather than assigned to it.</li>
+<li><b>Agree priorities out loud.</b> Trade-offs made explicit and owned, so what comes first is a decision rather than an assumption.</li>
+<li><b>Build the layer that drives team capability.</b> A group largely hired from outside taking real responsibility for the team, quickly.</li>
+<li><b>Evidence the shift.</b> A measured before and after, so the change is demonstrated rather than asserted.</li>
+</ul>
+
+<h2 class="section"><span class="no">03</span>Ways of Working</h2>
+<p>The work starts by understanding the starting point. A confidential diagnostic asks the team two questions, who owns what and what comes first, and the spread in the answers is the finding. Where everyone agrees, there is nothing to fix. Where the same piece of work comes back with four different owners, the problem is located precisely, and nobody has to be accused of anything for it to be visible.</p>
+<p>It builds on what you have already gathered rather than asking the team to start again. The change challenge map, your charter and what comes out of your one-to-ones all feed the baseline.</p>
+<p>The team then works the material itself. Responsibility gets mapped in the room, by the people who hold it, which is what makes it stick. Anything that sits outside the team comes off the wall and into a separate brief for you to take forward.</p>
+<p>You have sessions throughout, running off the same evidence, plus access between sessions when something needs a second opinion before you commit to it.</p>
+<p>Delivery involves the Inscape team rather than one person. Ben leads the design and facilitation, with specialist input on strengths and on resilience where an option includes it.</p>
+
+<h2 class="section"><span class="no">04</span>The Journey</h2>
+<h3 class="stage">Stage One &middot; Understand the Starting Point</h3>
+<p>A confidential diagnostic across the full team including contractors, with interviews with you, the leadership layer and a sample of the people your team hands work to. It maps where responsibility is contested, where priorities diverge, and where performance sits against the level you need. The output is a findings pack you can put in front of other people, turning what you already sense into evidence.</p>
+<h3 class="stage">Stage Two &middot; Own It</h3>
+<p>A face-to-face meeting where the team maps responsibility and signs it, works its priorities with the trade-offs made explicit, and commits to the behaviour you described. Wherever there is a question mark, the team takes it, owns it and gets it clear. The output is a signed map, an agreed order of priority, and a boundary brief covering what sits beyond the team.</p>
+<h3 class="stage">Stage Three &middot; Prove It</h3>
+<p>What good looks like defined at each level, your charter pressure-tested against the map and given measures and a review date, then a follow-up diagnostic on identical questions. This is also how the work keeps learning as it goes, since the second set of answers shows what moved and what did not. The output is a measured shift you can take into your leadership team as evidence rather than opinion.</p>
+
+<h2 class="section"><span class="no">05</span>What You Get</h2>
+<ul class="dot">
+<li><b>One name against every significant piece of work.</b> The question you have been hearing for twelve months gets answered once, by the team, and stays answered. Work stops being duplicated or dropped, and it goes to whoever should own it rather than whoever is least busy.</li>
+<li><b>A team that knows what comes first,</b> led by people who hold it to the level you need. Trade-offs are made once and out loud. Your leaders have something specific to hold people to, which makes the expectation conversations ahead fair as well as necessary.</li>
+<li><b>People who step up without waiting to be asked.</b> One-to-one high-performance sessions give individuals focused time on their own game. The ones sitting on good ideas start acting on them, and the ones who need to raise their level have a clear, supported route to get there.</li>
+<li><b>Evidence you can use beyond your own team.</b> A measured before and after, plus a clear account of what sits outside the team's authority. That gives you a stronger position in your leadership team when the wider community question and the 2027 plan are on the table.</li>
+</ul>
+
+<h2 class="section" style="break-before:page"><span class="no">06</span>Investment Options</h2>
+<p>Each option contains the one below it. The choice is how far the work runs, rather than which problem it addresses.</p>
+<div class="options">
+  <div class="opt featured">
+    <div class="head"><h4>Option A &middot; Full Journey</h4><span class="price">Est. &euro;67,000</span></div>
+    <p class="desc">Six months. Responsibility settled, priorities agreed, the leadership layer driving team capability, and evidence of the shift.</p>
+    <ul class="dot">
+      <li>Confidential diagnostic across the full team including contractors, plus interviews with you, the leadership layer and a sample of the team's key internal stakeholders</li>
+      <li>Responsibility mapped and signed by the team, covering what it owns and where it believes the handovers fall</li>
+      <li>Prioritisation worked in the room, with the trade-offs made explicit and owned</li>
+      <li>Boundary brief on responsibilities outside the team's authority, for you to take where they can be settled</li>
+      <li>Face-to-face meeting on the map, what good looks like, and the accountability behaviour</li>
+      <li>What good looks like, defined at each level of the team</li>
+      <li>Charter pressure-test against the map, with measures and a review date</li>
+      <li>Structured first ninety days for each appointment into that layer</li>
+      <li>Twelve one-to-one high-performance sessions, distributed across the team</li>
+      <li>Workshop equipping the leadership layer to hold people to what good looks like</li>
+      <li>Mid-point session against the charter commitments</li>
+      <li>Follow-up diagnostic on identical questions</li>
+      <li>Advisory sessions for you throughout, with access between sessions</li>
+    </ul>
+  </div>
+  <div class="opt">
+    <div class="head"><h4>Option B &middot; Core Journey</h4><span class="price">Est. &euro;54,000</span></div>
+    <p class="desc">Six months. Responsibility and priorities settled, the team working to the level you need. The leadership layer develops inside the team sessions rather than ahead of them.</p>
+    <ul class="dot">
+      <li>Diagnostic across the full team, plus interviews with you and the leadership layer</li>
+      <li>Responsibility mapped and signed by the team, covering what it owns and where the handovers fall</li>
+      <li>Prioritisation worked in the room, trade-offs made explicit and owned</li>
+      <li>Boundary brief</li>
+      <li>Face-to-face meeting</li>
+      <li>What good looks like, defined at each level of the team</li>
+      <li>Charter pressure-test with measures and a review date</li>
+      <li>Twelve one-to-one high-performance sessions, distributed across the team</li>
+      <li>Mid-point session against the charter commitments</li>
+      <li>Follow-up diagnostic</li>
+      <li>Advisory sessions for you throughout</li>
+    </ul>
+  </div>
+  <div class="opt">
+    <div class="head"><h4>Option C &middot; Foundations (Minimum Package)</h4><span class="price">Est. &euro;32,000</span></div>
+    <p class="desc">Clear on who is responsible for what, and agreed on what comes first.</p>
+    <ul class="dot">
+      <li>Diagnostic across the team, with targeted interviews</li>
+      <li>Responsibility mapped and signed by the team in a face-to-face meeting</li>
+      <li>Prioritisation worked in the same meeting, trade-offs made explicit and owned</li>
+      <li>Boundary brief</li>
+      <li>Advisory sessions for you across the period</li>
+    </ul>
+  </div>
+</div>
+
+<h2 class="section"><span class="no">07</span>Expected Impact</h2>
+<p>By the middle of next year, a question mark in your team gets picked up rather than parked. Your leaders hold their people to a level everyone can name, and the conversations about who should be doing what happen once rather than every quarter.</p>
+<p>The team is more in control of its own destiny, which is what you were reaching for with the change challenge map. People stop waiting for someone else to fix the unclear thing.</p>
+<p>You walk into your leadership team with a before and after from your own team, which is a stronger position than conviction when the community-wide question comes up.</p>
+<p>And the reshuffle lands on a team that knows what is expected of it, which makes the difficult conversations fair as well as necessary.</p>
+
+<h2 class="section"><span class="no">08</span>Assumptions</h2>
+<ul class="dot">
+<li>Diagnostic responses are confidential. Findings are reported in aggregate and by role category, never attributed to individuals.</li>
+<li>Dates are agreed once the new structure has been communicated to the team.</li>
+<li>Advisory sessions for you are included within each option rather than charged separately.</li>
+<li>This proposal holds for ninety days from the date of issue.</li>
+<li>Fees exclude VAT and travel.</li>
+</ul>
+
+<h2 class="section" style="break-before:page"><span class="no">09</span>Additional Options</h2>
+<h3 class="stage">Resilience and Wellbeing Support</h3>
+<p>UCB's Glint data tells a story most leaders recognise. Your team is performing under sustained pressure. Resilience is a skill rather than a personality trait, and it is trainable.</p>
+<p>Each team member receives a dedicated one-to-one session with our specialist coach and leaves with a personalised Wellbeing Action Plan they can use immediately. Focused, practical, and grounded in each person's specific pressures. For a team being asked to do more with more complexity, this is the infrastructure that makes sustained high performance possible.</p>
+<div class="callout">Over <b>one hundred sessions</b> delivered across UCB so far.</div>
+
+<h3 class="stage">Media Impact Video</h3>
+<p>Your team does exceptional work. Almost nobody outside your immediate stakeholders knows it.</p>
+<p>Our Head of Story works with you to create a short, professionally produced internal video that communicates the impact and identity of your team. Human, compelling, and shareable. The package also includes professional headshots for every team member, replacing the inconsistent mix currently on LinkedIn and the internal organogram.</p>
+
+<h2 class="section"><span class="no">10</span>Related Work Inside UCB</h2>
+<p>Every item below was delivered inside UCB and is available to discuss in detail. A written case study of the responsibility work is available on request.</p>
+<table class="rel">
+<tr><td class="lbl">Responsibility &amp; decision rights</td><td>Diagnostic and signed ownership map for a cross-functional leadership team, then repeated for a second asset. The finding was framed as a question of how the structure had been designed, using UCB's own operating model language as the standard.</td></tr>
+<tr><td class="lbl">Boundary work</td><td>Framing and clarifying an interface where two groups were both giving direction to countries, focused on where one should hand over to the other.</td></tr>
+<tr><td class="lbl">Dual reporting</td><td>A diagnostic where unclear mandate came out as the top barrier for three leaders independently, while each described their own priorities as clear. The evidence pointed at the structure rather than at communication.</td></tr>
+<tr><td class="lbl">Six-month team journey</td><td>Baseline diagnostic, mid-point check-in, charter review with measures, and a follow-up diagnostic on identical questions so the shift could be shown rather than claimed.</td></tr>
+<tr><td class="lbl">Leader &amp; team transitions</td><td>Structured handover and first ninety days material for leaders taking on new teams, including profiling of the team they inherit and where its single points of failure sit.</td></tr>
+<tr><td class="lbl">What good looks like</td><td>Three-hundred-and-sixty degree feedback with strengths profiling integrated, used to make expectations specific enough for a leader to coach against.</td></tr>
+</table>
+
+</doc-page>
+<script src="doc-page.js"></script>
+</body>
+</html>

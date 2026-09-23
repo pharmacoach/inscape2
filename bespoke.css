@@ -975,6 +975,9 @@ body.menu-open .nav__burger span:nth-child(3){transform:translateY(-7px) rotate(
 .book__form{display:flex;flex-direction:column;gap:16px;}
 .bf__row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .book__form label{display:flex;flex-direction:column;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.book__form input,.book__form textarea{background:rgba(6,24,28,.55);border:1px solid var(--line);border-radius:3px;padding:15px 16px;color:var(--ivory);font-family:var(--sans);font-size:15px;letter-spacing:0;text-transform:none;width:100%;resize:vertical;}
+.book__form input::placeholder,.book__form textarea::placeholder{color:var(--muted);}
+.book__form input:focus,.book__form textarea:focus{outline:none;border-color:var(--mint);background:rgba(6,24,28,.82);}
 .book__form select{background:rgba(6,24,28,.55);border:1px solid var(--line);border-radius:3px;padding:15px 16px;color:var(--ivory);font-family:var(--sans);font-size:15px;letter-spacing:0;text-transform:none;width:100%;cursor:pointer;}
 .book__form select option{background:var(--ink-2);color:var(--ivory);}
 .book__form select:focus{outline:none;border-color:var(--mint);background:rgba(6,24,28,.82);}

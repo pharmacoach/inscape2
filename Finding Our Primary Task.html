@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finding Our Primary Task</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>deck-stage:not(:defined){visibility:hidden}</style>
+<style>
+:root{
+  --ink:#1c454e;--ink-2:#204c56;--surface:#28565f;--surface-2:#2f636d;
+  --ivory:#f1ede2;--ivory-2:#e7e2d4;--paper:#efe9da;
+  --muted:#9fb1b1;--muted-2:#748a8b;--label:#b6b0a1;
+  --line:rgba(233,227,212,.14);--line-soft:rgba(233,227,212,.08);
+  --mint:#1fc489;--mint-rgb:31,196,137;--mint-deep:#0e9b6a;
+  --display:"Schibsted Grotesk",system-ui,sans-serif;
+  --sans:"Hanken Grotesk",system-ui,sans-serif;
+  --serif:"Spectral",Georgia,serif;
+  --type-hero:152px;--type-subtitle:56px;--type-h1:80px;--type-h2:48px;
+  --type-lead:40px;--type-body:33px;--type-small:28px;--type-label:26px;
+  --pad-x:120px;--pad-top:120px;--pad-bottom:100px;
+  --gap-title:48px;--gap-item:26px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans)}
+.slide{position:relative;width:100%;height:100%;background:var(--ink);color:var(--ivory);overflow:hidden}
+.slide-pad{position:absolute;inset:0;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column}
+img{display:block;max-width:100%}
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;letter-spacing:-.02em;line-height:1.04}
+.it{font-family:var(--serif);font-weight:300;font-style:italic;color:var(--mint)}
+.ch-light .it{color:var(--mint-deep)}
+
+/* eyebrow pill */
+.eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:var(--display);font-weight:600;font-size:var(--type-label);letter-spacing:.13em;text-transform:uppercase;color:var(--ivory-2);padding:14px 28px 14px 20px;border:1px solid rgba(233,227,212,.16);border-radius:999px;background:rgba(233,227,212,.05);width:fit-content}
+.eyebrow::before{content:"";width:16px;height:16px;flex:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none'%3E%3Ccircle cx='24' cy='24' r='20' stroke='%231fc489' stroke-width='4'/%3E%3C/svg%3E") center/contain no-repeat}
+.ch-light .eyebrow{color:#2e4448;border-color:rgba(14,44,51,.18);background:rgba(14,44,51,.05)}
+.ch-light .eyebrow::before{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none'%3E%3Ccircle cx='24' cy='24' r='20' stroke='%230e9b6a' stroke-width='4'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* chapter head */
+.chapter-head{display:flex;align-items:flex-start;gap:52px;margin-bottom:var(--gap-title)}
+.chapter-num{font-family:var(--display);font-weight:800;font-size:184px;line-height:.78;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:2px var(--mint);flex:none;opacity:.9}
+.ch-light .chapter-num{-webkit-text-stroke-color:var(--mint-deep)}
+.chapter-head .ch-body{padding-top:12px}
+.slide-title{font-size:var(--type-h1);margin-top:14px;max-width:22ch}
+
+/* timer pill */
+.timer{display:inline-flex;align-items:baseline;gap:14px;background:var(--mint);color:#06231f;font-family:var(--display);font-weight:700;font-size:28px;letter-spacing:.02em;padding:16px 30px;border-radius:999px;white-space:nowrap}
+.timer span{font-weight:500;font-size:26px;opacity:.85}
+.timerflow{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.timerflow .ar{color:var(--mint);font-size:34px}
+
+/* dot list */
+.dotlist{list-style:none;display:flex;flex-direction:column;gap:var(--gap-item)}
+.dotlist li{position:relative;padding-left:44px;font-size:var(--type-body);line-height:1.42;color:var(--ivory-2)}
+.dotlist li::before{content:"";position:absolute;left:0;top:.4em;width:15px;height:15px;border-radius:50%;border:2.5px solid var(--mint)}
+.dotlist.small li{font-size:var(--type-small);line-height:1.4}
+
+/* numbered sign rows */
+.signrow{display:grid;grid-template-columns:70px 1fr;gap:30px;padding:24px 0;border-top:1px solid var(--line);align-items:baseline}
+.signrow:last-child{border-bottom:1px solid var(--line)}
+.signrow .n{font-family:var(--display);font-weight:600;font-size:24px;color:var(--mint);letter-spacing:.1em}
+.signrow h4{font-family:var(--serif);font-weight:500;font-size:42px;color:var(--ivory);margin-bottom:10px;line-height:1.15}
+.signrow p{font-size:28px;color:var(--muted);line-height:1.4;max-width:56ch}
+
+/* shift (before/after) */
+.shiftwrap{display:grid;grid-template-columns:1fr auto 1fr;gap:44px;align-items:center}
+.shiftbox{border:1px solid var(--line);border-radius:14px;padding:48px;background:var(--surface)}
+.shiftbox .k{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:.14em;text-transform:uppercase;color:var(--label);margin-bottom:20px}
+.shiftbox p{font-family:var(--serif);font-size:38px;line-height:1.32;color:var(--ivory)}
+.shiftarrow{font-size:64px;color:var(--mint);line-height:1}
+
+/* table */
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:.1em;text-transform:uppercase;color:var(--label);text-align:left;padding:0 24px 20px 0;border-bottom:2px solid var(--mint)}
+.tbl td{font-size:28px;line-height:1.36;color:var(--ivory-2);padding:26px 24px 26px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl td:first-child{color:var(--ivory);font-weight:600;font-family:var(--display);font-size:29px}
+
+/* quote */
+.quote{font-family:var(--serif);font-weight:400;font-size:60px;line-height:1.28;letter-spacing:-.012em;color:var(--ivory)}
+.quote .qm{display:block;font-family:var(--serif);font-size:106px;line-height:0;height:38px;color:var(--mint)}
+.cite{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:.08em;text-transform:uppercase;color:var(--label);margin-top:28px}
+
+/* two-col */
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.body-p{font-size:var(--type-body);line-height:1.5;color:var(--muted)}
+.body-p b{color:var(--ivory-2);font-weight:600}
+
+/* card / callout */
+.card{border:1px solid var(--line);border-radius:14px;padding:44px 48px;background:var(--surface)}
+.card .k{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:.14em;text-transform:uppercase;color:var(--mint);margin-bottom:16px}
+.card p{font-size:30px;line-height:1.46;color:var(--ivory-2)}
+</style>
+</head>
+<body>
+<deck-stage width="1920" height="1080">
+
+<section data-label="Title">
+  <div class="slide">
+    <img src="assets/scene-room.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
+    <div style="position:absolute;inset:0;background:radial-gradient(60% 60% at 78% 20%,rgba(31,196,137,.14),transparent 60%),linear-gradient(100deg,rgba(6,20,24,.97) 0%,rgba(6,20,24,.9) 40%,rgba(6,20,24,.62) 70%,rgba(6,20,24,.32) 100%),linear-gradient(0deg,rgba(6,20,24,.55),transparent 45%)"></div>
+    <div class="slide-pad" style="justify-content:center;position:relative;z-index:2" data-screen-label="Title">
+      <span class="eyebrow">Workshop</span>
+      <h1 style="font-size:var(--type-hero);margin-top:44px;line-height:.96;letter-spacing:-.03em">Finding Our<br><span class="it">Primary Task</span></h1>
+      <p style="font-family:var(--display);font-weight:500;font-size:32px;letter-spacing:.02em;color:var(--muted);margin-top:40px">Bimzelx Patient Community sub-team</p>
+      <p class="quote" style="font-size:42px;color:var(--ivory-2);margin-top:56px;max-width:38ch">Today we will write one sentence that says what this team is for.</p>
+    </div>
+  </div>
+</section>
+
+<section data-label="01 Survival">
+  <div class="slide">
+    <div class="slide-pad" data-screen-label="01 Survival">
+      <div class="chapter-head">
+        <span class="chapter-num">01</span>
+        <div class="ch-body">
+          <span class="eyebrow">Why this matters</span>
+          <h1 class="slide-title">What must this team do to survive?</h1>
+        </div>
+      </div>
+      <div class="quote" style="margin-top:12px;max-width:34ch;font-size:60px">
+        <span class="qm">&ldquo;</span>The task it must perform if it is to survive.
+      </div>
+      <p class="cite">Eric Miller, Tavistock Institute</p>
+      <div class="twocol" style="margin-top:auto">
+        <p class="body-p"><b>This is where the idea comes from.</b> The Tavistock Institute developed the primary task to explain why capable, well-led teams have less impact than they should. When a team cannot say what it must do to survive, it tries to do everything and loses focus.</p>
+        <p class="body-p"><b>Survival is different from aspiration.</b> When teams think about survival, they focus on what they must deliver, who depends on it, and what would be lost without them. Every asset is tested this way at portfolio review &mdash; so is every team around it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="02 The primary task">
+  <div class="slide">
+    <div class="slide-pad" data-screen-label="02 The primary task">
+      <div class="chapter-head">
+        <span class="chapter-num">02</span>
+        <div class="ch-body">
+          <span class="eyebrow">The framework</span>
+          <h1 class="slide-title">The primary task</h1>
+        </div>
+      </div>
+      <p class="body-p" style="max-width:74ch;margin-top:0;font-size:28px">In a paper company, everyone makes, sells and ships paper, so the shared task is obvious. This team brings different specialists together &mdash; like a mechanic, a chef, a dentist and a pilot. A team like this needs to write its shared task down.</p>
+      <div style="margin-top:20px">
+        <div class="signrow" style="padding:16px 0">
+          <span class="n">01</span>
+          <div><h4 style="font-size:34px;margin-bottom:6px">This team exists to&hellip;</h4><p style="font-size:26px">the outcome we must deliver to survive</p></div>
+        </div>
+        <div class="signrow" style="padding:16px 0">
+          <span class="n">02</span>
+          <div><h4 style="font-size:34px;margin-bottom:6px">by means of&hellip;</h4><p style="font-size:26px">the contribution only we can make</p></div>
+        </div>
+        <div class="signrow" style="padding:16px 0">
+          <span class="n">03</span>
+          <div><h4 style="font-size:34px;margin-bottom:6px">in order to&hellip;</h4><p style="font-size:26px">the wider purpose it serves</p></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:auto;padding:32px 40px">
+        <div class="k">Example &middot; Airline cabin crew</div>
+        <p>Exists to bring passengers back to fly with the airline again, by means of keeping them safe and making the flight easy, in order to protect the airline&rsquo;s profit in a market where flights are very similar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="03 On your own">
+  <div class="slide">
+    <div class="slide-pad" data-screen-label="03 On your own">
+      <div class="chapter-head">
+        <span class="chapter-num">03</span>
+        <div class="ch-body">
+          <span class="eyebrow">Exercise &middot; Individual</span>
+          <h1 class="slide-title">On your own</h1>
+        </div>
+      </div>
+      <div class="twocol" style="margin-top:16px;flex:1;align-items:center">
+        <div>
+          <p class="body-p" style="max-width:70ch;font-size:37px;color:var(--ivory-2)">You will each be given a card. Complete the sentence for this team as it works today:</p>
+          <p class="quote" style="font-size:48px;margin-top:40px;max-width:30ch">This team exists to&hellip; by means of&hellip; in order to&hellip;</p>
+        </div>
+        <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/5"><img src="assets/scene-flipchart.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 30%"></div>
+      </div>
+      <div class="timerflow" style="margin-top:auto">
+        <span class="timer">5 min <span>&mdash; write</span></span>
+        <span class="ar">&rarr;</span>
+        <span class="timer">5 min <span>&mdash; read out &amp; discuss</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="04 What our week says">
+  <div class="slide">
+    <div class="slide-pad" data-screen-label="04 What our week says">
+      <div class="chapter-head">
+        <span class="chapter-num">04</span>
+        <div class="ch-body">
+          <span class="eyebrow">Exercise &middot; Pairs, then room</span>
+          <h1 class="slide-title">What our week says</h1>
+        </div>
+      </div>
+      <div class="twocol" style="margin-top:14px;height:440px">
+        <div>
+          <p class="body-p" style="color:var(--ivory-2);font-size:30px;margin-bottom:18px">Think about a typical week:</p>
+          <ul class="dotlist small" style="gap:16px">
+            <li style="font-size:26px">What takes up most of your time?</li>
+            <li style="font-size:26px">Who do you work with most closely, inside and outside this team?</li>
+            <li style="font-size:26px">Which meetings do you attend, and who sets their agenda?</li>
+            <li style="font-size:26px">When does another function ask for your input?</li>
+            <li style="font-size:26px">Which decisions have you been part of recently?</li>
+          </ul>
+        </div>
+        <div style="border-radius:14px;overflow:hidden;height:100%"><img src="assets/resil-group.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 32%"></div>
+      </div>
+      <div class="twocol" style="margin-top:22px">
+        <div class="card" style="padding:28px 32px">
+          <div class="k">In pairs &middot; 10 min</div>
+          <p style="font-size:26px">Someone watches this team for three months. They never see our mission statement. What would they say we are here to do?</p>
+        </div>
+        <div class="card" style="padding:28px 32px">
+          <div class="k">As a room &middot; 5 min</div>
+          <p style="font-size:26px">How close is that to the cards? What would the asset leadership team say?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="05 The survival test">
+  <div class="slide">
+    <div class="slide-pad" data-screen-label="05 The survival test">
+      <div class="chapter-head">
+        <span class="chapter-num">05</span>
+        <div class="ch-body">
+          <span class="eyebrow">Exercise &middot; Groups</span>
+          <h1 class="slide-title">The survival test</h1>
+        </div>
+      </div>
+      <p class="body-p" style="font-size:34px;color:var(--ivory-2);max-width:76ch">Imagine the asset leadership team removes this sub-team at the next resourcing round. Twelve months later, what has the asset lost?</p>
+      <p class="body-p" style="font-size:26px;margin-top:10px;max-width:76ch">Use the language the asset leadership team uses: label, launch, access, payer evidence, timelines, lifecycle, competitive position.</p>
+      <div class="twocol" style="margin-top:32px">
+        <ul class="dotlist small">
+          <li>7 of 9 stakeholders name Benefit&ndash;Risk as where we add most value</li>
+          <li>Safety input helped defend the labels worldwide</li>
+          <li>A fatigue and itch endpoint was added to a benefit&ndash;risk assessment</li>
+          <li>Patient input moved an asset leadership discussion beyond price</li>
+        </ul>
+        <ul class="dotlist small">
+          <li>Fatigue was not measured in HS, and payers later asked for it</li>
+          <li>A phase IV study finished six months early</li>
+          <li>We can bring a patient organisation to UCB within one or two weeks</li>
+        </ul>
+      </div>
+      <div class="timerflow" style="margin-top:auto">
+        <span class="timer">12 min <span>&mdash; groups, worksheet</span></span>
+        <span class="ar">&rarr;</span>
+        <span class="timer">8 min <span>&mdash; feedback, top three</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="06 In-house legal team">
+  <div class="slide">
+    <div class="slide-pad" data-screen-label="06 In-house legal team">
+      <div class="chapter-head">
+        <span class="chapter-num">06</span>
+        <div class="ch-body">
+          <span class="eyebrow">Worked example</span>
+          <h1 class="slide-title">An in-house legal team</h1>
+        </div>
+      </div>
+      <p class="body-p" style="font-size:34px;color:var(--ivory-2);max-width:70ch;margin-top:8px">If the company used an outside law firm instead, what would the business lose?</p>
+      <div class="shiftwrap" style="margin-top:44px">
+        <div class="shiftbox">
+          <div class="k">Before</div>
+          <p>Protect the company from legal risk.</p>
+        </div>
+        <span class="shiftarrow">&rarr;</span>
+        <div class="shiftbox" style="border-color:rgba(31,196,137,.4);background:var(--surface-2)">
+          <div class="k" style="color:var(--mint)">After</div>
+          <p>Help the business trade faster and more profitably, by means of bringing legal judgement into decisions early, in order to take the right risks and avoid the wrong ones.</p>
+        </div>
+      </div>
+      <p class="body-p" style="margin-top:auto;font-size:28px">Protecting the company is still in the sentence &mdash; it moved to <b>&ldquo;in order to.&rdquo;</b></p>
+    </div>
+  </div>
+</section>
+
+<section data-label="07 Other teams">
+  <div class="slide">
+    <div class="slide-pad" data-screen-label="07 Other teams">
+      <div class="chapter-head">
+        <span class="chapter-num">07</span>
+        <div class="ch-body">
+          <span class="eyebrow">Reference &middot; 1 of 2</span>
+          <h1 class="slide-title">Other teams</h1>
+        </div>
+      </div>
+      <table class="tbl" style="margin-top:24px">
+        <thead><tr><th style="width:20%">Team</th><th style="width:27%">Exists to</th><th style="width:27%">By means of</th><th style="width:26%">In order to</th></tr></thead>
+        <tbody>
+          <tr><td>Lifeboat crew</td><td>bring people home safely from the sea</td><td>launching in minutes, in any weather</td><td>keep public trust and donations</td></tr>
+          <tr><td>Racing pit crew</td><td>win races</td><td>faster, more reliable pit stops than any other team</td><td>turn the car&rsquo;s speed into points</td></tr>
+          <tr><td>Football academy</td><td>supply players and transfer income</td><td>developing young players the club couldn&rsquo;t afford to buy</td><td>stay competitive without overspending</td></tr>
+          <tr><td>Orchestra, no conductor</td><td>give performances audiences return for</td><td>musicians sharing leadership</td><td>stay funded and keep performing</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section data-label="07 Other teams, cont.">
+  <div class="slide">
+    <div class="slide-pad" data-screen-label="07 Other teams, cont.">
+      <div class="chapter-head">
+        <span class="chapter-num">07</span>
+        <div class="ch-body">
+          <span class="eyebrow">Reference &middot; 2 of 2</span>
+          <h1 class="slide-title">Other teams</h1>
+        </div>
+      </div>
+      <table class="tbl" style="margin-top:24px">
+        <thead><tr><th style="width:20%">Team</th><th style="width:27%">Exists to</th><th style="width:27%">By means of</th><th style="width:26%">In order to</th></tr></thead>
+        <tbody>
+          <tr><td>Newspaper investigations</td><td>build the paper&rsquo;s reputation and paying readers</td><td>publishing stories no one else has</td><td>fund independent journalism</td></tr>
+          <tr><td>Hotel housekeeping</td><td>earn repeat bookings</td><td>preparing rooms guests are happy with</td><td>keep rooms full and prices high</td></tr>
+          <tr><td>Airline cabin crew</td><td>bring passengers back</td><td>keeping them safe and making the flight easy</td><td>protect profit where flights are very similar</td></tr>
+          <tr><td>Museum learning team</td><td>grow the future audience</td><td>school visits children want to repeat with their families</td><td>secure visitor numbers and funding</td></tr>
+        </tbody>
+      </table>
+      <p class="body-p" style="margin-top:auto;font-size:26px">In every example, the team&rsquo;s specialist skill is in <b>&ldquo;by means of.&rdquo;</b></p>
+    </div>
+  </div>
+</section>
+
+<section data-label="08 Draft it">
+  <div class="slide">
+    <div class="slide-pad" data-screen-label="08 Draft it">
+      <div class="chapter-head">
+        <span class="chapter-num">08</span>
+        <div class="ch-body">
+          <span class="eyebrow">Exercise &middot; Twos or threes</span>
+          <h1 class="slide-title">Draft it</h1>
+        </div>
+      </div>
+      <div class="twocol" style="margin-top:12px;flex:1;align-items:center">
+        <div>
+          <p class="body-p" style="font-size:37px;color:var(--ivory-2);max-width:70ch">Write one sentence that describes what the team does, in words every function can use.</p>
+          <p class="body-p" style="font-size:30px;margin-top:20px;max-width:70ch">Start from the survival list: what does the asset need? You can use words from the examples and from other groups.</p>
+        </div>
+        <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/5"><img src="assets/scene-laptop.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 35%"></div>
+      </div>
+      <div class="timerflow" style="margin-top:auto">
+        <span class="timer">10 min <span>&mdash; draft</span></span>
+        <span class="ar">&rarr;</span>
+        <span class="timer">4 min <span>&mdash; dot vote</span></span>
+      </div>
+      <p class="body-p" style="font-size:26px;margin-top:20px;max-width:70ch">Each person places three dots on the strongest words and phrases across all the drafts.</p>
+    </div>
+  </div>
+</section>
+
+<section data-label="09 Build and test">
+  <div class="slide">
+    <div class="slide-pad" data-screen-label="09 Build and test">
+      <div class="chapter-head">
+        <span class="chapter-num">09</span>
+        <div class="ch-body">
+          <span class="eyebrow">Exercise &middot; As a room</span>
+          <h1 class="slide-title">Build and test</h1>
+        </div>
+      </div>
+      <div class="timerflow" style="margin-top:4px">
+        <span class="timer">8 min <span>&mdash; build one sentence from the words with the most dots</span></span>
+      </div>
+      <p class="body-p" style="font-size:28px;margin-top:34px">Then 3 minutes &mdash; vote on each question. Hold up 0 to 5 fingers: 0 means no, 5 means yes, completely.</p>
+      <div style="margin-top:16px">
+        <div class="signrow"><span class="n">Q1</span><p style="font-size:32px;color:var(--ivory-2)">Would the asset leadership team recognise their asset in it?</p></div>
+        <div class="signrow"><span class="n">Q2</span><p style="font-size:32px;color:var(--ivory-2)">Can every function see its work in &ldquo;by means of&rdquo;?</p></div>
+        <div class="signrow"><span class="n">Q3</span><p style="font-size:32px;color:var(--ivory-2)">Does it tell us what to do when regulatory and patient work conflict?</p></div>
+        <div class="signrow"><span class="n">Q4</span><p style="font-size:32px;color:var(--ivory-2)">Would someone watching us see it in how we work?</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="10 Patient voice relay">
+  <div class="slide">
+    <div class="slide-pad" data-screen-label="10 Patient voice relay">
+      <div class="chapter-head">
+        <span class="chapter-num">10</span>
+        <div class="ch-body">
+          <span class="eyebrow">Exercise &middot; Whole room, 3 rounds</span>
+          <h1 class="slide-title">The Patient Voice Relay</h1>
+        </div>
+      </div>
+      <p class="body-p" style="font-size:32px;color:var(--ivory-2);max-width:78ch">I will read this to you. You then have 1 minute to plan before the timer starts. We will not answer any questions.</p>
+      <p class="body-p" style="font-size:28px;margin-top:10px;max-width:78ch">Your task, as a group, is to show how the patient voice (the ball) can move through your team as efficiently as possible to reach the asset decision.</p>
+      <div style="margin-top:28px">
+        <span class="eyebrow">Rules of play</span>
+        <div style="display:flex;flex-direction:column;gap:0;margin-top:16px">
+          <div class="signrow"><span class="n">01</span><p style="font-size:28px;color:var(--ivory-2)">You cannot pass the ball to the person next to you.</p></div>
+          <div class="signrow"><span class="n">02</span><p style="font-size:28px;color:var(--ivory-2)">Every team member must touch the ball.</p></div>
+          <div class="signrow"><span class="n">03</span><p style="font-size:28px;color:var(--ivory-2)">The ball must travel through the air.</p></div>
+          <div class="signrow"><span class="n">04</span><p style="font-size:28px;color:var(--ivory-2)">The ball cannot be rolled across surfaces &mdash; for example the floor, walls, tables or chairs.</p></div>
+          <div class="signrow"><span class="n">05</span><p style="font-size:28px;color:var(--ivory-2)">Remember the order, because you will repeat it in the next rounds.</p></div>
+          <div class="signrow"><span class="n">06</span><p style="font-size:28px;color:var(--ivory-2)">If the ball hits the ground, or the order is not followed, you will get a time penalty.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="11 Our primary task">
+  <div class="slide ch-light">
+    <div style="position:absolute;inset:0;background:var(--paper)"></div>
+    <div class="slide-pad" style="position:relative;z-index:2;color:var(--ink)" data-screen-label="11 Our primary task">
+      <div class="chapter-head">
+        <span class="chapter-num">11</span>
+        <div class="ch-body">
+          <span class="eyebrow">The result</span>
+          <h1 class="slide-title" style="color:var(--ink)">Our primary task</h1>
+        </div>
+      </div>
+      <div style="margin-top:20px;display:flex;flex-direction:column;gap:22px">
+        <p style="font-family:var(--serif);font-weight:400;font-size:52px;color:var(--ink);line-height:1.3">This team exists to&hellip;</p>
+        <p style="font-family:var(--serif);font-weight:400;font-size:52px;color:var(--ink);line-height:1.3">by means of&hellip;</p>
+        <p style="font-family:var(--serif);font-weight:400;font-size:52px;color:var(--ink);line-height:1.3">in order to&hellip;</p>
+      </div>
+      <p style="font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:.1em;text-transform:uppercase;color:#6a726c;margin-top:36px">Agreed by the team, [date]</p>
+      <div class="card" style="margin-top:auto;background:rgba(8,24,28,.05);border-color:rgba(8,24,28,.14)">
+        <div class="k" style="color:var(--mint-deep)">Each person &middot; 5 min</div>
+        <p style="color:#3c453f;font-size:30px">One action in the next 30 days that shows our primary task in practice. Choose something other people can see.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Next steps">
+  <div class="slide">
+    <img src="assets/resil-laugh.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%">
+    <div style="position:absolute;inset:0;background:radial-gradient(70% 70% at 50% 30%,rgba(6,20,24,.4),rgba(6,20,24,.88) 70%),linear-gradient(0deg,var(--ink) 0%,rgba(6,20,24,.7) 30%,rgba(6,20,24,.55) 60%,rgba(6,20,24,.72) 100%)"></div>
+    <div class="slide-pad" style="justify-content:center;align-items:center;text-align:center;position:relative;z-index:2" data-screen-label="Next steps">
+      <span class="eyebrow">Next steps</span>
+      <h1 style="font-size:94px;margin-top:36px;max-width:20ch">Carrying this forward</h1>
+      <div style="display:flex;flex-direction:column;gap:0;margin-top:56px;width:100%;max-width:1180px;text-align:left">
+        <div class="signrow"><span class="n">01</span><p style="font-size:32px;color:var(--ivory-2)">Sentence and actions sent to everyone within 24 hours &mdash; <b style="color:var(--ivory)">[owner]</b></p></div>
+        <div class="signrow"><span class="n">02</span><p style="font-size:32px;color:var(--ivory-2)">Next team meeting starts with it &mdash; <b style="color:var(--ivory)">[owner]</b></p></div>
+        <div class="signrow"><span class="n">03</span><p style="font-size:32px;color:var(--ivory-2)">Tested on a live decision at the next team meeting &mdash; <b style="color:var(--ivory)">[owner]</b></p></div>
+        <div class="signrow"><span class="n">04</span><p style="font-size:32px;color:var(--ivory-2)">Shared with the asset leadership team and joint forum &mdash; <b style="color:var(--ivory)">[owner, date]</b></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</deck-stage>
+<script src="deck-stage.js"></script>
+</body>
+</html>
