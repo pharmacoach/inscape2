@@ -2,12 +2,12 @@
    Inscape — shared booking / lead-capture block
    Fills any <div class="book__grid" data-book-grid> with the
    "what happens" rail + capture form, and wires the form to
-   compose a personal email to Hello@inscape.co.
+   compose a personal email to hello@inscape.co.
    To use a live scheduler (Calendly / SavvyCal / HubSpot),
    replace the .book__card form with the embed.
    ========================================================= */
 (function(){
-  var EMAIL = 'Hello@inscape.co';
+  var EMAIL = 'hello@inscape.co';
   // Web3Forms access key (see form-backend/SETUP.md). Empty = falls back to opening an email.
   var ACCESS_KEY = 'd419b361-0d82-45f3-8ddd-1e85d5fb17d4';
   var ENDPOINT = 'https://api.web3forms.com/submit';

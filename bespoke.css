@@ -435,7 +435,7 @@ body.menu-open .nav__burger span:nth-child(3){transform:translateY(-7px) rotate(
   linear-gradient(0deg,rgba(4,16,20,.55),transparent 55%);}
 .resil .wrap{position:relative;z-index:2;}
 .resil__copy{max-width:54ch;}
-.resil__copy h2{font-size:clamp(34px,4.8vw,66px);margin-top:22px;}
+.resil__copy h1,.resil__copy h2{font-size:clamp(34px,4.8vw,66px);margin-top:22px;}
 .resil__copy .lead{margin-top:22px;}
 .programs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:60px;background:var(--line);border:1px solid var(--line);}
 .prog{background:rgba(6,24,28,.72);backdrop-filter:blur(4px);padding:28px 26px;display:flex;gap:16px;}
@@ -990,7 +990,7 @@ body.menu-open .nav__burger span:nth-child(3){transform:translateY(-7px) rotate(
 @media (max-width:860px){.book__grid{grid-template-columns:1fr;}.bf__row{grid-template-columns:1fr;}}
 
 /* split layout — headline beside the form, no empty header band */
-.book__layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,4.5vw,64px);align-items:stretch;}
+.book__layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,4.5vw,64px);align-items:start;}
 .book__layout .book__left{display:flex;flex-direction:column;justify-content:space-between;gap:clamp(30px,4vw,52px);}
 .book__layout .chain{margin:0 0 24px;}
 .book__layout h2{font-size:clamp(30px,3.4vw,50px);letter-spacing:-.03em;max-width:16ch;}
@@ -1007,9 +1007,6 @@ body.menu-open .nav__burger span:nth-child(3){transform:translateY(-7px) rotate(
 .book__proof cite{display:block;margin-top:10px;font-family:var(--mono);font-size:11px;letter-spacing:.012em;color:var(--muted);font-style:normal;}
 .book__proof .logosline{display:block;margin-top:14px;font-size:13px;color:var(--muted-2);}
 .book__proof .logosline b{color:var(--muted);font-weight:500;}
-/* let the form breathe to match a taller left column */
-.book__layout .book__card{display:flex;flex-direction:column;}
-.book__layout .book__card .book__form{flex:1;justify-content:space-between;}
 
 /* =========================================================
    FIT — who this is for / not for (qualification)
