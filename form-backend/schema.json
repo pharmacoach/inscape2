@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "situation": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "page": {
+      "type": "string"
+    },
+    "received": {
+      "type": "string"
+    }
+  }
+}
