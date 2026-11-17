@@ -89,6 +89,8 @@
   summary.menu-group__head:hover h3{color:var(--mint);}
   summary.menu-group__head h3{transition:color .3s;}
   .menu-group__head .mg-right{display:flex;align-items:center;gap:clamp(14px,1.6vw,26px);}
+  .menu-group__head .note{white-space:nowrap;max-width:none;font-size:15px;}
+  @media (max-width:1100px){summary.menu-group__head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:16px;row-gap:10px;}.menu-group__head .mg-right{display:contents;}.menu-group__head .mg-toggle{grid-column:2;grid-row:1;}.menu-group__head .note{grid-column:1/-1;grid-row:2;text-align:left;font-size:min(15px,3vw);}}
   .mg-toggle{position:relative;width:30px;height:30px;flex:none;border:1px solid var(--line);border-radius:50%;transition:border-color .35s,background .35s;}
   summary.menu-group__head:hover .mg-toggle{border-color:rgba(var(--mint-rgb),.55);background:rgba(var(--mint-rgb),.08);}
   .mg-toggle::before,.mg-toggle::after{content:"";position:absolute;top:50%;left:50%;width:11px;height:1.6px;border-radius:2px;background:var(--mint);transform:translate(-50%,-50%);transition:transform .4s var(--ease),opacity .4s var(--ease);}
@@ -180,6 +182,7 @@
         <h1>How <span class="it">we</span> work.</h1>
         <p class="lead">We turn what's really happening inside a team into a clear plan, and the plan into performance. Three connected disciplines, run as one system: we gather the intelligence, translate it into leadership change, and build the resilience to make it last.</p>
         <div class="flow flow--bold reveal d1"><span class="fb"><b>Intelligence</b><i>What's really happening</i></span><span class="ar">→</span><span class="fb"><b>A clear plan</b><i>Shared and owned</i></span><span class="ar">→</span><span class="fb"><b>Performance</b><i>That lasts</i></span></div>
+        <div class="reveal d2" style="display:flex;margin-top:28px"><a class="btn btn-ghost" href="#everything-we-do">See everything we do <span class="arr">↓</span></a></div>
       </div>
     </div>
   </div>
@@ -251,7 +254,8 @@
 </section>
 
 <!-- ============ THE FULL MENU — BROCHURE ============ -->
-<section class="band ch-ink menu-section" id="menu" data-screen-label="The full menu">
+<span id="everything-we-do" style="display:block;height:0;scroll-margin-top:90px" aria-hidden="true"></span>
+<section class="band ch-ink menu-section" id="menu" data-screen-label="The full menu" style="scroll-margin-top:90px">
   <div class="wrap">
     <span class="eyebrow reveal">The full menu</span>
     <h2 class="reveal d1" style="font-size:clamp(32px,4.4vw,64px);margin-top:16px;max-width:16ch">Everything we do, in one place.</h2>
@@ -276,14 +280,14 @@
         </a>
         <a href="index.html#contact">
           <span class="n">03</span>
-          <div class="idx__mid"><h4>Influencing Without Authority</h4><p class="meta">For project and asset leaders who hold no formal power over the people they need to align. A taster of the matrix leadership work.</p></div>
+          <div class="idx__mid"><h4>AI for Pharma Leaders</h4><p class="meta">Where AI genuinely moves the needle, and where it just adds expensive complexity. The working session behind the newsletter's most-shared issue.</p></div>
           <span class="go">→</span>
         </a>
         <details class="see-more">
           <summary class="see-more__btn"><span class="lbl-more">See more workshops</span><span class="lbl-less">Show fewer</span><span class="see-more__chev" aria-hidden="true">→</span></summary>
           <a href="index.html#contact">
             <span class="n">04</span>
-            <div class="idx__mid"><h4>AI for Pharma Leaders</h4><p class="meta">Where AI genuinely moves the needle, and where it just adds expensive complexity. The working session behind the newsletter's most-shared issue.</p></div>
+            <div class="idx__mid"><h4>Influencing Without Authority</h4><p class="meta">For project and asset leaders who hold no formal power over the people they need to align. A taster of the matrix leadership work.</p></div>
             <span class="go">→</span>
           </a>
           <a href="index.html#contact">
